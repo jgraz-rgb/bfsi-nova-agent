@@ -62,14 +62,6 @@ const agents = [
   {
     name: "AI Customer Service Agent",
     description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
-  },
-  {
-    name: "AI Knowledge Agent",
-    description: "Analyses the conversation between the customer and the human support agent. Detects information gaps and auto-generates documentation from customer-human support agent interactions"
-  },
-  {
-    name: "AI Feedback Analyst",
-    description: "Captures feedback as given by the loan underwriters or quality auditors on the applications reviewed by the AI agents. Suggests changes to AI agent prompts based on the feedback shared"
   }
 ];
 
