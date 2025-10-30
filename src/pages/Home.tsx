@@ -3,7 +3,14 @@ import { Header } from "@/components/Header";
 import { SolutionCard } from "@/components/SolutionCard";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, User, DollarSign, Building2, Home, FileText, HandCoins, Shield } from "lucide-react";
+import { ChevronDown, Shield } from "lucide-react";
+
+// Import SVG icons
+import personalLoanIcon from "@/assets/icons/personal-loan.svg";
+import goldLoanIcon from "@/assets/icons/gold-loan.svg";
+import homeLoanIcon from "@/assets/icons/home-loan.svg";
+import digitalPersonalIcon from "@/assets/icons/digital-personal.svg";
+import financialServicesIcon from "@/assets/icons/financial-services.svg";
 
 export default function HomePage() {
   const [showAnalytics, setShowAnalytics] = useState(false);
@@ -58,31 +65,31 @@ export default function HomePage() {
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <SolutionCard
-                  icon={User}
+                  iconSvg={personalLoanIcon}
                   title="Personal Loan Origination"
                   region="India"
                   link="/solution/personal-loan-india"
                 />
                 <SolutionCard
-                  icon={User}
+                  iconSvg={personalLoanIcon}
                   title="Personal Loan Origination"
                   region="USA"
                   link="/solution/personal-loan-usa"
                 />
                 <SolutionCard
-                  icon={DollarSign}
+                  iconSvg={goldLoanIcon}
                   title="Gold Loan Origination"
                   region="India"
                   link="/solution/gold-loan-india"
                 />
                 <SolutionCard
-                  icon={Home}
+                  iconSvg={homeLoanIcon}
                   title="Home Loan Origination"
                   region="India"
                   link="/solution/home-loan-india"
                 />
                 <SolutionCard
-                  icon={FileText}
+                  iconSvg={digitalPersonalIcon}
                   title="Digital Personal Loan Application"
                   region="India"
                   link="/solution/digital-loan-india"
@@ -104,7 +111,7 @@ export default function HomePage() {
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <SolutionCard
-                  icon={HandCoins}
+                  iconSvg={financialServicesIcon}
                   title="Financial Services Support"
                   region="India"
                   link="/solution/financial-services-india"

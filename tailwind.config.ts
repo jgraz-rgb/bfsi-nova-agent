@@ -108,7 +108,8 @@ export default {
         "scale-in": "scale-in 0.3s ease-out",
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
+        body: ['Roboto', 'system-ui', 'sans-serif'],
       },
     },
   },
