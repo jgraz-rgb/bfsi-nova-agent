@@ -11,15 +11,12 @@ import goldLoanIcon from "@/assets/icons/gold-loan.svg";
 import homeLoanIcon from "@/assets/icons/home-loan.svg";
 import digitalPersonalIcon from "@/assets/icons/digital-personal.svg";
 import financialServicesIcon from "@/assets/icons/financial-services.svg";
-
 export default function HomePage() {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [bankingOpen, setBankingOpen] = useState(true);
   const [financialOpen, setFinancialOpen] = useState(true);
   const [insuranceOpen, setInsuranceOpen] = useState(true);
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+  return <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Header />
       
       <main className="container mx-auto px-6 py-10 max-w-7xl">
@@ -27,25 +24,18 @@ export default function HomePage() {
           <h1 className="text-4xl font-bold mb-2 tracking-tight">
             Agentic AI Suite for <span className="text-primary">BFSI</span>
           </h1>
-          <p className="text-muted-foreground text-base">Enterprise-grade AI solutions for Banking, Financial Services & Insurance</p>
+          <p className="text-muted-foreground text-base">Purpose-built enterprise-grade AI solutions built for Banking, Financial Services and Insurance</p>
         </div>
 
         <Tabs value="solutions" className="mb-10">
           <TabsList className="bg-white border border-gray-200 p-1 shadow-sm">
-            <TabsTrigger 
-              value="solutions" 
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all"
-            >
+            <TabsTrigger value="solutions" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all">
               Agentic Solution
             </TabsTrigger>
-            <TabsTrigger 
-              value="analytics" 
-              onClick={(e) => {
-                e.preventDefault();
-                setShowAnalytics(true);
-              }}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all"
-            >
+            <TabsTrigger value="analytics" onClick={e => {
+            e.preventDefault();
+            setShowAnalytics(true);
+          }} className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all">
               Analytics
             </TabsTrigger>
           </TabsList>
@@ -64,36 +54,11 @@ export default function HomePage() {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard
-                  iconSvg={personalLoanIcon}
-                  title="Personal Loan Origination"
-                  region="India"
-                  link="/solution/personal-loan-india"
-                />
-                <SolutionCard
-                  iconSvg={personalLoanIcon}
-                  title="Personal Loan Origination"
-                  region="USA"
-                  link="/solution/personal-loan-usa"
-                />
-                <SolutionCard
-                  iconSvg={goldLoanIcon}
-                  title="Gold Loan Origination"
-                  region="India"
-                  link="/solution/gold-loan-india"
-                />
-                <SolutionCard
-                  iconSvg={homeLoanIcon}
-                  title="Home Loan Origination"
-                  region="India"
-                  link="/solution/home-loan-india"
-                />
-                <SolutionCard
-                  iconSvg={digitalPersonalIcon}
-                  title="Digital Personal Loan Application"
-                  region="India"
-                  link="/solution/digital-loan-india"
-                />
+                <SolutionCard iconSvg={personalLoanIcon} title="Personal Loan Origination" region="India" link="/solution/personal-loan-india" />
+                <SolutionCard iconSvg={personalLoanIcon} title="Personal Loan Origination" region="USA" link="/solution/personal-loan-usa" />
+                <SolutionCard iconSvg={goldLoanIcon} title="Gold Loan Origination" region="India" link="/solution/gold-loan-india" />
+                <SolutionCard iconSvg={homeLoanIcon} title="Home Loan Origination" region="India" link="/solution/home-loan-india" />
+                <SolutionCard iconSvg={digitalPersonalIcon} title="Digital Personal Loan Application" region="India" link="/solution/digital-loan-india" />
               </div>
             </CollapsibleContent>
           </Collapsible>
@@ -110,12 +75,7 @@ export default function HomePage() {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard
-                  iconSvg={financialServicesIcon}
-                  title="Financial Services Support"
-                  region="India"
-                  link="/solution/financial-services-india"
-                />
+                <SolutionCard iconSvg={financialServicesIcon} title="Financial Services Support" region="India" link="/solution/financial-services-india" />
               </div>
             </CollapsibleContent>
           </Collapsible>
@@ -132,13 +92,7 @@ export default function HomePage() {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard
-                  icon={Shield}
-                  title="Insurance Solutions"
-                  region="Coming Soon"
-                  link="/solution/insurance"
-                  disabled
-                />
+                <SolutionCard icon={Shield} title="Insurance Solutions" region="Coming Soon" link="/solution/insurance" disabled />
               </div>
             </CollapsibleContent>
           </Collapsible>
@@ -146,15 +100,8 @@ export default function HomePage() {
       </main>
 
       {/* Analytics Coming Soon Overlay */}
-      {showAnalytics && (
-        <div 
-          className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4"
-          onClick={() => setShowAnalytics(false)}
-        >
-          <div 
-            className="bg-white rounded-3xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-gray-100"
-            onClick={(e) => e.stopPropagation()}
-          >
+      {showAnalytics && <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4" onClick={() => setShowAnalytics(false)}>
+          <div className="bg-white rounded-3xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-gray-100" onClick={e => e.stopPropagation()}>
             <div className="text-center space-y-6">
               <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center">
                 <span className="text-5xl">📊</span>
@@ -163,16 +110,11 @@ export default function HomePage() {
                 <h3 className="text-3xl font-bold tracking-tight">Analytics</h3>
                 <p className="text-muted-foreground text-base">This powerful feature is coming soon to provide deep insights into your AI solutions.</p>
               </div>
-              <button
-                onClick={() => setShowAnalytics(false)}
-                className="mt-6 px-8 py-3 bg-primary text-primary-foreground rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-medium"
-              >
+              <button onClick={() => setShowAnalytics(false)} className="mt-6 px-8 py-3 bg-primary text-primary-foreground rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-medium">
                 Close
               </button>
             </div>
           </div>
-        </div>
-      )}
-    </div>
-  );
+        </div>}
+    </div>;
 }
