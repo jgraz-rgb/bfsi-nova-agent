@@ -1,9 +1,11 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Maximize2, X } from "lucide-react";
 import { Header } from "@/components/Header";
 import { AgentCard } from "@/components/AgentCard";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useState } from "react";
 import workflowImage from "@/assets/workflow-personal-loan-india.png";
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
@@ -73,6 +75,7 @@ const agents = [
 export default function SolutionDetail() {
   const { id } = useParams<{ id: string }>();
   const solution = id ? solutionData[id] : null;
+  const [isWorkflowOpen, setIsWorkflowOpen] = useState(false);
 
   if (!solution) {
     return (
@@ -150,13 +153,45 @@ export default function SolutionDetail() {
               </div>
             </div>
 
-            <div className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md">
+            <div 
+              className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
+              onClick={() => setIsWorkflowOpen(true)}
+            >
+              <div className="absolute top-4 right-4 bg-primary/90 text-white rounded-lg px-4 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <Maximize2 className="w-4 h-4" />
+                <span className="text-sm font-medium">View Full Screen</span>
+              </div>
               <img 
                 src={solution.workflow} 
                 alt="Workflow Diagram" 
                 className="w-full h-auto rounded-xl shadow-sm"
               />
             </div>
+
+            <Dialog open={isWorkflowOpen} onOpenChange={setIsWorkflowOpen}>
+              <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+                <div className="relative w-full h-full">
+                  <DialogHeader className="px-6 pt-6 pb-4 bg-white/80 backdrop-blur-sm border-b sticky top-0 z-10">
+                    <DialogTitle className="text-2xl font-bold text-foreground flex items-center justify-between">
+                      <span>Workflow Diagram - {solution.title}</span>
+                      <button
+                        onClick={() => setIsWorkflowOpen(false)}
+                        className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                      >
+                        <X className="w-5 h-5" />
+                      </button>
+                    </DialogTitle>
+                  </DialogHeader>
+                  <div className="overflow-auto max-h-[calc(95vh-100px)] p-8">
+                    <img 
+                      src={solution.workflow} 
+                      alt="Workflow Diagram Full View" 
+                      className="w-full h-auto rounded-xl shadow-2xl bg-white"
+                    />
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </TabsContent>
 
           <TabsContent value="agents" className="animate-fade-in">
