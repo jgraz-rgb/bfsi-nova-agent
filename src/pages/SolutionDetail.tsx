@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
 import workflowImage from "@/assets/workflow-personal-loan-india.png";
+import workflowGoldLoanIndia from "@/assets/workflow-gold-loan-india.png";
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
   "personal-loan-india": {
@@ -22,7 +23,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   "gold-loan-india": {
     title: "Gold Loan Origination (India)",
     description: "The Gold Loan Origination Agentic Solution streamlines gold loan applications through automated valuation, document verification, and instant loan offers based on gold purity and weight.",
-    workflow: workflowImage
+    workflow: workflowGoldLoanIndia
   },
   "home-loan-india": {
     title: "Home Loan Origination (India)",
