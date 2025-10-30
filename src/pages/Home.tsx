@@ -92,7 +92,7 @@ export default function HomePage() {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard icon={Shield} title="Insurance Solutions" region="Coming Soon" link="/solution/insurance" disabled />
+                <SolutionCard icon={Shield} title="Insurance Solutions" region="Coming Soon. Stay Tuned" link="/solution/insurance" disabled />
               </div>
             </CollapsibleContent>
           </Collapsible>

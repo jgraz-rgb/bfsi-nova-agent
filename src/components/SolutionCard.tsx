@@ -35,7 +35,7 @@ export const SolutionCard = ({
         </div>
         <div className="space-y-1.5">
           <h3 className="font-semibold text-base text-foreground leading-tight">{title}</h3>
-          {region && <p className={`text-xs tracking-wide ${disabled ? 'text-gray-400' : 'text-muted-foreground'}`}>
+          {region && <p className={`text-sm tracking-wide ${disabled ? 'text-gray-400' : 'text-muted-foreground'}`}>
               {region}
             </p>}
           {disabled}
