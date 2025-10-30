@@ -59,22 +59,6 @@ const agents = [
     description: "Collects and validates digital documents required for loan application processing such as proof of identity, proof of address, proof of income as applicable"
   },
   {
-    name: "AI Loan Underwriting Agent",
-    description: "Calculates the final loan offer based on application details and predefined credit policies. If approved, it displays the final approved loan amount, EMI, tenure, rate of interest (or APR) and processing fees (if any)"
-  },
-  {
-    name: "AI Disbursal Agent",
-    description: "Manages e-signing of loan agreement and coordinates the communication for loan disbursal with the customer"
-  },
-  {
-    name: "AI Knowledge Agent",
-    description: "Analyses the conversation between the customer and the human support agent. Detects information gaps and auto-generates documentation from customer-human support agent interactions"
-  },
-  {
-    name: "AI Feedback Analyst",
-    description: "Captures feedback as given by the loan underwriters or quality auditors on the applications reviewed by the AI agents. Suggests changes to AI agent prompts based on the feedback shared"
-  },
-  {
     name: "Intent Detection Agent",
     description: "Identifies user intent and routes queries to the appropriate AI or workflow agent"
   },
