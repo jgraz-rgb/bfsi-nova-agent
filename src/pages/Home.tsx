@@ -67,11 +67,12 @@ export default function HomePage() {
           {/* Financial Services */}
           <Collapsible open={financialOpen} onOpenChange={setFinancialOpen}>
             <CollapsibleTrigger className="w-full">
-              <div className="bg-gradient-to-r from-primary via-orange-500 to-orange-600 text-primary-foreground px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
+              <div className="bg-white border-2 border-primary px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
                 <h2 className="text-lg font-semibold tracking-tight">
-                  Agentic AI Solutions for <span className="font-bold">Financial Services</span>
+                  <span className="text-black">Agentic AI Solutions for </span>
+                  <span className="text-primary font-bold">Financial Services</span>
                 </h2>
-                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${financialOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 text-black transition-transform duration-300 ${financialOpen ? 'rotate-180' : ''}`} />
               </div>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-8">
