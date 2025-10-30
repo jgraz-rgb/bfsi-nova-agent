@@ -8,6 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { useState } from "react";
 import workflowImage from "@/assets/workflow-personal-loan-india.png";
 import workflowGoldLoanIndia from "@/assets/workflow-gold-loan-india.png";
+import workflowHomeLoanIndia from "@/assets/workflow-home-loan-india.png";
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
   "personal-loan-india": {
@@ -28,7 +29,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   "home-loan-india": {
     title: "Home Loan Origination (India)",
     description: "The Home Loan Origination Agentic Solution simplifies home loan applications with property valuation, eligibility assessment, and comprehensive documentation support.",
-    workflow: workflowImage
+    workflow: workflowHomeLoanIndia
   },
   "digital-loan-india": {
     title: "Digital Personal Loan Application (India)",
