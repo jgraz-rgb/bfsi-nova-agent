@@ -46,6 +46,66 @@ const solutionData: Record<string, { title: string; description: string; workflo
 };
 
 const agentsData: Record<string, Array<{ name: string; description: string }>> = {
+  "personal-loan-india": [
+    {
+      name: "AI Pre-Qualification Agent",
+      description: "Engages users with qualifying questions about personal information, KYC, loan needs, employment and income information to determine loan eligibility"
+    },
+    {
+      name: "AI Pre-Qualified Offer Agent",
+      description: "Computes personalized pre-qualified loan offers instantly. If approved, the AI agent will display pre-qualified loan amount, tentative ROI (or APR) and tenure, estimated EMI and processing fees (if any)"
+    },
+    {
+      name: "Documentation Agent",
+      description: "Collects and validates digital documents required for loan application processing such as proof of identity, proof of address, proof of income as applicable"
+    },
+    {
+      name: "AI Loan Underwriting Agent",
+      description: "Calculates the final loan offer based on application details and predefined credit policies. If approved, it displays the final approved loan amount, EMI, tenure, rate of interest (or APR) and processing fees (if any)"
+    },
+    {
+      name: "AI Disbursal Agent",
+      description: "Manages e-signing of loan agreement and coordinates the communication for loan disbursal with the customer"
+    },
+    {
+      name: "Intent Detection Agent",
+      description: "Identifies user intent and routes queries to the appropriate AI or workflow agent"
+    },
+    {
+      name: "AI Customer Service Agent",
+      description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
+    }
+  ],
+  "personal-loan-usa": [
+    {
+      name: "AI Pre-Qualification Agent",
+      description: "Engages users with qualifying questions about personal information, KYC, loan needs, employment and income information to determine loan eligibility"
+    },
+    {
+      name: "AI Pre-Qualified Offer Agent",
+      description: "Computes personalized pre-qualified loan offers instantly. If approved, the AI agent will display pre-qualified loan amount, tentative ROI (or APR) and tenure, estimated EMI and processing fees (if any)"
+    },
+    {
+      name: "Documentation Agent",
+      description: "Collects and validates digital documents required for loan application processing such as proof of identity, proof of address, proof of income as applicable"
+    },
+    {
+      name: "AI Loan Underwriting Agent",
+      description: "Calculates the final loan offer based on application details and predefined credit policies. If approved, it displays the final approved loan amount, EMI, tenure, rate of interest (or APR) and processing fees (if any)"
+    },
+    {
+      name: "AI Disbursal Agent",
+      description: "Manages e-signing of loan agreement and coordinates the communication for loan disbursal with the customer"
+    },
+    {
+      name: "Intent Detection Agent",
+      description: "Identifies user intent and routes queries to the appropriate AI or workflow agent"
+    },
+    {
+      name: "AI Customer Service Agent",
+      description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
+    }
+  ],
   "digital-loan-india": [
     {
       name: "AI Pre-Qualification Agent",
