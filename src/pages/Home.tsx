@@ -108,7 +108,7 @@ export default function HomePage() {
               </div>
               <div className="space-y-2">
                 <h3 className="text-3xl font-bold tracking-tight">Analytics</h3>
-                <p className="text-muted-foreground text-base">This powerful feature is coming soon to provide deep insights into your AI solutions.</p>
+                <p className="text-muted-foreground text-base">Coming Soon. Stay Tuned</p>
               </div>
               <button onClick={() => setShowAnalytics(false)} className="mt-6 px-8 py-3 bg-primary text-primary-foreground rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-medium">
                 Close
