@@ -12,20 +12,35 @@ interface SolutionCardProps {
 
 export const SolutionCard = ({ icon: Icon, title, region, link, disabled }: SolutionCardProps) => {
   const content = (
-    <Card className={`group relative overflow-hidden border-2 transition-all duration-300 ${
+    <Card className={`group relative overflow-hidden transition-all duration-300 ${
       disabled 
-        ? 'opacity-50 cursor-not-allowed' 
-        : 'cursor-pointer hover:shadow-lg hover:scale-[1.02] hover:border-primary/30'
+        ? 'opacity-40 cursor-not-allowed bg-gray-50' 
+        : 'cursor-pointer bg-white hover:shadow-[0_8px_24px_-4px_rgba(0,0,0,0.12)] hover:-translate-y-1 hover:border-primary/20'
     }`}>
-      <div className="p-6 flex flex-col items-center text-center space-y-4">
-        <div className="w-20 h-20 rounded-full bg-secondary flex items-center justify-center transition-colors duration-300 group-hover:bg-primary/10">
-          <Icon className="w-10 h-10 text-foreground" />
+      <div className="p-8 flex flex-col items-center text-center space-y-5">
+        <div className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+          disabled 
+            ? 'bg-gray-100' 
+            : 'bg-gradient-to-br from-orange-50 to-orange-100/50 group-hover:from-primary/10 group-hover:to-primary/5 group-hover:scale-110'
+        }`}>
+          <Icon className={`w-8 h-8 transition-colors duration-300 ${
+            disabled ? 'text-gray-400' : 'text-primary group-hover:text-primary'
+          }`} />
+          {!disabled && (
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 transition-all duration-300" />
+          )}
         </div>
-        <div>
-          <h3 className="font-semibold text-lg text-foreground">{title}</h3>
-          {region && <p className="text-sm text-muted-foreground mt-1">({region})</p>}
+        <div className="space-y-1.5">
+          <h3 className="font-semibold text-base text-foreground leading-tight">{title}</h3>
+          {region && (
+            <p className={`text-xs tracking-wide ${
+              disabled ? 'text-gray-400' : 'text-muted-foreground'
+            }`}>
+              {region}
+            </p>
+          )}
           {disabled && (
-            <p className="text-xs text-muted-foreground mt-2 italic">Coming Soon</p>
+            <p className="text-xs text-gray-400 mt-2 italic font-medium">Coming Soon</p>
           )}
         </div>
       </div>

@@ -12,19 +12,23 @@ export default function HomePage() {
   const [insuranceOpen, setInsuranceOpen] = useState(true);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Header />
       
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">
+      <main className="container mx-auto px-6 py-10 max-w-7xl">
+        <div className="mb-10">
+          <h1 className="text-4xl font-bold mb-2 tracking-tight">
             Agentic AI Suite for <span className="text-primary">BFSI</span>
           </h1>
+          <p className="text-muted-foreground text-base">Enterprise-grade AI solutions for Banking, Financial Services & Insurance</p>
         </div>
 
-        <Tabs value="solutions" className="mb-8">
-          <TabsList className="bg-secondary">
-            <TabsTrigger value="solutions" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+        <Tabs value="solutions" className="mb-10">
+          <TabsList className="bg-white border border-gray-200 p-1 shadow-sm">
+            <TabsTrigger 
+              value="solutions" 
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all"
+            >
               Agentic Solution
             </TabsTrigger>
             <TabsTrigger 
@@ -33,25 +37,25 @@ export default function HomePage() {
                 e.preventDefault();
                 setShowAnalytics(true);
               }}
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all"
             >
               Analytics
             </TabsTrigger>
           </TabsList>
         </Tabs>
 
-        <div className="space-y-6">
+        <div className="space-y-8">
           {/* Banking Solutions */}
           <Collapsible open={bankingOpen} onOpenChange={setBankingOpen}>
             <CollapsibleTrigger className="w-full">
-              <div className="bg-primary text-primary-foreground px-6 py-4 rounded-lg flex items-center justify-between hover:opacity-90 transition-opacity">
-                <h2 className="text-lg font-semibold">
-                  Agentic AI Solutions For <span className="font-bold">Banking</span>
+              <div className="bg-gradient-to-r from-primary via-orange-500 to-orange-600 text-primary-foreground px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
+                <h2 className="text-lg font-semibold tracking-tight">
+                  Agentic AI Solutions for <span className="font-bold">Banking</span>
                 </h2>
-                <ChevronDown className={`w-5 h-5 transition-transform ${bankingOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${bankingOpen ? 'rotate-180' : ''}`} />
               </div>
             </CollapsibleTrigger>
-            <CollapsibleContent className="mt-6">
+            <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <SolutionCard
                   icon={User}
@@ -90,14 +94,14 @@ export default function HomePage() {
           {/* Financial Services */}
           <Collapsible open={financialOpen} onOpenChange={setFinancialOpen}>
             <CollapsibleTrigger className="w-full">
-              <div className="bg-primary text-primary-foreground px-6 py-4 rounded-lg flex items-center justify-between hover:opacity-90 transition-opacity">
-                <h2 className="text-lg font-semibold">
-                  Agentic AI Solutions For <span className="font-bold">Financial Services</span>
+              <div className="bg-gradient-to-r from-primary via-orange-500 to-orange-600 text-primary-foreground px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
+                <h2 className="text-lg font-semibold tracking-tight">
+                  Agentic AI Solutions for <span className="font-bold">Financial Services</span>
                 </h2>
-                <ChevronDown className={`w-5 h-5 transition-transform ${financialOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${financialOpen ? 'rotate-180' : ''}`} />
               </div>
             </CollapsibleTrigger>
-            <CollapsibleContent className="mt-6">
+            <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <SolutionCard
                   icon={HandCoins}
@@ -112,14 +116,14 @@ export default function HomePage() {
           {/* Insurance */}
           <Collapsible open={insuranceOpen} onOpenChange={setInsuranceOpen}>
             <CollapsibleTrigger className="w-full">
-              <div className="bg-primary text-primary-foreground px-6 py-4 rounded-lg flex items-center justify-between hover:opacity-90 transition-opacity">
-                <h2 className="text-lg font-semibold">
-                  Agentic AI Solutions For <span className="font-bold">Insurance</span>
+              <div className="bg-gradient-to-r from-primary via-orange-500 to-orange-600 text-primary-foreground px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
+                <h2 className="text-lg font-semibold tracking-tight">
+                  Agentic AI Solutions for <span className="font-bold">Insurance</span>
                 </h2>
-                <ChevronDown className={`w-5 h-5 transition-transform ${insuranceOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${insuranceOpen ? 'rotate-180' : ''}`} />
               </div>
             </CollapsibleTrigger>
-            <CollapsibleContent className="mt-6">
+            <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <SolutionCard
                   icon={Shield}
@@ -137,20 +141,24 @@ export default function HomePage() {
       {/* Analytics Coming Soon Overlay */}
       {showAnalytics && (
         <div 
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center animate-fade-in"
+          className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4"
           onClick={() => setShowAnalytics(false)}
         >
           <div 
-            className="bg-background rounded-2xl p-12 max-w-md shadow-2xl animate-scale-in"
+            className="bg-white rounded-3xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-gray-100"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-center space-y-4">
-              <div className="text-6xl mb-4">📊</div>
-              <h3 className="text-2xl font-bold">Analytics</h3>
-              <p className="text-muted-foreground text-lg">This feature is coming soon.</p>
+            <div className="text-center space-y-6">
+              <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center">
+                <span className="text-5xl">📊</span>
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-3xl font-bold tracking-tight">Analytics</h3>
+                <p className="text-muted-foreground text-base">This powerful feature is coming soon to provide deep insights into your AI solutions.</p>
+              </div>
               <button
                 onClick={() => setShowAnalytics(false)}
-                className="mt-6 px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:opacity-90 transition-opacity"
+                className="mt-6 px-8 py-3 bg-primary text-primary-foreground rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-medium"
               >
                 Close
               </button>

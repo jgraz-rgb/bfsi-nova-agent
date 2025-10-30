@@ -20,10 +20,10 @@ All colors MUST be HSL.
     --primary: 28 100% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
+    --secondary: 220 13% 98%;
     --secondary-foreground: 0 0% 10%;
 
-    --muted: 220 14% 96%;
+    --muted: 220 13% 98%;
     --muted-foreground: 220 9% 46%;
 
     --accent: 28 100% 50%;
@@ -32,17 +32,37 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
     --ring: 28 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0.875rem;
     
-    --section-header: 28 100% 50%;
-    --card-border: 220 13% 91%;
-    --card-hover-shadow: 0 8px 24px -8px hsl(28 100% 50% / 0.15);
-    --text-secondary: 220 9% 46%;
-    --gradient-subtle: linear-gradient(135deg, hsl(220 14% 98%), hsl(220 14% 96%));
+    /* Premium design tokens */
+    --gray-50: 220 13% 98%;
+    --gray-100: 220 13% 96%;
+    --gray-200: 220 13% 91%;
+    --gray-300: 220 13% 88%;
+    --gray-700: 220 9% 46%;
+    --gray-900: 0 0% 10%;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.08);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.08);
+    --shadow-card: 0 2px 8px -2px hsl(0 0% 0% / 0.08);
+    --shadow-card-hover: 0 8px 24px -4px hsl(0 0% 0% / 0.12), 0 0 0 1px hsl(28 100% 50% / 0.08);
+    --shadow-premium: 0 12px 32px -8px hsl(0 0% 0% / 0.1);
+    
+    /* Gradients */
+    --gradient-subtle: linear-gradient(135deg, hsl(220 13% 99%), hsl(220 13% 97%));
+    --gradient-premium: linear-gradient(135deg, hsl(0 0% 100%), hsl(220 13% 98%));
+    --gradient-orange-glow: radial-gradient(circle at center, hsl(28 100% 50% / 0.15), transparent);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease;
 
     --sidebar-background: 0 0% 98%;
 
@@ -106,7 +126,63 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .card-premium {
+    @apply rounded-xl bg-white border border-gray-200 transition-all duration-300;
+    box-shadow: var(--shadow-card);
+  }
+  
+  .card-premium:hover {
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+  
+  .section-header {
+    @apply flex items-center justify-between px-6 py-4 rounded-xl bg-gradient-to-r from-primary to-orange-600 text-primary-foreground;
+    transition: var(--transition-smooth);
+  }
+  
+  .section-header:hover {
+    @apply opacity-95;
+  }
+  
+  .btn-premium {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg font-medium;
+    @apply bg-primary text-primary-foreground;
+    @apply transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+    box-shadow: 0 4px 12px -2px hsl(28 100% 50% / 0.3);
+  }
+  
+  .btn-premium:hover {
+    box-shadow: 0 6px 20px -2px hsl(28 100% 50% / 0.4);
+  }
+  
+  .tab-underline {
+    @apply relative pb-2 transition-colors duration-200;
+  }
+  
+  .tab-underline::after {
+    @apply absolute bottom-0 left-0 h-0.5 w-full bg-primary transition-transform duration-300;
+    content: '';
+    transform: scaleX(0);
+  }
+  
+  .tab-underline.active::after {
+    transform: scaleX(1);
+  }
+  
+  .glassmorphism {
+    background: hsla(0, 0%, 100%, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid hsla(220, 13%, 91%, 0.5);
   }
 }

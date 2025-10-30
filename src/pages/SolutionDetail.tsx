@@ -89,59 +89,72 @@ export default function SolutionDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
       <Header />
       
-      <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
+      <main className="container mx-auto px-6 py-10 max-w-7xl">
+        <div className="mb-10">
           <Link 
             to="/" 
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4"
+            className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 mb-6 group"
           >
-            <ArrowLeft className="w-4 h-4" />
-            <span className="text-sm">Agentic Solution</span>
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            <span className="text-sm font-medium">Back to Agentic Solutions</span>
           </Link>
           
-          <div className="flex items-center justify-between flex-wrap gap-4">
-            <h1 className="text-3xl font-bold">
-              <span className="text-muted-foreground">Agentic Solution</span>
-              <span className="mx-3">→</span>
-              <span className="text-primary">{solution.title}</span>
-            </h1>
+          <div className="flex items-center justify-between flex-wrap gap-6">
+            <div>
+              <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                <span>Agentic Solution</span>
+                <span>→</span>
+                <span className="text-foreground font-medium">{solution.title}</span>
+              </div>
+              <h1 className="text-4xl font-bold tracking-tight text-foreground">
+                {solution.title}
+              </h1>
+            </div>
             
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Try this Solution <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
+            <button className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-primary to-orange-600 text-white rounded-xl font-medium transition-all duration-300 hover:shadow-lg hover:scale-[1.02] group">
+              Try this Solution 
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </button>
           </div>
         </div>
 
-        <Tabs defaultValue="workflow" className="space-y-6">
-          <TabsList className="bg-secondary">
+        <Tabs defaultValue="workflow" className="space-y-8">
+          <TabsList className="bg-white border border-gray-200 p-1 shadow-sm">
             <TabsTrigger 
               value="workflow"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="relative data-[state=active]:bg-transparent data-[state=active]:text-primary rounded-md px-8 py-2.5 font-medium transition-all data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-0.5 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-full"
             >
               Workflow
             </TabsTrigger>
             <TabsTrigger 
               value="agents"
-              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+              className="relative data-[state=active]:bg-transparent data-[state=active]:text-primary rounded-md px-8 py-2.5 font-medium transition-all data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-0.5 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-full"
             >
               Agents
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="workflow" className="space-y-6 animate-fade-in">
-            <div className="border-2 border-blue-200 bg-blue-50/30 rounded-xl p-6">
-              <h2 className="font-bold text-lg mb-3">Workflow Description :</h2>
-              <p className="text-foreground leading-relaxed">{solution.description}</p>
+          <TabsContent value="workflow" className="space-y-8 animate-fade-in">
+            <div className="bg-gradient-to-br from-orange-50/50 to-orange-100/30 border border-orange-200/50 rounded-2xl p-8 shadow-sm">
+              <div className="flex items-start gap-3 mb-4">
+                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <span className="text-primary font-bold text-sm">ℹ</span>
+                </div>
+                <div className="flex-1">
+                  <h2 className="font-bold text-lg mb-3 text-foreground">Workflow Description</h2>
+                  <p className="text-foreground/90 leading-relaxed">{solution.description}</p>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-8 shadow-sm">
+            <div className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md">
               <img 
                 src={solution.workflow} 
                 alt="Workflow Diagram" 
-                className="w-full h-auto rounded-lg shadow-md"
+                className="w-full h-auto rounded-xl shadow-sm"
               />
             </div>
           </TabsContent>
