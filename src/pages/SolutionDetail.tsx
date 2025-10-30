@@ -144,6 +144,20 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
       description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
     }
   ],
+  "financial-services-india": [
+    {
+      name: "AI Support Agent",
+      description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
+    },
+    {
+      name: "AI Agent Partner",
+      description: "Assists human support agents with real time insights and contextaware suggestions for faster resolution of the issue shared by the customer"
+    },
+    {
+      name: "AI Knowledge Agent",
+      description: "Analyses the conversation between the customer and the human support agent. Detects information gaps and auto-generates documentation from customer-human support agent interactions"
+    }
+  ],
   "default": [
     {
       name: "AI Pre-Qualification Agent",
