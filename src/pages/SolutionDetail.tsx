@@ -9,6 +9,7 @@ import { useState } from "react";
 import workflowImage from "@/assets/workflow-personal-loan-india.png";
 import workflowGoldLoanIndia from "@/assets/workflow-gold-loan-india.png";
 import workflowHomeLoanIndia from "@/assets/workflow-home-loan-india.png";
+import workflowDigitalLoanIndia from "@/assets/workflow-digital-loan-india.png";
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
   "personal-loan-india": {
@@ -34,7 +35,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   "digital-loan-india": {
     title: "Digital Personal Loan Application (India)",
     description: "The Digital Personal Loan Application provides a fully digital experience for loan applications with instant credit decisions and minimal documentation requirements.",
-    workflow: workflowImage
+    workflow: workflowDigitalLoanIndia
   },
   "financial-services-india": {
     title: "Financial Services Support (India)",
