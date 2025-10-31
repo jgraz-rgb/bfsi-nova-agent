@@ -28,7 +28,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "personal-loan-usa": {
     title: "Personal Loan Origination (USA)",
-    description: "The Personal Loan Origination Agentic Solution enables seamless personal loan origination by pre-qualifying the user based on key parameters, presenting personalized pre-approved offers and collecting necessary documents digitally. Once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement.",
+    description: "Designed for the financial institutions in U.S., this agentic solution guides users through a simplified digital journey to check eligibility, verify identity and view personalized loan offers. It streamlines document collection and once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement",
     workflow: workflowImage
   },
   "gold-loan-india": {
