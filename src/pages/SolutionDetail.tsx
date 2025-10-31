@@ -33,22 +33,22 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "gold-loan-india": {
     title: "Gold Loan Origination (India)",
-    description: "The Gold Loan Origination Agentic Solution streamlines gold loan applications through automated valuation, document verification, and instant loan offers based on gold purity and weight.",
+    description: "The Gold Loan Origination Agentic Solution automates the gold loan journey by helping users schedule valuation appointments, verify their identity and upload preliminary KYC details. The flow starts with collecting basic information about the customer followed by a tentative gold loan offer and scheduling of physical appointment",
     workflow: workflowGoldLoanIndia
   },
   "home-loan-india": {
     title: "Home Loan Origination (India)",
-    description: "The Home Loan Origination Agentic Solution simplifies home loan applications with property valuation, eligibility assessment, and comprehensive documentation support.",
+    description: "The Home Loan Origination Agentic Solution assists users through a structured, step-by-step process covering eligibility checks, KYC verification, income validation, and property inspection scheduling. It simplifies complex workflows, enabling banks to deliver a premium, transparent and time-efficient home financing experience",
     workflow: workflowHomeLoanIndia
   },
   "digital-loan-india": {
     title: "Digital Personal Loan Application (India)",
-    description: "The Digital Personal Loan Application provides a fully digital experience for loan applications with instant credit decisions and minimal documentation requirements.",
+    description: "The Digital Personal Loan Application Agentic Solution is a comprehensive end-to-end digital solution that manages the entire personal loan lifecycle from origination to pre-qualified offer generation to credit underwriting to final approval and communication of disbursement",
     workflow: workflowDigitalLoanIndia
   },
   "financial-services-india": {
     title: "Financial Services Support (India)",
-    description: "The Financial Services Support Agentic Solution provides comprehensive customer service for various financial products through AI-powered assistance.",
+    description: "An Agentic AI Support Solution built for financial services to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
     workflow: workflowFinancialServicesIndia
   }
 };
