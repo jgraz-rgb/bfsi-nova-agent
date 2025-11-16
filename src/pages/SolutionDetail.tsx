@@ -55,7 +55,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "insurance": {
     title: "Insurance Solutions (USA)",
-    description: "An Agentic AI Support Solution built for financial services to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
+    description: "The Term Insurance Application Voice Agent enables customers to apply for term insurance through a conversational voice interface. The AI agent guides customers through a 15-step process covering basic information collection, plan selection, eligibility assessment, KYC verification, health questionnaires, employment details, and documentation. It seamlessly handles OTP verification, bank account setup, policy review, and coordinates with CRM for ticket management and support team handoff when needed",
     workflow: workflowInsuranceIndia
   }
 };
