@@ -17,7 +17,8 @@ const solutionLinks: Record<string, string> = {
   "personal-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/index.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "personal-loan-usa": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexash.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "gold-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexgold.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
-  "home-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/output/index.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false"
+  "home-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/output/index.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
+  "insurance": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false"
 };
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
@@ -48,6 +49,11 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "financial-services-india": {
     title: "Financial Services Support (USA)",
+    description: "An Agentic AI Support Solution built for financial services to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
+    workflow: workflowFinancialServicesIndia
+  },
+  "insurance": {
+    title: "Insurance Solutions (USA)",
     description: "An Agentic AI Support Solution built for financial services to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
     workflow: workflowFinancialServicesIndia
   }
@@ -153,6 +159,20 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
     }
   ],
   "financial-services-india": [
+    {
+      name: "AI Support Agent",
+      description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
+    },
+    {
+      name: "AI Agent Partner",
+      description: "Assists human support agents with real time insights and contextaware suggestions for faster resolution of the issue shared by the customer"
+    },
+    {
+      name: "AI Knowledge Agent",
+      description: "Analyses the conversation between the customer and the human support agent. Detects information gaps and auto-generates documentation from customer-human support agent interactions"
+    }
+  ],
+  "insurance": [
     {
       name: "AI Support Agent",
       description: "Responsible for communication with the customer. Provides instant, accurate responses to customer queries using the knowledge base. Raises a ticket for complex queries"
