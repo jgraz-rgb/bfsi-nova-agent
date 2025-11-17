@@ -3,7 +3,7 @@ import { Header } from "@/components/Header";
 import { SolutionCard } from "@/components/SolutionCard";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown, Shield } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
 // Import SVG icons
 import personalLoanIcon from "@/assets/icons/personal-loan.svg";
@@ -11,6 +11,7 @@ import goldLoanIcon from "@/assets/icons/gold-loan.svg";
 import homeLoanIcon from "@/assets/icons/home-loan.svg";
 import digitalPersonalIcon from "@/assets/icons/digital-personal.svg";
 import financialServicesIcon from "@/assets/icons/financial-services.svg";
+import insuranceIcon from "@/assets/icons/insurance.svg";
 export default function HomePage() {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [bankingOpen, setBankingOpen] = useState(true);
@@ -95,7 +96,7 @@ export default function HomePage() {
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard icon={Shield} title="Insurance Solutions" region="USA" link="/solution/insurance" />
+                <SolutionCard iconSvg={insuranceIcon} title="Voice based Term Insurance Application" region="India" link="/solution/insurance" />
               </div>
             </CollapsibleContent>
           </Collapsible>
