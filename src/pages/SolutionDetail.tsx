@@ -54,7 +54,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
     workflow: workflowFinancialServicesIndia
   },
   "insurance": {
-    title: "Insurance Solutions (USA)",
+    title: "Voice based Term Insurance Application (India)",
     description: "The Term Insurance Application Voice Agent enables customers to apply for term insurance through a conversational voice interface. The AI agent guides customers through a 15-step process covering basic information collection, plan selection, eligibility assessment, KYC verification, health questionnaires, employment details, and documentation. It seamlessly handles OTP verification, bank account setup, policy review, and coordinates with CRM for ticket management and support team handoff when needed",
     workflow: workflowInsuranceIndia
   }
