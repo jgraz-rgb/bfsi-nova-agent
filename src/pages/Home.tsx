@@ -11,7 +11,7 @@ import goldLoanIcon from "@/assets/icons/gold-loan.svg";
 import homeLoanIcon from "@/assets/icons/home-loan.svg";
 import digitalPersonalIcon from "@/assets/icons/digital-personal.svg";
 import financialServicesIcon from "@/assets/icons/financial-services.svg";
-import insuranceIcon from "@/assets/icons/insurance.svg";
+import insuranceIcon from "@/assets/icons/insurance-shield.png";
 export default function HomePage() {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [bankingOpen, setBankingOpen] = useState(true);
