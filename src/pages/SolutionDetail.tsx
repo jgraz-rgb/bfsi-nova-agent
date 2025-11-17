@@ -55,7 +55,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "insurance": {
     title: "Voice based Term Insurance Application (India)",
-    description: "The Term Insurance Application Voice Agent enables customers to apply for term insurance through a conversational voice interface. The AI agent guides customers through a 15-step process covering basic information collection, plan selection, eligibility assessment, KYC verification, health questionnaires, employment details, and documentation. It seamlessly handles OTP verification, bank account setup, policy review, and coordinates with CRM for ticket management and support team handoff when needed",
+    description: "The Voice-based Term Insurance Application Agentic Solution guides the customer through the full insurance investment journey step-by-step, collecting personal, financial and health details through a natural conversational flow. The underlying agent also uses email as a medium to confirm policy details with the customer, assist in uploading required documents, assist in paying the first monthly premium and to finally share the policy document with the customer. At the end of the workflow, a ticket with transcripts and customer details gets created in a CRM.",
     workflow: workflowInsuranceIndia
   }
 };
@@ -175,8 +175,8 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
   ],
   "insurance": [
     {
-      name: "Realtime Voice Agent",
-      description: "Handles end-to-end term insurance application through voice interaction. Collects customer information, presents plan options, gathers KYC and health details, manages document uploads via email, handles OTP verification, and coordinates policy issuance and premium payment processing"
+      name: "AI Term Insurance Agent",
+      description: "Provides conversational guidance over voice to gather personal, financial and health details required for the term-insurance journey. The agent also uses email to confirm policy information, support document uploads and premium payment, share the final policy document. It automatically create a CRM ticket with transcripts and customer details."
     }
   ],
   "default": [
