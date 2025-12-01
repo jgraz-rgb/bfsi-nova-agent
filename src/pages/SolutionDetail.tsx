@@ -12,6 +12,7 @@ import workflowHomeLoanIndia from "@/assets/workflow-home-loan-india.png";
 import workflowDigitalLoanIndia from "@/assets/workflow-digital-loan-india.png";
 import workflowFinancialServicesIndia from "@/assets/workflow-financial-services-india.png";
 import workflowInsuranceIndia from "@/assets/workflow-insurance-india.png";
+import workflowHealthInsuranceUsa from "@/assets/workflow-health-insurance-usa.png";
 
 const solutionLinks: Record<string, string> = {
   "financial-services-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
@@ -19,7 +20,8 @@ const solutionLinks: Record<string, string> = {
   "personal-loan-usa": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexash.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "gold-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexgold.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "home-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/output/index.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
-  "insurance": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/?agentConfig=kotakInsurance"
+  "insurance": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/?agentConfig=kotakInsurance",
+  "health-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/?agentConfig=healthInsurance"
 };
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
@@ -57,6 +59,11 @@ const solutionData: Record<string, { title: string; description: string; workflo
     title: "Voice based Term Insurance Application (India)",
     description: "The Voice-based Term Insurance Application Agentic Solution guides the customer through the full insurance investment journey step-by-step, collecting personal, financial and health details through a natural conversational flow. The underlying agent also uses email as a medium to confirm policy details with the customer, assist in uploading required documents, assist in paying the first monthly premium and to finally share the policy document with the customer. At the end of the workflow, a ticket with transcripts and customer details gets created in a CRM.",
     workflow: workflowInsuranceIndia
+  },
+  "health-insurance-usa": {
+    title: "Voice based Health Insurance Renewal",
+    description: "The Voice-based Health Insurance Renewal Solution assists insurance brokers in USA by automating the renewal process. This solution operates entirely over voice calls, where the AI agent proactively calls clients, gathers information, answers questions, negotiates with carrier, creates a proposal and completes renewal steps conversationally. At the end, the AI agent sends the policy documents to the client over an email.",
+    workflow: workflowHealthInsuranceUsa
   }
 };
 
@@ -177,6 +184,12 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
     {
       name: "AI Term Insurance Agent",
       description: "Provides conversational guidance over voice to gather personal, financial and health details required for the term-insurance journey. The agent also uses email to confirm policy information, support document uploads and premium payment, share the final policy document. It automatically create a CRM ticket with transcripts and customer details."
+    }
+  ],
+  "health-insurance-usa": [
+    {
+      name: "AI Health Insurance Renewal Agent",
+      description: "Initiates client outreach over a phone call. Submits gathered data from client to the carrier and creates proposal for client. Assists clients in negotiating with carrier and then choosing the renewal plan. Conversationally completes the renewal flows as well as responds to customer queries."
     }
   ],
   "default": [

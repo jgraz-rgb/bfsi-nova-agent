@@ -12,6 +12,7 @@ import homeLoanIcon from "@/assets/icons/home-loan.svg";
 import digitalPersonalIcon from "@/assets/icons/digital-personal.svg";
 import financialServicesIcon from "@/assets/icons/financial-services.svg";
 import insuranceIcon from "@/assets/icons/insurance-shield.png";
+import healthInsuranceIcon from "@/assets/icons/health-insurance.svg";
 export default function HomePage() {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [bankingOpen, setBankingOpen] = useState(true);
@@ -97,6 +98,7 @@ export default function HomePage() {
             <CollapsibleContent className="mt-8">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
                 <SolutionCard iconSvg={insuranceIcon} title="Voice based Term Insurance Application" region="India" link="/solution/insurance" />
+                <SolutionCard iconSvg={healthInsuranceIcon} title="Voice based Health Insurance Renewal" region="USA" link="/solution/health-insurance-usa" />
               </div>
             </CollapsibleContent>
           </Collapsible>
