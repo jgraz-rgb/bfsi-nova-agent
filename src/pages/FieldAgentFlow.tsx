@@ -36,15 +36,25 @@ export default function FieldAgentFlow() {
         </div>
 
         <div className="max-w-2xl">
-          <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-            <p className="text-muted-foreground text-base leading-relaxed mb-8">
-              Select either the <span className="font-semibold text-foreground">Morning</span> or <span className="font-semibold text-foreground">Evening</span> Leads update option on the page. To test the other option, simply refresh the page and select accordingly.
-            </p>
-            
-            <button className="w-full flex items-center justify-center gap-3 py-4 px-6 bg-gradient-to-r from-primary to-orange-600 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300">
-              <Play className="w-5 h-5 fill-white" />
-              Continue
-            </button>
+          <div className="space-y-4">
+            {leadOptions.map((option, index) => (
+              <button
+                key={index}
+                className="w-full flex items-center gap-6 p-6 bg-white border border-gray-200 rounded-2xl hover:border-primary hover:shadow-lg transition-all duration-300 group text-left"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-orange-600 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                  <Play className="w-7 h-7 text-white fill-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold text-foreground mb-1">
+                    {option.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {option.description}
+                  </p>
+                </div>
+              </button>
+            ))}
           </div>
         </div>
       </main>

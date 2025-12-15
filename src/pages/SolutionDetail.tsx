@@ -362,30 +362,51 @@ export default function SolutionDetail() {
 
         {/* Bridge Modal for Try this Solution */}
         <Dialog open={isBridgeModalOpen} onOpenChange={setIsBridgeModalOpen}>
-          <DialogContent className="sm:max-w-lg bg-gradient-to-br from-gray-50 to-white border-gray-200">
-            <div className="pt-2">
-              <button 
+          <DialogContent className="sm:max-w-md bg-gradient-to-br from-white to-gray-50 border-none shadow-2xl">
+            <DialogHeader>
+              <DialogTitle className="text-xl font-semibold text-center">
+                Choose Your Experience
+              </DialogTitle>
+            </DialogHeader>
+            <div className="flex flex-col gap-4 py-6">
+              <a
+                href={solutionUrl || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsBridgeModalOpen(false)}
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 mb-6 group"
+                className="flex items-center justify-between px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-primary hover:shadow-lg transition-all duration-300 group"
               >
-                <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-                <span className="text-sm font-medium">Back to Solution</span>
-              </button>
-              
-              <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
-                <span>Field Agent Flow</span>
-              </div>
-              
-              <p className="text-muted-foreground text-base leading-relaxed mb-8">
-                Select either the <span className="font-semibold text-foreground">Morning</span> or <span className="font-semibold text-foreground">Evening</span> Leads update option on the page. To test the other option, simply refresh the page and select accordingly.
-              </p>
-              
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-orange-100 rounded-xl flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Customer Flow</h3>
+                    <p className="text-sm text-muted-foreground">Experience as a customer</p>
+                  </div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
+              </a>
+
               <Link
                 to={`/solution/${id}/field-agent`}
                 onClick={() => setIsBridgeModalOpen(false)}
-                className="w-full flex items-center justify-center gap-3 py-4 px-6 bg-gradient-to-r from-primary to-orange-600 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
+                className="flex items-center justify-between px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-primary hover:shadow-lg transition-all duration-300 group"
               >
-                Continue
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-orange-100 rounded-xl flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground">Field Agent Flow</h3>
+                    <p className="text-sm text-muted-foreground">Experience as a field agent</p>
+                  </div>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
               </Link>
             </div>
           </DialogContent>
