@@ -33,9 +33,6 @@ export default function FieldAgentFlow() {
           <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
             <span>Field Agent Flow</span>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground">
-            Field Agent Dashboard
-          </h1>
         </div>
 
         <div className="max-w-2xl">
