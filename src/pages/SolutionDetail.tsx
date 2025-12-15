@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Maximize2, X } from "lucide-react";
 import { Header } from "@/components/Header";
 import { AgentCard } from "@/components/AgentCard";
@@ -390,10 +390,8 @@ export default function SolutionDetail() {
                 <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
               </a>
 
-              <a
-                href={solutionUrl || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to={`/solution/${id}/field-agent`}
                 onClick={() => setIsBridgeModalOpen(false)}
                 className="flex items-center justify-between px-6 py-4 bg-white border border-gray-200 rounded-xl hover:border-primary hover:shadow-lg transition-all duration-300 group"
               >
@@ -409,7 +407,7 @@ export default function SolutionDetail() {
                   </div>
                 </div>
                 <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-              </a>
+              </Link>
             </div>
           </DialogContent>
         </Dialog>
