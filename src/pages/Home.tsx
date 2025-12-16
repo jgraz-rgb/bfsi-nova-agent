@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react";
 // Import SVG icons
 import personalLoanIcon from "@/assets/icons/personal-loan-origination.png";
 import goldLoanIcon from "@/assets/icons/gold-loan-new.png";
-import homeLoanIcon from "@/assets/icons/home-loan.svg";
+import homeLoanIcon from "@/assets/icons/home-loan-new.png";
 import digitalPersonalIcon from "@/assets/icons/digital-personal-loan.png";
 import financialServicesIcon from "@/assets/icons/personal-finance-support.png";
 import insuranceIcon from "@/assets/icons/insurance-shield.png";
