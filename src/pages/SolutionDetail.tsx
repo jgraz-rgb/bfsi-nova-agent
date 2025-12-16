@@ -51,7 +51,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "financial-services-india": {
     title: "Personal Finance Customer Support Agent (USA)",
-    description: "An Agentic AI Support Solution built for financial services to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
+    description: "An Agentic AI Support Solution built for a US-based multinational personal finance company designed to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
     workflow: workflowFinancialServicesIndia
   },
   "insurance": {
