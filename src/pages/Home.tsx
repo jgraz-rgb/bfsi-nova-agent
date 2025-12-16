@@ -6,7 +6,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 import { ChevronDown } from "lucide-react";
 
 // Import SVG icons
-import personalLoanIcon from "@/assets/icons/personal-loan.svg";
+import personalLoanIcon from "@/assets/icons/personal-loan-origination.png";
 import goldLoanIcon from "@/assets/icons/gold-loan.svg";
 import homeLoanIcon from "@/assets/icons/home-loan.svg";
 import digitalPersonalIcon from "@/assets/icons/digital-personal-loan.png";
