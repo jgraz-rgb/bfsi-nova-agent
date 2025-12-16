@@ -12,7 +12,7 @@ import homeLoanIcon from "@/assets/icons/home-loan-new.png";
 import digitalPersonalIcon from "@/assets/icons/digital-personal-loan.png";
 import financialServicesIcon from "@/assets/icons/personal-finance-support.png";
 import insuranceIcon from "@/assets/icons/insurance-shield.png";
-import healthInsuranceIcon from "@/assets/icons/health-logo.png";
+import healthInsuranceIcon from "@/assets/icons/health-insurance-new.png";
 export default function HomePage() {
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [bankingOpen, setBankingOpen] = useState(true);
