@@ -50,7 +50,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
     workflow: workflowDigitalLoanIndia
   },
   "financial-services-india": {
-    title: "Financial Services Support (USA)",
+    title: "Personal Finance Customer Support Agent (USA)",
     description: "An Agentic AI Support Solution built for financial services to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
     workflow: workflowFinancialServicesIndia
   },
