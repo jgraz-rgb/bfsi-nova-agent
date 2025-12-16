@@ -10,7 +10,7 @@ import personalLoanIcon from "@/assets/icons/personal-loan-origination.png";
 import goldLoanIcon from "@/assets/icons/gold-loan.svg";
 import homeLoanIcon from "@/assets/icons/home-loan.svg";
 import digitalPersonalIcon from "@/assets/icons/digital-personal-loan.png";
-import financialServicesIcon from "@/assets/icons/financial-services.svg";
+import financialServicesIcon from "@/assets/icons/personal-finance-support.png";
 import insuranceIcon from "@/assets/icons/insurance-shield.png";
 import healthInsuranceIcon from "@/assets/icons/health-logo.png";
 export default function HomePage() {
