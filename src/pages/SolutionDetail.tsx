@@ -26,7 +26,7 @@ const solutionLinks: Record<string, string> = {
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
   "personal-loan-india": {
     title: "Personal Loan Origination (India)",
-    description: "The Personal Loan Origination Agentic Solution enables seamless personal loan origination by pre-qualifying the user based on key parameters, presenting personalized pre-approved offers and collecting necessary documents digitally. Once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement.",
+    description: "The Personal Loan Origination Agentic Solution enables seamless personal loan origination by pre-qualifying the user based on key parameters, presenting personalized pre-approved offers and collecting necessary documents digitally. Once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement.\n\nNote: Use the following information while testing, as and when prompted\n• Name: Arkadeep Joardar | Email: arkadeep.joardar@grazitti.com | Aadhar Number: 8060 1212 1818 | Mobile Number: 9593959473 | PAN: AUFPJ1111A | Date of Birth: 18/05/1994 | Permanent Address with Pincode: 101/23, Street 1501, Park Street, Kolkata - 700016 | Pincode: 700016\n• Choose Type of Customer as \"Salaried\"",
     workflow: workflowImage
   },
   "personal-loan-usa": {
@@ -300,7 +300,18 @@ export default function SolutionDetail() {
                 </div>
                 <div className="flex-1">
                   <h2 className="font-bold text-lg mb-3 text-foreground">Workflow Description</h2>
-                  <p className="text-foreground/90 leading-relaxed">{solution.description}</p>
+                  <div className="text-foreground/90 leading-relaxed space-y-3">
+                    {solution.description.split('\n\n').map((paragraph, index) => (
+                      <p key={index} className={index > 0 ? "mt-4 text-sm bg-amber-50/50 border border-amber-200/50 rounded-lg p-4" : ""}>
+                        {paragraph.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                          if (part.startsWith('**') && part.endsWith('**')) {
+                            return <strong key={i}>{part.slice(2, -2)}</strong>;
+                          }
+                          return part;
+                        })}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
