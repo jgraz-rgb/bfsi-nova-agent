@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Maximize2, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Maximize2, X, Lightbulb } from "lucide-react";
 import { Header } from "@/components/Header";
 import { AgentCard } from "@/components/AgentCard";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -294,27 +294,43 @@ export default function SolutionDetail() {
 
           <TabsContent value="workflow" className="space-y-8 animate-fade-in">
             <div className="bg-gradient-to-br from-orange-50/50 to-orange-100/30 border border-orange-200/50 rounded-2xl p-8 shadow-sm">
-              <div className="flex items-start gap-3 mb-4">
+              <div className="flex items-start gap-3">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
                   <span className="text-primary font-bold text-sm">ℹ</span>
                 </div>
                 <div className="flex-1">
                   <h2 className="font-bold text-lg mb-3 text-foreground">Workflow Description</h2>
-                  <div className="text-foreground/90 leading-relaxed space-y-3">
-                    {solution.description.split('\n\n').map((paragraph, index) => (
-                      <p key={index} className={index > 0 ? "mt-4 text-sm bg-amber-50/50 border border-amber-200/50 rounded-lg p-4" : ""}>
-                        {paragraph.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
-                          if (part.startsWith('**') && part.endsWith('**')) {
-                            return <strong key={i}>{part.slice(2, -2)}</strong>;
-                          }
-                          return part;
-                        })}
-                      </p>
-                    ))}
-                  </div>
+                  <p className="text-foreground/90 leading-relaxed">
+                    {solution.description.split('\n\n')[0]}
+                  </p>
                 </div>
               </div>
             </div>
+
+            {solution.description.split('\n\n').length > 1 && (
+              <div className="bg-gradient-to-br from-orange-50/50 to-orange-100/30 border border-orange-200/50 rounded-2xl p-8 shadow-sm">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <Lightbulb className="w-4 h-4 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="font-bold text-lg mb-3 text-foreground">Note</h2>
+                    <div className="text-foreground/90 leading-relaxed">
+                      {solution.description.split('\n\n').slice(1).map((paragraph, index) => (
+                        <p key={index} className={index > 0 ? "mt-2" : ""}>
+                          {paragraph.replace(/^\*\*Note\*\*:\s*/, '').split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                            if (part.startsWith('**') && part.endsWith('**')) {
+                              return <strong key={i}>{part.slice(2, -2)}</strong>;
+                            }
+                            return part;
+                          })}
+                        </p>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div 
               className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
