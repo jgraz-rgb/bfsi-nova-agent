@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 interface SolutionCardProps {
   icon?: LucideIcon;
   iconSvg?: string;
-  title: string;
+  title: string | React.ReactNode;
   region?: string;
   link: string;
   disabled?: boolean;
@@ -30,7 +30,7 @@ export const SolutionCard = ({
   }}>
       <div className="p-8 flex flex-col items-center text-center space-y-5 h-full">
         <div className={`relative w-20 h-20 rounded-2xl flex items-center justify-center transition-all duration-500 flex-shrink-0 ${disabled ? 'bg-gray-100' : 'bg-gradient-to-br from-orange-50/80 to-white group-hover:from-orange-100/90 group-hover:to-orange-50/80 group-hover:scale-110 group-hover:rotate-3'}`}>
-          {iconSvg ? <img src={iconSvg} alt={title} className={`w-14 h-14 transition-all duration-500 ${disabled ? 'opacity-50' : 'group-hover:scale-110'}`} /> : Icon ? <Icon className={`w-10 h-10 transition-all duration-500 ${disabled ? 'text-gray-400' : 'text-primary group-hover:scale-110'}`} /> : null}
+          {iconSvg ? <img src={iconSvg} alt={typeof title === 'string' ? title : 'Solution'} className={`w-14 h-14 transition-all duration-500 ${disabled ? 'opacity-50' : 'group-hover:scale-110'}`} /> : Icon ? <Icon className={`w-10 h-10 transition-all duration-500 ${disabled ? 'text-gray-400' : 'text-primary group-hover:scale-110'}`} /> : null}
           {!disabled && <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/0 to-primary/0 group-hover:from-primary/10 group-hover:to-primary/20 transition-all duration-500" />}
         </div>
         <div className="space-y-1.5 flex-1 flex flex-col justify-start">
