@@ -6,70 +6,148 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import logoImage from "@/assets/searchunify-logo.svg";
 
+// Hand-painted brush stroke with organic, broken edges
 const BrushStroke = ({ 
   className, 
   delay = 0,
-  duration = 1.2,
+  duration = 1.5,
+  variant = 1,
 }: { 
   className?: string;
   delay?: number;
   duration?: number;
-}) => (
-  <motion.svg
-    viewBox="0 0 200 60"
-    className={className}
-    initial={{ pathLength: 0, opacity: 0 }}
-    animate={{ pathLength: 1, opacity: 1 }}
-    transition={{ 
-      pathLength: { duration, delay, ease: "easeInOut" },
-      opacity: { duration: 0.3, delay }
-    }}
-  >
-    <motion.path
-      d="M10 30 Q 50 10, 100 30 T 190 30"
-      fill="none"
-      stroke="hsl(28, 100%, 50%)"
-      strokeWidth="8"
-      strokeLinecap="round"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration, delay, ease: "easeInOut" }}
-      style={{ filter: "blur(1px)" }}
-    />
-  </motion.svg>
-);
+  variant?: number;
+}) => {
+  // Different organic brush stroke paths with broken, hand-painted edges
+  const paths = [
+    // Variant 1: Wide sweep with texture
+    "M5 28 C12 24, 18 32, 28 26 C38 20, 45 35, 58 28 C71 21, 78 33, 92 27 C106 21, 115 34, 128 26 C141 18, 152 32, 168 25 C184 18, 192 30, 195 28",
+    // Variant 2: More irregular with gaps
+    "M8 32 C15 22, 25 38, 35 28 C42 20, 48 18, 55 30 C65 42, 75 20, 88 28 C98 34, 108 22, 122 30 C138 40, 148 18, 165 28 C178 36, 188 24, 195 30",
+    // Variant 3: Swooping with broken sections
+    "M3 35 C18 18, 32 42, 48 30 C58 22, 62 38, 78 28 C88 20, 95 36, 112 28 C128 20, 138 38, 155 26 C168 16, 182 38, 197 28",
+    // Variant 4: Thick textured stroke
+    "M6 30 C20 20, 30 40, 45 28 C55 18, 65 35, 82 25 C95 17, 105 38, 125 28 C142 20, 155 36, 172 24 C185 14, 195 32, 198 28",
+  ];
 
+  const selectedPath = paths[(variant - 1) % paths.length];
+
+  return (
+    <motion.svg
+      viewBox="0 0 200 60"
+      className={className}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4, delay }}
+      preserveAspectRatio="none"
+    >
+      {/* Main stroke with organic feel */}
+      <motion.path
+        d={selectedPath}
+        fill="none"
+        stroke="hsl(28, 100%, 52%)"
+        strokeWidth="12"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.7 }}
+        transition={{ 
+          pathLength: { duration, delay, ease: "easeOut" },
+          opacity: { duration: 0.3, delay }
+        }}
+        style={{ 
+          filter: "url(#brush-texture)",
+        }}
+      />
+      {/* Secondary thinner overlay for texture */}
+      <motion.path
+        d={selectedPath}
+        fill="none"
+        stroke="hsl(28, 100%, 60%)"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray="8 4 12 6 4 8"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.5 }}
+        transition={{ 
+          pathLength: { duration: duration * 0.8, delay: delay + 0.2, ease: "easeOut" },
+          opacity: { duration: 0.3, delay: delay + 0.2 }
+        }}
+      />
+      {/* Brush texture filter */}
+      <defs>
+        <filter id="brush-texture" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </motion.svg>
+  );
+};
+
+// Swirling accent brush with hand-painted feel
 const SwirlingBrush = ({ 
   className, 
   delay = 0,
+  variant = 1,
 }: { 
   className?: string;
   delay?: number;
-}) => (
-  <motion.svg
-    viewBox="0 0 100 100"
-    className={className}
-    initial={{ rotate: -180, scale: 0, opacity: 0 }}
-    animate={{ rotate: 0, scale: 1, opacity: 0.6 }}
-    transition={{ 
-      duration: 1.5,
-      delay,
-      ease: [0.25, 0.46, 0.45, 0.94]
-    }}
-  >
-    <motion.path
-      d="M20 50 Q 50 20, 80 50 Q 50 80, 20 50"
-      fill="none"
-      stroke="hsl(28, 100%, 55%)"
-      strokeWidth="4"
-      strokeLinecap="round"
-      initial={{ pathLength: 0 }}
-      animate={{ pathLength: 1 }}
-      transition={{ duration: 1.2, delay: delay + 0.3, ease: "easeInOut" }}
-    />
-  </motion.svg>
-);
+  variant?: number;
+}) => {
+  const paths = [
+    "M25 50 C30 25, 55 20, 75 35 C90 48, 85 70, 60 75 C40 78, 25 65, 30 50",
+    "M30 55 C35 30, 60 28, 72 42 C82 54, 78 72, 55 76 C38 79, 28 68, 32 55",
+    "M22 48 C28 22, 58 18, 78 38 C92 52, 82 75, 58 78 C35 80, 20 62, 25 48",
+  ];
 
+  return (
+    <motion.svg
+      viewBox="0 0 100 100"
+      className={className}
+      initial={{ rotate: -90, scale: 0, opacity: 0 }}
+      animate={{ rotate: 0, scale: 1, opacity: 0.5 }}
+      transition={{ 
+        duration: 1.2,
+        delay,
+        ease: [0.34, 1.56, 0.64, 1]
+      }}
+    >
+      <motion.path
+        d={paths[(variant - 1) % paths.length]}
+        fill="none"
+        stroke="hsl(28, 100%, 55%)"
+        strokeWidth="6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1, delay: delay + 0.3, ease: "easeOut" }}
+        style={{ filter: "url(#swirl-texture)" }}
+      />
+      <motion.path
+        d={paths[(variant - 1) % paths.length]}
+        fill="none"
+        stroke="hsl(28, 100%, 65%)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeDasharray="5 8 3 6"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={{ pathLength: 1, opacity: 0.6 }}
+        transition={{ duration: 0.8, delay: delay + 0.5, ease: "easeOut" }}
+      />
+      <defs>
+        <filter id="swirl-texture" x="-20%" y="-20%" width="140%" height="140%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </motion.svg>
+  );
+};
+
+// Soft accent blob
 const AccentBlob = ({ 
   className, 
   delay = 0,
@@ -80,14 +158,14 @@ const AccentBlob = ({
   <motion.div
     className={className}
     initial={{ scale: 0, opacity: 0, rotate: -45 }}
-    animate={{ scale: 1, opacity: 0.15, rotate: 0 }}
+    animate={{ scale: 1, opacity: 0.12, rotate: 0 }}
     transition={{ 
-      duration: 1,
+      duration: 1.2,
       delay,
       ease: "easeOut"
     }}
     style={{
-      background: "radial-gradient(circle, hsl(28, 100%, 50%) 0%, transparent 70%)",
+      background: "radial-gradient(ellipse at center, hsl(28, 100%, 55%) 0%, hsl(28, 100%, 50%) 30%, transparent 70%)",
     }}
   />
 );
@@ -100,70 +178,85 @@ export default function LoginPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Navigate to home after login
-    navigate("/");
+    navigate("/home");
   };
 
   return (
     <div className="min-h-screen bg-background overflow-hidden relative flex items-center justify-center">
-      {/* Background brush strokes - always visible but subtle */}
-      <motion.div 
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showLogin ? 1 : 0.3 }}
-        transition={{ duration: 0.8 }}
-      >
-        <BrushStroke 
-          className="absolute top-[10%] left-[-5%] w-[40%] opacity-20" 
-          delay={showLogin ? 0.2 : 0}
-          duration={1.5}
-        />
-        <BrushStroke 
-          className="absolute top-[25%] right-[-10%] w-[50%] opacity-15 rotate-12" 
-          delay={showLogin ? 0.4 : 0.2}
-          duration={1.8}
-        />
-        <BrushStroke 
-          className="absolute bottom-[20%] left-[10%] w-[35%] opacity-20 -rotate-6" 
-          delay={showLogin ? 0.6 : 0.4}
-          duration={1.4}
-        />
-        <BrushStroke 
-          className="absolute bottom-[35%] right-[5%] w-[30%] opacity-15 rotate-[-15deg]" 
-          delay={showLogin ? 0.8 : 0.6}
-          duration={1.6}
-        />
-      </motion.div>
-
-      {/* Swirling accents - appear on login click */}
+      {/* Brush strokes - ONLY appear after clicking Get Started */}
       <AnimatePresence>
         {showLogin && (
-          <>
-            <SwirlingBrush 
-              className="absolute top-[15%] left-[15%] w-32 h-32" 
+          <motion.div 
+            className="absolute inset-0 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            {/* Large sweeping strokes */}
+            <BrushStroke 
+              className="absolute top-[8%] left-[-8%] w-[55%] h-auto" 
               delay={0.1}
+              duration={1.4}
+              variant={1}
             />
-            <SwirlingBrush 
-              className="absolute top-[20%] right-[20%] w-24 h-24" 
+            <BrushStroke 
+              className="absolute top-[22%] right-[-12%] w-[50%] h-auto rotate-[8deg]" 
               delay={0.3}
+              duration={1.6}
+              variant={2}
+            />
+            <BrushStroke 
+              className="absolute bottom-[18%] left-[5%] w-[45%] h-auto -rotate-[5deg]" 
+              delay={0.5}
+              duration={1.3}
+              variant={3}
+            />
+            <BrushStroke 
+              className="absolute bottom-[32%] right-[2%] w-[40%] h-auto rotate-[-12deg]" 
+              delay={0.7}
+              duration={1.5}
+              variant={4}
+            />
+            <BrushStroke 
+              className="absolute top-[45%] left-[-5%] w-[35%] h-auto rotate-[15deg]" 
+              delay={0.4}
+              duration={1.2}
+              variant={2}
+            />
+
+            {/* Swirling accents */}
+            <SwirlingBrush 
+              className="absolute top-[12%] left-[18%] w-28 h-28" 
+              delay={0.2}
+              variant={1}
             />
             <SwirlingBrush 
-              className="absolute bottom-[25%] left-[20%] w-28 h-28" 
+              className="absolute top-[18%] right-[22%] w-24 h-24" 
+              delay={0.4}
+              variant={2}
+            />
+            <SwirlingBrush 
+              className="absolute bottom-[22%] left-[22%] w-32 h-32" 
+              delay={0.6}
+              variant={3}
+            />
+            <SwirlingBrush 
+              className="absolute bottom-[12%] right-[18%] w-28 h-28" 
+              delay={0.3}
+              variant={1}
+            />
+
+            {/* Soft accent blobs */}
+            <AccentBlob 
+              className="absolute top-[3%] right-[28%] w-72 h-72 rounded-full" 
               delay={0.5}
             />
-            <SwirlingBrush 
-              className="absolute bottom-[15%] right-[15%] w-36 h-36" 
-              delay={0.2}
-            />
             <AccentBlob 
-              className="absolute top-[5%] right-[25%] w-64 h-64 rounded-full" 
-              delay={0.4}
+              className="absolute bottom-[8%] left-[8%] w-56 h-56 rounded-full" 
+              delay={0.7}
             />
-            <AccentBlob 
-              className="absolute bottom-[10%] left-[10%] w-48 h-48 rounded-full" 
-              delay={0.6}
-            />
-          </>
+          </motion.div>
         )}
       </AnimatePresence>
 
@@ -242,7 +335,7 @@ export default function LoginPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="bg-card/80 backdrop-blur-sm border border-border rounded-2xl p-8 shadow-xl"
+              className="bg-card/90 backdrop-blur-md border border-border rounded-2xl p-8 shadow-2xl"
             >
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -350,12 +443,17 @@ export default function LoginPage() {
       </div>
 
       {/* Bottom gradient accent */}
-      <motion.div
-        className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"
-        initial={{ scaleX: 0, opacity: 0 }}
-        animate={{ scaleX: 1, opacity: 0.5 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      />
+      <AnimatePresence>
+        {showLogin && (
+          <motion.div
+            className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent"
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 0.6 }}
+            exit={{ scaleX: 0, opacity: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
