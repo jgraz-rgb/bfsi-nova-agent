@@ -90,7 +90,7 @@ export default function AgenticSolutionsPage() {
           </p>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-10">
           {/* Banking Solutions */}
           <Collapsible open={bankingOpen} onOpenChange={setBankingOpen}>
             <CollapsibleTrigger className="text-left">
