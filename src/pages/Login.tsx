@@ -206,7 +206,7 @@ export default function LoginPage() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex flex-col items-center mb-8 -mt-8"
+                className="flex flex-col items-center mb-8 -mt-20"
               >
                 <div className="flex items-center justify-center gap-4 mb-3 w-full">
                   <img 
