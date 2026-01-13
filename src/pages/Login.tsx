@@ -37,8 +37,8 @@ const TreeRing = ({
     initial={{ scale: 0, opacity: 0 }}
     animate={{ scale: 1, opacity }}
     transition={{ 
-      scale: { duration: 0.8, delay, ease: [0.34, 1.56, 0.64, 1] },
-      opacity: { duration: 0.4, delay }
+      scale: { duration: 0.6, delay, ease: "easeOut" },
+      opacity: { duration: 0.3, delay }
     }}
   />
 );
@@ -64,13 +64,13 @@ const ArcSegment = ({
       top: '50%',
       marginLeft: -radius,
       marginTop: -radius,
+      rotate: rotation,
     }}
-    initial={{ scale: 0, opacity: 0, rotate: rotation - 30 }}
-    animate={{ scale: 1, opacity: 1, rotate: rotation }}
+    initial={{ scale: 0, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
     transition={{ 
-      scale: { duration: 0.7, delay, ease: [0.34, 1.56, 0.64, 1] },
-      opacity: { duration: 0.3, delay },
-      rotate: { duration: 0.9, delay, ease: "easeOut" }
+      scale: { duration: 0.8, delay, ease: "easeOut" },
+      opacity: { duration: 0.4, delay },
     }}
   >
     <svg 
