@@ -4,14 +4,7 @@ import { LogOut, CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import logoImage from "@/assets/searchunify-logo.svg";
-
-// Compliance badge images (using placeholder text for now)
-const complianceBadges = [
-  { name: "ISO 27001", label: "ISO 27001" },
-  { name: "SOC 2", label: "AICPA SOC" },
-  { name: "HIPAA", label: "HIPAA" },
-  { name: "GDPR", label: "GDPR" },
-];
+import complianceBadges from "@/assets/compliance-badges.png";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("home");
@@ -166,22 +159,15 @@ export default function HomePage() {
 
         {/* Row 3: Security & Compliance */}
         <Card className="p-8 bg-card border-border mb-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <h3 className="text-xl font-semibold text-foreground md:max-w-md">
+          <div className="flex flex-col items-center gap-6">
+            <h3 className="text-xl font-semibold text-foreground text-center">
               Enterprise-grade Security and Compliance you can trust
             </h3>
-            <div className="flex items-center gap-6 flex-wrap justify-center">
-              {complianceBadges.map((badge) => (
-                <div
-                  key={badge.name}
-                  className="flex items-center justify-center px-4 py-2 bg-muted rounded-lg border border-border"
-                >
-                  <span className="text-sm font-medium text-muted-foreground">
-                    {badge.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+            <img 
+              src={complianceBadges} 
+              alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
+              className="max-w-full h-auto"
+            />
           </div>
         </Card>
 
