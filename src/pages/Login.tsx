@@ -206,15 +206,15 @@ export default function LoginPage() {
                 initial={{ scale: 0.9, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex flex-col items-center mb-8"
+                className="flex flex-col items-center mb-8 -mt-8"
               >
-                <div className="flex items-center gap-3 mb-2">
+                <div className="flex items-center gap-4 mb-3">
                   <img 
                     src={logoImage} 
                     alt="SearchUnify" 
-                    className="h-10" 
+                    className="h-16" 
                   />
-                  <span className="text-2xl font-bold text-foreground whitespace-nowrap">
+                  <span className="text-4xl md:text-5xl font-bold text-foreground whitespace-nowrap">
                     Agentic AI Suite
                   </span>
                 </div>
@@ -222,7 +222,7 @@ export default function LoginPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="text-3xl font-bold text-primary"
+                  className="text-4xl md:text-5xl font-bold text-primary"
                 >
                   for BFSI
                 </motion.p>
