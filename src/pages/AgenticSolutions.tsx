@@ -94,11 +94,11 @@ export default function AgenticSolutionsPage() {
           {/* Banking Solutions */}
           <Collapsible open={bankingOpen} onOpenChange={setBankingOpen}>
             <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-base font-semibold tracking-tight flex items-center gap-2 py-2 hover:opacity-80 transition-opacity">
-                <span className="text-foreground">Agentic AI Solutions for </span>
+              <h2 className="text-base font-semibold tracking-tight flex items-center py-2 hover:opacity-80 transition-opacity">
+                <span className="text-foreground">Agentic AI Solutions for&nbsp;</span>
                 <span className="text-primary font-bold">Banking</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
+                  className={`w-4 h-4 ml-2 text-muted-foreground transition-transform duration-300 ${
                     bankingOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -143,11 +143,11 @@ export default function AgenticSolutionsPage() {
           {/* Financial Services */}
           <Collapsible open={financialOpen} onOpenChange={setFinancialOpen}>
             <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-base font-semibold tracking-tight flex items-center gap-2 py-2 hover:opacity-80 transition-opacity">
-                <span className="text-foreground">Agentic AI Solutions for </span>
+              <h2 className="text-base font-semibold tracking-tight flex items-center py-2 hover:opacity-80 transition-opacity">
+                <span className="text-foreground">Agentic AI Solutions for&nbsp;</span>
                 <span className="text-primary font-bold">Financial Services</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
+                  className={`w-4 h-4 ml-2 text-muted-foreground transition-transform duration-300 ${
                     financialOpen ? "rotate-180" : ""
                   }`}
                 />
@@ -168,11 +168,11 @@ export default function AgenticSolutionsPage() {
           {/* Insurance */}
           <Collapsible open={insuranceOpen} onOpenChange={setInsuranceOpen}>
             <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-base font-semibold tracking-tight flex items-center gap-2 py-2 hover:opacity-80 transition-opacity">
-                <span className="text-foreground">Agentic AI Solutions for </span>
+              <h2 className="text-base font-semibold tracking-tight flex items-center py-2 hover:opacity-80 transition-opacity">
+                <span className="text-foreground">Agentic AI Solutions for&nbsp;</span>
                 <span className="text-primary font-bold">Insurance</span>
                 <ChevronDown
-                  className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
+                  className={`w-4 h-4 ml-2 text-muted-foreground transition-transform duration-300 ${
                     insuranceOpen ? "rotate-180" : ""
                   }`}
                 />
