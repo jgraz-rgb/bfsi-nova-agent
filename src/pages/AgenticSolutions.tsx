@@ -93,18 +93,16 @@ export default function AgenticSolutionsPage() {
         <div className="space-y-6">
           {/* Banking Solutions */}
           <Collapsible open={bankingOpen} onOpenChange={setBankingOpen}>
-            <CollapsibleTrigger className="w-full">
-              <div className="bg-card border-2 border-primary px-6 py-4 rounded-xl flex items-center justify-between hover:shadow-md transition-all duration-300">
-                <h2 className="text-base font-semibold tracking-tight">
-                  <span className="text-foreground">Agentic AI Solutions for </span>
-                  <span className="text-primary font-bold">Banking</span>
-                </h2>
+            <CollapsibleTrigger className="w-full text-left">
+              <h2 className="text-base font-semibold tracking-tight flex items-center gap-2 py-2 hover:opacity-80 transition-opacity">
+                <span className="text-foreground">Agentic AI Solutions for </span>
+                <span className="text-primary font-bold">Banking</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-foreground transition-transform duration-300 ${
+                  className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
                     bankingOpen ? "rotate-180" : ""
                   }`}
                 />
-              </div>
+              </h2>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
@@ -144,18 +142,16 @@ export default function AgenticSolutionsPage() {
 
           {/* Financial Services */}
           <Collapsible open={financialOpen} onOpenChange={setFinancialOpen}>
-            <CollapsibleTrigger className="w-full">
-              <div className="bg-card border-2 border-primary px-6 py-4 rounded-xl flex items-center justify-between hover:shadow-md transition-all duration-300">
-                <h2 className="text-base font-semibold tracking-tight">
-                  <span className="text-foreground">Agentic AI Solutions for </span>
-                  <span className="text-primary font-bold">Financial Services</span>
-                </h2>
+            <CollapsibleTrigger className="w-full text-left">
+              <h2 className="text-base font-semibold tracking-tight flex items-center gap-2 py-2 hover:opacity-80 transition-opacity">
+                <span className="text-foreground">Agentic AI Solutions for </span>
+                <span className="text-primary font-bold">Financial Services</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-foreground transition-transform duration-300 ${
+                  className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
                     financialOpen ? "rotate-180" : ""
                   }`}
                 />
-              </div>
+              </h2>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
@@ -171,18 +167,16 @@ export default function AgenticSolutionsPage() {
 
           {/* Insurance */}
           <Collapsible open={insuranceOpen} onOpenChange={setInsuranceOpen}>
-            <CollapsibleTrigger className="w-full">
-              <div className="bg-card border-2 border-primary px-6 py-4 rounded-xl flex items-center justify-between hover:shadow-md transition-all duration-300">
-                <h2 className="text-base font-semibold tracking-tight">
-                  <span className="text-foreground">Agentic AI Solutions for </span>
-                  <span className="text-primary font-bold">Insurance</span>
-                </h2>
+            <CollapsibleTrigger className="w-full text-left">
+              <h2 className="text-base font-semibold tracking-tight flex items-center gap-2 py-2 hover:opacity-80 transition-opacity">
+                <span className="text-foreground">Agentic AI Solutions for </span>
+                <span className="text-primary font-bold">Insurance</span>
                 <ChevronDown
-                  className={`w-5 h-5 text-foreground transition-transform duration-300 ${
+                  className={`w-4 h-4 text-muted-foreground transition-transform duration-300 ${
                     insuranceOpen ? "rotate-180" : ""
                   }`}
                 />
-              </div>
+              </h2>
             </CollapsibleTrigger>
             <CollapsibleContent className="mt-6">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
