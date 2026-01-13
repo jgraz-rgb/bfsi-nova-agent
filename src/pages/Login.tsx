@@ -232,7 +232,7 @@ export default function LoginPage() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-sm text-muted-foreground mb-10 max-w-sm mx-auto mt-12"
+                className="text-sm text-muted-foreground mb-10 max-w-sm mx-auto mt-24"
               >
                 Purpose-built enterprise-grade AI solutions for Banking, Financial Services and Insurance
               </motion.p>
