@@ -32,7 +32,10 @@ export default function HomePage() {
           <h1 className="text-lg font-semibold text-foreground">
             Agentic AI Suite for BFSI
           </h1>
-          <button className="p-2 rounded-lg hover:bg-muted transition-colors">
+          <button 
+            onClick={() => navigate("/")}
+            className="p-2 rounded-lg hover:bg-muted transition-colors"
+          >
             <LogOut className="h-5 w-5 text-muted-foreground" />
           </button>
         </div>
