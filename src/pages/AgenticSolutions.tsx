@@ -93,8 +93,8 @@ export default function AgenticSolutionsPage() {
         <div className="space-y-6">
           {/* Banking Solutions */}
           <Collapsible open={bankingOpen} onOpenChange={setBankingOpen}>
-            <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-base font-semibold tracking-tight flex items-center py-2 hover:opacity-80 transition-opacity">
+            <CollapsibleTrigger className="text-left">
+              <h2 className="text-base font-semibold tracking-tight inline-flex items-center py-2 pr-3 border-b border-border/60 hover:border-border transition-colors">
                 <span className="text-foreground">Agentic AI Solutions for&nbsp;</span>
                 <span className="text-primary font-bold">Banking</span>
                 <ChevronDown
@@ -142,8 +142,8 @@ export default function AgenticSolutionsPage() {
 
           {/* Financial Services */}
           <Collapsible open={financialOpen} onOpenChange={setFinancialOpen}>
-            <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-base font-semibold tracking-tight flex items-center py-2 hover:opacity-80 transition-opacity">
+            <CollapsibleTrigger className="text-left">
+              <h2 className="text-base font-semibold tracking-tight inline-flex items-center py-2 pr-3 border-b border-border/60 hover:border-border transition-colors">
                 <span className="text-foreground">Agentic AI Solutions for&nbsp;</span>
                 <span className="text-primary font-bold">Financial Services</span>
                 <ChevronDown
@@ -167,8 +167,8 @@ export default function AgenticSolutionsPage() {
 
           {/* Insurance */}
           <Collapsible open={insuranceOpen} onOpenChange={setInsuranceOpen}>
-            <CollapsibleTrigger className="w-full text-left">
-              <h2 className="text-base font-semibold tracking-tight flex items-center py-2 hover:opacity-80 transition-opacity">
+            <CollapsibleTrigger className="text-left">
+              <h2 className="text-base font-semibold tracking-tight inline-flex items-center py-2 pr-3 border-b border-border/60 hover:border-border transition-colors">
                 <span className="text-foreground">Agentic AI Solutions for&nbsp;</span>
                 <span className="text-primary font-bold">Insurance</span>
                 <ChevronDown
