@@ -222,7 +222,7 @@ export default function LoginPage() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4, duration: 0.5 }}
-                  className="text-4xl md:text-5xl font-bold text-primary"
+                  className="text-2xl md:text-3xl font-bold text-primary"
                 >
                   for BFSI
                 </motion.p>
