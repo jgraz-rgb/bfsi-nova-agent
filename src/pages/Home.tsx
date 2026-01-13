@@ -1,126 +1,229 @@
 import { useState } from "react";
-import { Header } from "@/components/Header";
-import { SolutionCard } from "@/components/SolutionCard";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { ChevronDown } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { LogOut, CheckCircle } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import logoImage from "@/assets/searchunify-logo.svg";
 
-// Import SVG icons
-import personalLoanIcon from "@/assets/icons/personal-loan-origination.png";
-import goldLoanIcon from "@/assets/icons/gold-loan-new.png";
-import homeLoanIcon from "@/assets/icons/home-loan-new.png";
-import digitalPersonalIcon from "@/assets/icons/digital-personal-loan.png";
-import financialServicesIcon from "@/assets/icons/personal-finance-support.png";
-import insuranceIcon from "@/assets/icons/term-insurance-new.png";
-import healthInsuranceIcon from "@/assets/icons/health-insurance-new.png";
+// Compliance badge images (using placeholder text for now)
+const complianceBadges = [
+  { name: "ISO 27001", label: "ISO 27001" },
+  { name: "SOC 2", label: "AICPA SOC" },
+  { name: "HIPAA", label: "HIPAA" },
+  { name: "GDPR", label: "GDPR" },
+];
+
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("home");
   const [showAnalytics, setShowAnalytics] = useState(false);
-  const [bankingOpen, setBankingOpen] = useState(true);
-  const [financialOpen, setFinancialOpen] = useState(true);
-  const [insuranceOpen, setInsuranceOpen] = useState(true);
-  return <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-      <Header />
-      
-      <main className="container mx-auto px-6 py-10 max-w-7xl">
-        <div className="mb-10">
-          <h1 className="text-4xl font-bold mb-2 tracking-tight">
-            Agentic AI Suite for <span className="text-primary">BFSI</span>
+  const navigate = useNavigate();
+
+  const handleTabClick = (tab: "home" | "solutions" | "analytics") => {
+    if (tab === "analytics") {
+      setShowAnalytics(true);
+    } else if (tab === "solutions") {
+      navigate("/solutions");
+    } else {
+      setActiveTab(tab);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Top Header Bar */}
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-card shadow-sm">
+        <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-3">
+            <img src={logoImage} alt="SearchUnify" className="h-6 w-auto" />
+          </div>
+          <h1 className="text-lg font-semibold text-foreground">
+            Agentic AI Suite for BFSI
           </h1>
-          <p className="text-muted-foreground text-base">Purpose-built enterprise-grade AI solutions built for Banking, Financial Services and Insurance</p>
+          <button className="p-2 rounded-lg hover:bg-muted transition-colors">
+            <LogOut className="h-5 w-5 text-muted-foreground" />
+          </button>
+        </div>
+      </header>
+
+      {/* Tab Navigation */}
+      <nav className="border-b border-border bg-card">
+        <div className="container max-w-7xl mx-auto px-6">
+          <div className="flex gap-8">
+            <button
+              onClick={() => handleTabClick("home")}
+              className={`py-4 px-2 font-medium text-sm border-b-2 transition-colors ${
+                activeTab === "home"
+                  ? "border-primary text-primary"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Home
+            </button>
+            <button
+              onClick={() => handleTabClick("solutions")}
+              className="py-4 px-2 font-medium text-sm border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Agentic Solutions
+            </button>
+            <button
+              onClick={() => handleTabClick("analytics")}
+              className="py-4 px-2 font-medium text-sm border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors"
+            >
+              Analytics
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Main Content */}
+      <main className="container max-w-7xl mx-auto px-6 py-8">
+        {/* Row 1: Welcome & Platform Overview */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          {/* Welcome Tile */}
+          <Card className="p-8 bg-card border-border">
+            <h2 className="text-3xl font-bold text-foreground mb-3">Welcome</h2>
+            <p className="text-muted-foreground text-base leading-relaxed">
+              Purpose-built enterprise-grade AI solutions built for Banking, Financial Services and Insurance.
+            </p>
+          </Card>
+
+          {/* Platform Overview */}
+          <div>
+            <p className="text-xs font-semibold text-muted-foreground tracking-wider mb-3">
+              PLATFORM OVERVIEW
+            </p>
+            <div className="grid grid-cols-3 gap-4">
+              <Card className="p-5 bg-card border-border text-center">
+                <p className="text-4xl font-bold text-foreground mb-1">8</p>
+                <p className="text-xs text-muted-foreground">Agentic AI Solutions Available</p>
+              </Card>
+              <Card className="p-5 bg-card border-border text-center">
+                <p className="text-4xl font-bold text-foreground mb-1">2</p>
+                <p className="text-xs text-muted-foreground">Voice-based Agentic AI Solutions</p>
+              </Card>
+              <Card className="p-5 bg-card border-border text-center flex flex-col items-center justify-center">
+                <CheckCircle className="h-8 w-8 text-green-500 mb-1" />
+                <p className="text-xs text-muted-foreground">System Health : ACTIVE</p>
+              </Card>
+            </div>
+          </div>
         </div>
 
-        <Tabs value="solutions" className="mb-10">
-          <TabsList className="bg-white border border-gray-200 p-1 shadow-sm">
-            <TabsTrigger value="solutions" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all">
-              Agentic Solution
-            </TabsTrigger>
-            <TabsTrigger value="analytics" onClick={e => {
-            e.preventDefault();
-            setShowAnalytics(true);
-          }} className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm rounded-md px-6 py-2 font-medium transition-all">
-              Analytics
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        {/* Row 2: Quick Actions */}
+        <div className="mb-8">
+          <p className="text-xs font-semibold text-muted-foreground tracking-wider mb-4">
+            QUICK ACTIONS
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card className="p-6 bg-card border-border">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Browse Agentic Solutions
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                View and launch available chat and voice based Agentic AI workflows
+              </p>
+              <Button
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                onClick={() => navigate("/solutions")}
+              >
+                Agentic Solutions
+              </Button>
+            </Card>
 
-        <div className="space-y-8">
-          {/* Banking Solutions */}
-          <Collapsible open={bankingOpen} onOpenChange={setBankingOpen}>
-            <CollapsibleTrigger className="w-full">
-              <div className="bg-white border-2 border-primary px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
-                <h2 className="text-lg font-semibold tracking-tight">
-                  <span className="text-black">Agentic AI Solutions for </span>
-                  <span className="text-primary font-bold">Banking</span>
-                </h2>
-                <ChevronDown className={`w-5 h-5 text-black transition-transform duration-300 ${bankingOpen ? 'rotate-180' : ''}`} />
-              </div>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard iconSvg={personalLoanIcon} title="Personal Loan Origination" region="India" link="/solution/personal-loan-india" />
-                <SolutionCard iconSvg={personalLoanIcon} title="Personal Loan Origination" region="USA" link="/solution/personal-loan-usa" />
-                <SolutionCard iconSvg={goldLoanIcon} title="Gold Loan Origination" region="India" link="/solution/gold-loan-india" />
-                <SolutionCard iconSvg={homeLoanIcon} title="Home Loan Origination" region="India" link="/solution/home-loan-india" />
-                <SolutionCard iconSvg={digitalPersonalIcon} title="Digital Personal Loan Application" region="India" link="/solution/digital-loan-india" />
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
+            <Card className="p-6 bg-card border-border">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                View Analytics
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Track how agentic solutions are being used and monitor AI Agents performance
+              </p>
+              <Button
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                onClick={() => setShowAnalytics(true)}
+              >
+                Core Analytics
+              </Button>
+            </Card>
 
-          {/* Financial Services */}
-          <Collapsible open={financialOpen} onOpenChange={setFinancialOpen}>
-            <CollapsibleTrigger className="w-full">
-              <div className="bg-white border-2 border-primary px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
-                <h2 className="text-lg font-semibold tracking-tight">
-                  <span className="text-black">Agentic AI Solutions for </span>
-                  <span className="text-primary font-bold">Financial Services</span>
-                </h2>
-                <ChevronDown className={`w-5 h-5 text-black transition-transform duration-300 ${financialOpen ? 'rotate-180' : ''}`} />
-              </div>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard iconSvg={financialServicesIcon} title="Personal Finance Customer Support Agent" region="USA" link="/solution/financial-services-india" />
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
+            <Card className="p-6 bg-card border-border">
+              <h3 className="text-lg font-semibold text-foreground mb-2">
+                Platform Documentation
+              </h3>
+              <p className="text-sm text-muted-foreground mb-4">
+                Learn about different BFSI products and access reference guides
+              </p>
+              <Button
+                size="sm"
+                className="bg-primary text-primary-foreground hover:bg-primary/90"
+              >
+                View Documentation
+              </Button>
+            </Card>
+          </div>
+        </div>
 
-          {/* Insurance */}
-          <Collapsible open={insuranceOpen} onOpenChange={setInsuranceOpen}>
-            <CollapsibleTrigger className="w-full">
-              <div className="bg-white border-2 border-primary px-8 py-5 rounded-2xl flex items-center justify-between hover:shadow-lg transition-all duration-300 group">
-                <h2 className="text-lg font-semibold tracking-tight">
-                  <span className="text-black">Agentic AI Solutions for </span>
-                  <span className="text-primary font-bold">Insurance</span>
-                </h2>
-                <ChevronDown className={`w-5 h-5 text-black transition-transform duration-300 ${insuranceOpen ? 'rotate-180' : ''}`} />
-              </div>
-            </CollapsibleTrigger>
-            <CollapsibleContent className="mt-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-                <SolutionCard iconSvg={insuranceIcon} title={<>Voice based<br />Term Insurance Application</>} region="India" link="/solution/insurance" />
-                <SolutionCard iconSvg={healthInsuranceIcon} title={<>Voice based<br />Health Insurance Renewal</>} region="USA" link="/solution/health-insurance-usa" />
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
+        {/* Row 3: Security & Compliance */}
+        <Card className="p-8 bg-card border-border mb-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <h3 className="text-xl font-semibold text-foreground md:max-w-md">
+              Enterprise-grade Security and Compliance you can trust
+            </h3>
+            <div className="flex items-center gap-6 flex-wrap justify-center">
+              {complianceBadges.map((badge) => (
+                <div
+                  key={badge.name}
+                  className="flex items-center justify-center px-4 py-2 bg-muted rounded-lg border border-border"
+                >
+                  <span className="text-sm font-medium text-muted-foreground">
+                    {badge.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Card>
+
+        {/* Footer CTA */}
+        <div className="text-center py-6">
+          <p className="text-muted-foreground mb-4">
+            Have a specific Agentic AI use-case in mind?
+          </p>
+          <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
+            Contact Us
+          </Button>
         </div>
       </main>
 
       {/* Analytics Coming Soon Overlay */}
-      {showAnalytics && <div className="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4" onClick={() => setShowAnalytics(false)}>
-          <div className="bg-white rounded-3xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-gray-100" onClick={e => e.stopPropagation()}>
+      {showAnalytics && (
+        <div
+          className="fixed inset-0 bg-foreground/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4"
+          onClick={() => setShowAnalytics(false)}
+        >
+          <div
+            className="bg-card rounded-2xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-border"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="text-center space-y-6">
-              <div className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 flex items-center justify-center">
+              <div className="w-20 h-20 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center">
                 <span className="text-5xl">📊</span>
               </div>
               <div className="space-y-2">
-                <h3 className="text-3xl font-bold tracking-tight">Analytics</h3>
+                <h3 className="text-3xl font-bold tracking-tight text-foreground">Analytics</h3>
                 <p className="text-muted-foreground text-base">Coming Soon. Stay Tuned</p>
               </div>
-              <button onClick={() => setShowAnalytics(false)} className="mt-6 px-8 py-3 bg-primary text-primary-foreground rounded-xl hover:shadow-lg hover:scale-[1.02] transition-all duration-300 font-medium">
+              <Button
+                onClick={() => setShowAnalytics(false)}
+                className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
+              >
                 Close
-              </button>
+              </Button>
             </div>
           </div>
-        </div>}
-    </div>;
+        </div>
+      )}
+    </div>
+  );
 }
