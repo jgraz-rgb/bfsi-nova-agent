@@ -190,7 +190,7 @@ export default function LoginPage() {
       </AnimatePresence>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-md px-6">
+      <div className="relative z-10 w-full max-w-3xl px-8">
         <AnimatePresence mode="wait">
           {!showLogin ? (
             /* Splash Screen */
@@ -200,56 +200,62 @@ export default function LoginPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="text-center"
+              className="flex flex-col items-center min-h-[80vh] py-16"
             >
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex flex-col items-center mb-8"
-              >
-                <div className="flex items-center justify-center gap-4 mb-3 w-full -mt-32">
-                  <img 
-                    src={logoImage} 
-                    alt="SearchUnify" 
-                    className="h-16" 
-                  />
-                  <span className="text-4xl md:text-5xl font-bold text-foreground whitespace-nowrap">
-                    Agentic AI Suite
-                  </span>
-                </div>
+              {/* Upper section - Branding */}
+              <div className="flex-1 flex flex-col items-center justify-center">
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.2, duration: 0.5 }}
+                  className="flex flex-col items-center"
+                >
+                  <div className="flex items-center justify-center gap-5 mb-4">
+                    <img 
+                      src={logoImage} 
+                      alt="SearchUnify" 
+                      className="h-12 md:h-14" 
+                    />
+                    <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground whitespace-nowrap tracking-tight">
+                      Agentic AI Suite
+                    </span>
+                  </div>
+                  <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4, duration: 0.5 }}
+                    className="text-xl md:text-2xl font-semibold text-primary"
+                  >
+                    for BFSI
+                  </motion.p>
+                </motion.div>
+              </div>
+
+              {/* Lower section - Description & CTA */}
+              <div className="flex flex-col items-center gap-8 pb-8">
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.5 }}
-                  className="text-2xl md:text-3xl font-bold text-primary"
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="text-base text-muted-foreground text-center max-w-md leading-relaxed"
                 >
-                  for BFSI
+                  Purpose-built enterprise-grade AI solutions for Banking, Financial Services and Insurance
                 </motion.p>
-              </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-sm text-muted-foreground mb-10 max-w-sm mx-auto mt-48"
-              >
-                Purpose-built enterprise-grade AI solutions for Banking, Financial Services and Insurance
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.4 }}
-              >
-                <Button
-                  size="lg"
-                  onClick={() => setShowLogin(true)}
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-10 py-6 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.6, duration: 0.4 }}
                 >
-                  Get Started
-                </Button>
-              </motion.div>
+                  <Button
+                    size="lg"
+                    onClick={() => setShowLogin(true)}
+                    className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    Get Started
+                  </Button>
+                </motion.div>
+              </div>
             </motion.div>
           ) : (
             /* Login Form */
