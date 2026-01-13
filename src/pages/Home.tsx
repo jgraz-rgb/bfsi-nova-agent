@@ -25,12 +25,13 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       {/* Top Header Bar */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-card shadow-sm">
-        <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-6">
+        <div className="container flex h-20 items-center justify-between max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-3">
-            <img src={logoImage} alt="SearchUnify" className="h-6 w-auto" />
+            <img src={logoImage} alt="SearchUnify" className="h-10 w-auto" />
           </div>
-          <h1 className="text-lg font-semibold text-foreground">
-            Agentic AI Suite for BFSI
+          <h1 className="text-foreground flex items-baseline gap-2">
+            <span className="text-lg font-semibold">Agentic AI Suite</span>
+            <span className="text-xl font-bold text-primary">for BFSI</span>
           </h1>
           <button 
             onClick={() => navigate("/")}
