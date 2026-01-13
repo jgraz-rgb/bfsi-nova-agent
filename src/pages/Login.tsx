@@ -214,9 +214,10 @@ export default function LoginPage() {
                     alt="SearchUnify" 
                     className="h-10" 
                   />
-                  <span className="text-3xl font-bold text-foreground">
-                    Agentic AI Suite
-                  </span>
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-2xl font-bold text-foreground">Agentic</span>
+                    <span className="text-2xl font-bold text-foreground">AI Suite</span>
+                  </div>
                 </div>
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
