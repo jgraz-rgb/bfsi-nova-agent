@@ -200,13 +200,13 @@ export default function LoginPage() {
         >
           {/* Header */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-1">
+            <p className="text-lg md:text-xl text-muted-foreground mb-2">
               Welcome to
-            </h1>
-            <h2 className="text-xl md:text-2xl font-semibold whitespace-nowrap">
+            </p>
+            <h1 className="text-2xl md:text-3xl font-semibold whitespace-nowrap">
               <span className="text-foreground">SearchUnify's </span>
               <span className="text-primary">AI Agent Suite</span>
-            </h2>
+            </h1>
             <p className="text-sm text-muted-foreground mt-4">
               Please login to continue to your account.
             </p>
