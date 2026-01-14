@@ -205,7 +205,7 @@ export default function SolutionDetail() {
         <Header />
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-2xl font-bold mb-4">Solution not found</h1>
-          <Link to="/" className="text-primary hover:underline">
+          <Link to="/agentic-solutions" className="text-primary hover:underline">
             Return to home
           </Link>
         </div>
@@ -220,7 +220,7 @@ export default function SolutionDetail() {
       <main className="container mx-auto px-6 py-10 max-w-7xl">
         <div className="mb-10">
           <Link 
-            to="/" 
+            to="/agentic-solutions" 
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 mb-6 group"
           >
             <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
