@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -130,7 +130,6 @@ function polarToCartesian(centerX: number, centerY: number, radius: number, angl
 }
 
 export default function LoginPage() {
-  const [showLogin, setShowLogin] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -166,210 +165,118 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden relative flex items-center justify-center">
-      {/* Tree ring blossom effect - only appears after Get Started */}
-      <AnimatePresence>
-        {showLogin && (
-          <motion.div 
-            className="absolute inset-0 pointer-events-none overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Full circle rings */}
-            {rings.map((ring, i) => (
-              <TreeRing key={`ring-${i}`} {...ring} />
-            ))}
-            
-            {/* Partial arc segments for organic feel */}
-            {arcs.map((arc, i) => (
-              <ArcSegment key={`arc-${i}`} {...arc} />
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Tree ring blossom effect */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        {/* Full circle rings */}
+        {rings.map((ring, i) => (
+          <TreeRing key={`ring-${i}`} {...ring} />
+        ))}
+        
+        {/* Partial arc segments for organic feel */}
+        {arcs.map((arc, i) => (
+          <ArcSegment key={`arc-${i}`} {...arc} />
+        ))}
+      </motion.div>
 
       {/* Main content */}
-      <div className="relative z-10 w-full max-w-3xl px-8">
-        <AnimatePresence mode="wait">
-          {!showLogin ? (
-            /* Splash Screen */
+      <div className="relative z-10 w-full max-w-md px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-8 shadow-2xl"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
+            className="text-center mb-8"
+          >
+            <img 
+              src={logoImage} 
+              alt="SearchUnify" 
+              className="h-8 mx-auto mb-4" 
+            />
+            <h2 className="text-2xl font-bold text-foreground mb-2">
+              Welcome Back
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Sign in to access your AI solutions
+            </p>
+          </motion.div>
+
+          <form onSubmit={handleLogin} className="space-y-5">
             <motion.div
-              key="splash"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="flex flex-col items-center min-h-[80vh] py-16"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              className="space-y-2"
             >
-              {/* Upper section - Branding */}
-              <div className="flex-1 flex flex-col items-center justify-center">
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="flex flex-col items-center"
-                >
-                  <div className="flex items-center justify-center gap-5 mb-4">
-                    <img 
-                      src={logoImage} 
-                      alt="SearchUnify" 
-                      className="h-12 md:h-14" 
-                    />
-                    <span className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground whitespace-nowrap tracking-tight">
-                      Agentic AI Suite
-                    </span>
-                  </div>
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
-                    className="text-xl md:text-2xl font-semibold text-primary"
-                  >
-                    for BFSI
-                  </motion.p>
-                </motion.div>
-              </div>
-
-              {/* Lower section - Description & CTA */}
-              <div className="flex flex-col items-center gap-8 pb-8">
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.5, duration: 0.5 }}
-                  className="text-base text-muted-foreground text-center max-w-md leading-relaxed"
-                >
-                  Purpose-built enterprise-grade AI solutions for Banking, Financial Services and Insurance
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.6, duration: 0.4 }}
-                >
-                  <Button
-                    size="lg"
-                    onClick={() => setShowLogin(true)}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90 px-12 py-6 text-base font-medium shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    Get Started
-                  </Button>
-                </motion.div>
-              </div>
+              <Label htmlFor="email" className="text-foreground">
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="you@company.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="bg-background border-border focus:border-primary"
+              />
             </motion.div>
-          ) : (
-            /* Login Form */
+
             <motion.div
-              key="login"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-card/95 backdrop-blur-md border border-border rounded-2xl p-8 shadow-2xl"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.5, duration: 0.4 }}
+              className="space-y-2"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.4 }}
-                className="text-center mb-8"
+              <Label htmlFor="password" className="text-foreground">
+                Password
+              </Label>
+              <Input
+                id="password"
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="bg-background border-border focus:border-primary"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.4 }}
+              className="flex items-center justify-between text-sm"
+            >
+              <button 
+                type="button"
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                <img 
-                  src={logoImage} 
-                  alt="SearchUnify" 
-                  className="h-8 mx-auto mb-4" 
-                />
-                <h2 className="text-2xl font-bold text-foreground mb-2">
-                  Welcome Back
-                </h2>
-                <p className="text-sm text-muted-foreground">
-                  Sign in to access your AI solutions
-                </p>
-              </motion.div>
-
-              <form onSubmit={handleLogin} className="space-y-5">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4, duration: 0.4 }}
-                  className="space-y-2"
-                >
-                  <Label htmlFor="email" className="text-foreground">
-                    Email
-                  </Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="you@company.com"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="bg-background border-border focus:border-primary"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5, duration: 0.4 }}
-                  className="space-y-2"
-                >
-                  <Label htmlFor="password" className="text-foreground">
-                    Password
-                  </Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="••••••••"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="bg-background border-border focus:border-primary"
-                  />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.4 }}
-                  className="flex items-center justify-between text-sm"
-                >
-                  <button 
-                    type="button"
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    Forgot password?
-                  </button>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7, duration: 0.4 }}
-                >
-                  <Button
-                    type="submit"
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-medium"
-                  >
-                    Sign In
-                  </Button>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.8, duration: 0.4 }}
-                  className="text-center"
-                >
-                  <button
-                    type="button"
-                    onClick={() => setShowLogin(false)}
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    ← Back to welcome
-                  </button>
-                </motion.div>
-              </form>
+                Forgot password?
+              </button>
             </motion.div>
-          )}
-        </AnimatePresence>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.4 }}
+            >
+              <Button
+                type="submit"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 py-5 font-medium"
+              >
+                Sign In
+              </Button>
+            </motion.div>
+          </form>
+        </motion.div>
       </div>
     </div>
   );
