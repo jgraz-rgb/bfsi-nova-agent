@@ -203,7 +203,7 @@ export default function LoginPage() {
             <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-1">
               Welcome to
             </h1>
-            <h2 className="text-2xl md:text-3xl font-semibold">
+            <h2 className="text-xl md:text-2xl font-semibold whitespace-nowrap">
               <span className="text-foreground">SearchUnify's </span>
               <span className="text-primary">AI Agent Suite</span>
             </h2>
