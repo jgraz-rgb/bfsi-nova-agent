@@ -5,7 +5,7 @@ import { AgentCard } from "@/components/AgentCard";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
-import workflowImage from "@/assets/workflow-personal-loan-india.png";
+import workflowImage from "@/assets/workflow-personal-loan.png";
 import workflowGoldLoanIndia from "@/assets/workflow-gold-loan-india.png";
 import workflowHomeLoanIndia from "@/assets/workflow-home-loan-india.png";
 import workflowDigitalLoanIndia from "@/assets/workflow-digital-loan-india.png";
