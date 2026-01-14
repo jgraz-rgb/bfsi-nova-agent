@@ -26,12 +26,13 @@ export default function HomePage() {
       {/* Top Header Bar */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-card shadow-sm">
         <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <img src={logoImage} alt="SearchUnify" className="h-6 w-auto" />
+            <h1 className="text-lg font-semibold">
+              <span className="text-foreground">Agentic AI Suite for </span>
+              <span className="text-primary">BFSI</span>
+            </h1>
           </div>
-          <h1 className="text-lg font-semibold text-foreground">
-            Agentic AI Suite for BFSI
-          </h1>
           <button 
             onClick={() => navigate("/")}
             className="p-2 rounded-lg hover:bg-muted transition-colors"
@@ -76,7 +77,7 @@ export default function HomePage() {
         {/* Row 1: Welcome & Platform Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Welcome Tile */}
-          <Card className="p-8 bg-card border-border">
+          <Card className="p-8 bg-card border-border hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
             <h2 className="text-3xl font-bold text-foreground mb-3">Welcome</h2>
             <p className="text-muted-foreground text-base leading-relaxed">
               Purpose-built enterprise-grade AI solutions built for Banking, Financial Services and Insurance.
@@ -89,17 +90,17 @@ export default function HomePage() {
               PLATFORM OVERVIEW
             </p>
             <div className="grid grid-cols-3 gap-4">
-              <Card className="p-5 bg-card border-border text-center">
+              <Card className="p-5 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
                 <p className="text-4xl font-bold text-foreground mb-1">8</p>
                 <p className="text-xs text-muted-foreground">Agentic AI Solutions Available</p>
               </Card>
-              <Card className="p-5 bg-card border-border text-center">
+              <Card className="p-5 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
                 <p className="text-4xl font-bold text-foreground mb-1">2</p>
                 <p className="text-xs text-muted-foreground">Voice-based Agentic AI Solutions</p>
               </Card>
-              <Card className="p-5 bg-card border-border text-center flex flex-col items-center justify-center">
+              <Card className="p-5 bg-card border-border text-center flex flex-col items-center justify-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
                 <CheckCircle className="h-8 w-8 text-green-500 mb-1" />
-                <p className="text-xs text-muted-foreground">System Health : ACTIVE</p>
+                <p className="text-xs text-muted-foreground">System Health : <span className="text-green-500 font-semibold">ACTIVE</span></p>
               </Card>
             </div>
           </div>
@@ -111,48 +112,48 @@ export default function HomePage() {
             QUICK ACTIONS
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="p-6 bg-card border-border">
+            <Card className="p-8 bg-card border-border min-h-[180px] flex flex-col hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
               <h3 className="text-lg font-semibold text-foreground mb-2">
                 Browse Agentic Solutions
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 flex-1">
                 View and launch available chat and voice based Agentic AI workflows
               </p>
               <Button
                 size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit"
                 onClick={() => navigate("/solutions")}
               >
-                Agentic Solutions
+                Go to Agentic Solutions
               </Button>
             </Card>
 
-            <Card className="p-6 bg-card border-border">
+            <Card className="p-8 bg-card border-border min-h-[180px] flex flex-col hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
               <h3 className="text-lg font-semibold text-foreground mb-2">
                 View Analytics
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 flex-1">
                 Track how agentic solutions are being used and monitor AI Agents performance
               </p>
               <Button
                 size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit"
                 onClick={() => setShowAnalytics(true)}
               >
-                Core Analytics
+                Go to Analytics
               </Button>
             </Card>
 
-            <Card className="p-6 bg-card border-border">
+            <Card className="p-8 bg-card border-border min-h-[180px] flex flex-col hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
               <h3 className="text-lg font-semibold text-foreground mb-2">
                 Platform Documentation
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-sm text-muted-foreground mb-4 flex-1">
                 Learn about different BFSI products and access reference guides
               </p>
               <Button
                 size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit"
               >
                 View Documentation
               </Button>
@@ -161,23 +162,23 @@ export default function HomePage() {
         </div>
 
         {/* Row 3: Security & Compliance */}
-        <Card className="p-8 bg-card border-border mb-8">
-          <div className="flex flex-col items-center gap-6">
-            <h3 className="text-xl font-semibold text-foreground text-center">
+        <Card className="p-5 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
+          <div className="flex flex-col items-center gap-3">
+            <h3 className="text-base font-semibold text-foreground text-center">
               Enterprise-grade Security and Compliance you can trust
             </h3>
             <img 
               src={complianceBadges} 
               alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-              className="max-w-full h-auto"
+              className="max-w-md h-auto"
             />
           </div>
         </Card>
 
         {/* Footer CTA */}
         <div className="text-center py-6">
-          <p className="text-muted-foreground mb-4">
-            Have a specific Agentic AI use-case in mind?
+          <p className="text-xs font-semibold text-muted-foreground tracking-wider mb-4">
+            HAVE A SPECIFIC AGENTIC AI USE-CASE IN MIND?
           </p>
           <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
             Contact Us
