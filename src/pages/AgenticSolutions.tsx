@@ -84,14 +84,6 @@ export default function AgenticSolutionsPage() {
 
       {/* Main Content */}
       <main className="container max-w-7xl mx-auto px-6 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2 tracking-tight text-foreground">
-            Agentic AI Suite for <span className="text-primary">BFSI</span>
-          </h1>
-          <p className="text-muted-foreground text-base">
-            Purpose-built enterprise-grade AI solutions built for Banking, Financial Services and Insurance
-          </p>
-        </div>
 
         <div className="space-y-16">
           {/* Banking Solutions */}
