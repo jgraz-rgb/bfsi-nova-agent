@@ -3,12 +3,23 @@ import { useNavigate } from "react-router-dom";
 import { LogOut, CheckCircle } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
 import logoImage from "@/assets/searchunify-logo.svg";
 import complianceBadges from "@/assets/compliance-badges.png";
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("home");
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const navigate = useNavigate();
 
   const handleTabClick = (tab: "home" | "solutions" | "analytics") => {
@@ -34,7 +45,7 @@ export default function HomePage() {
             </h1>
           </div>
           <button 
-            onClick={() => navigate("/")}
+            onClick={() => setShowLogoutConfirm(true)}
             className="p-2 rounded-lg hover:bg-muted transition-colors"
           >
             <LogOut className="h-5 w-5 text-muted-foreground" />
@@ -214,6 +225,24 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      {/* Logout Confirmation Dialog */}
+      <AlertDialog open={showLogoutConfirm} onOpenChange={setShowLogoutConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure you want to exit?</AlertDialogTitle>
+            <AlertDialogDescription>
+              You will be logged out of the platform.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => navigate("/")}>
+              Confirm
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
