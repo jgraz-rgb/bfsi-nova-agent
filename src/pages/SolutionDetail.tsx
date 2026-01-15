@@ -4,7 +4,7 @@ import { Header } from "@/components/Header";
 import { AgentCard } from "@/components/AgentCard";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import workflowImage from "@/assets/workflow-personal-loan.png";
 import workflowGoldLoanIndia from "@/assets/workflow-gold-loan-india.png";
 import workflowHomeLoanIndia from "@/assets/workflow-home-loan-india.png";
@@ -198,6 +198,11 @@ export default function SolutionDetail() {
   const agents = id && agentsData[id] ? agentsData[id] : agentsData["default"];
   const solutionUrl = id ? solutionLinks[id] : null;
   const [isWorkflowOpen, setIsWorkflowOpen] = useState(false);
+
+  // Scroll to top when component mounts or id changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [id]);
 
   if (!solution) {
     return (
