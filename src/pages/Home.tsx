@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, CheckCircle } from "lucide-react";
+import { CheckCircle, User, LogOut } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +13,12 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import logoImage from "@/assets/searchunify-logo.svg";
 import complianceBadges from "@/assets/compliance-badges.png";
 
@@ -39,17 +45,20 @@ export default function HomePage() {
         <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-2">
             <img src={logoImage} alt="SearchUnify" className="h-6 w-auto" />
-            <h1 className="text-lg font-semibold">
-              <span className="text-foreground">Agentic AI Suite for </span>
-              <span className="text-primary">BFSI</span>
-            </h1>
           </div>
-          <button 
-            onClick={() => setShowLogoutConfirm(true)}
-            className="p-2 rounded-lg hover:bg-muted transition-colors"
-          >
-            <LogOut className="h-5 w-5 text-muted-foreground" />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="p-2 rounded-lg hover:bg-muted transition-colors">
+                <User className="h-5 w-5 text-muted-foreground" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-40">
+              <DropdownMenuItem onClick={() => setShowLogoutConfirm(true)} className="cursor-pointer">
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </header>
 
@@ -89,9 +98,13 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Welcome Tile */}
           <Card className="p-8 bg-card border-border hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-            <h2 className="text-3xl font-bold text-foreground mb-3">Welcome</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-1">Welcome to</h2>
+            <h2 className="text-3xl font-bold mb-3">
+              <span className="text-foreground">SearchUnify's Agentic AI Suite for </span>
+              <span className="text-primary">BFSI</span>
+            </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
-              Purpose-built enterprise-grade AI solutions built for Banking, Financial Services and Insurance.
+              Purpose-built enterprise-grade AI solutions built for <span className="font-bold text-foreground">Banking</span>, <span className="font-bold text-foreground">Financial Services</span> and <span className="font-bold text-foreground">Insurance</span>.
             </p>
           </Card>
 
@@ -173,16 +186,23 @@ export default function HomePage() {
         </div>
 
         {/* Row 3: Security & Compliance */}
-        <Card className="p-5 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-          <div className="flex flex-col items-center gap-3">
-            <h3 className="text-base font-semibold text-foreground text-center">
-              Enterprise-grade Security and Compliance you can trust
-            </h3>
-            <img 
-              src={complianceBadges} 
-              alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-              className="max-w-md h-auto"
-            />
+        <Card className="p-8 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">
+                Enterprise-grade Security and Compliance you can trust
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Our platform is built with security at its core, ensuring your data is protected with industry-leading standards and certifications.
+              </p>
+            </div>
+            <div className="flex justify-center lg:justify-end">
+              <img 
+                src={complianceBadges} 
+                alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
+                className="max-w-sm h-auto"
+              />
+            </div>
           </div>
         </Card>
 

@@ -45,5 +45,10 @@ export const SolutionCard = ({
   if (disabled) {
     return content;
   }
-  return <Link to={link}>{content}</Link>;
+  
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+  
+  return <Link to={link} onClick={handleClick}>{content}</Link>;
 };

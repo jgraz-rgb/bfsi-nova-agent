@@ -1,8 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { LogOut, ChevronDown } from "lucide-react";
+import { ChevronDown, User, LogOut } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { SolutionCard } from "@/components/SolutionCard";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import logoImage from "@/assets/searchunify-logo.svg";
 
 // Import icons
@@ -17,6 +33,7 @@ import healthInsuranceIcon from "@/assets/icons/health-insurance-new.png";
 export default function AgenticSolutionsPage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("solutions");
   const [showAnalytics, setShowAnalytics] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [bankingOpen, setBankingOpen] = useState(true);
   const [financialOpen, setFinancialOpen] = useState(true);
   const [insuranceOpen, setInsuranceOpen] = useState(true);
@@ -40,15 +57,19 @@ export default function AgenticSolutionsPage() {
           <div className="flex items-center gap-3">
             <img src={logoImage} alt="SearchUnify" className="h-6 w-auto" />
           </div>
-          <h1 className="text-lg font-semibold text-foreground">
-            Agentic AI Suite for BFSI
-          </h1>
-          <button 
-            onClick={() => navigate("/")}
-            className="p-2 rounded-lg hover:bg-muted transition-colors"
-          >
-            <LogOut className="h-5 w-5 text-muted-foreground" />
-          </button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button className="p-2 rounded-lg hover:bg-muted transition-colors">
+                <User className="h-5 w-5 text-muted-foreground" />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-40">
+              <DropdownMenuItem onClick={() => setShowLogoutConfirm(true)} className="cursor-pointer">
+                <LogOut className="h-4 w-4 mr-2" />
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </header>
 
@@ -233,6 +254,24 @@ export default function AgenticSolutionsPage() {
           </div>
         </div>
       )}
+
+      {/* Logout Confirmation Dialog */}
+      <AlertDialog open={showLogoutConfirm} onOpenChange={setShowLogoutConfirm}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you sure you want to exit?</AlertDialogTitle>
+            <AlertDialogDescription>
+              You will be logged out of the platform.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => navigate("/")}>
+              Confirm
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
