@@ -186,9 +186,9 @@ export default function HomePage() {
         </div>
 
         {/* Row 3: Security & Compliance */}
-        <Card className="p-10 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="space-y-5">
+        <Card className="p-12 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
+          <div className="flex flex-col lg:flex-row gap-10 items-center">
+            <div className="space-y-5 lg:w-1/3">
               <h3 className="text-2xl font-semibold text-foreground">
                 Enterprise-grade Security and Compliance you can trust
               </h3>
@@ -196,11 +196,11 @@ export default function HomePage() {
                 Our platform is built with security at its core, ensuring your data is protected with industry-leading standards and certifications.
               </p>
             </div>
-            <div className="flex justify-center lg:justify-end">
+            <div className="lg:w-2/3 flex justify-center lg:justify-end">
               <img 
                 src={complianceBadges} 
                 alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-                className="w-full h-auto"
+                className="w-full max-w-2xl h-auto"
               />
             </div>
           </div>
