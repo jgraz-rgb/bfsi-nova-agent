@@ -186,13 +186,13 @@ export default function HomePage() {
         </div>
 
         {/* Row 3: Security & Compliance */}
-        <Card className="p-8 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground">
+        <Card className="p-10 bg-card border-border mb-8 hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="space-y-5">
+              <h3 className="text-2xl font-semibold text-foreground">
                 Enterprise-grade Security and Compliance you can trust
               </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
+              <p className="text-muted-foreground text-base leading-relaxed">
                 Our platform is built with security at its core, ensuring your data is protected with industry-leading standards and certifications.
               </p>
             </div>
@@ -200,7 +200,7 @@ export default function HomePage() {
               <img 
                 src={complianceBadges} 
                 alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-                className="max-w-lg w-full h-auto"
+                className="w-full h-auto"
               />
             </div>
           </div>
