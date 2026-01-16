@@ -96,8 +96,8 @@ export default function HomePage() {
       <main className="container max-w-7xl mx-auto px-6 py-8">
         {/* Row 1: Welcome & Platform Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* Welcome Tile */}
-          <Card className="p-8 bg-card border-border hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
+          {/* Welcome Text (no card) */}
+          <div className="flex flex-col justify-center">
             <h2 className="text-3xl font-bold text-foreground mb-1">Welcome to</h2>
             <h2 className="text-3xl font-bold mb-3">
               <span className="text-foreground">SearchUnify's Agentic AI Suite for </span>
@@ -106,7 +106,7 @@ export default function HomePage() {
             <p className="text-muted-foreground text-base leading-relaxed">
               Purpose-built enterprise-grade AI solutions built for <span className="font-bold text-foreground">Banking</span>, <span className="font-bold text-foreground">Financial Services</span> and <span className="font-bold text-foreground">Insurance</span>.
             </p>
-          </Card>
+          </div>
 
           {/* Platform Overview */}
           <div>
@@ -114,17 +114,17 @@ export default function HomePage() {
               PLATFORM OVERVIEW
             </p>
             <div className="grid grid-cols-3 gap-4">
-              <Card className="p-5 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-                <p className="text-4xl font-bold text-foreground mb-1">8</p>
-                <p className="text-xs text-muted-foreground">Agentic AI Solutions Available</p>
+              <Card className="p-6 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300 min-h-[120px] flex flex-col justify-center">
+                <p className="text-5xl font-bold text-foreground mb-2">8</p>
+                <p className="text-sm text-muted-foreground">Agentic AI Solutions Available</p>
               </Card>
-              <Card className="p-5 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-                <p className="text-4xl font-bold text-foreground mb-1">2</p>
-                <p className="text-xs text-muted-foreground">Voice-based Agentic AI Solutions</p>
+              <Card className="p-6 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300 min-h-[120px] flex flex-col justify-center">
+                <p className="text-5xl font-bold text-foreground mb-2">2</p>
+                <p className="text-sm text-muted-foreground">Voice-based Agentic AI Solutions</p>
               </Card>
-              <Card className="p-5 bg-card border-border text-center flex flex-col items-center justify-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300">
-                <CheckCircle className="h-8 w-8 text-green-500 mb-1" />
-                <p className="text-xs text-muted-foreground">System Health : <span className="text-green-500 font-semibold">ACTIVE</span></p>
+              <Card className="p-6 bg-card border-border text-center flex flex-col items-center justify-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300 min-h-[120px]">
+                <CheckCircle className="h-10 w-10 text-green-500 mb-2" />
+                <p className="text-sm text-muted-foreground">System Health : <span className="text-green-500 font-semibold">ACTIVE</span></p>
               </Card>
             </div>
           </div>
@@ -200,7 +200,7 @@ export default function HomePage() {
               <img 
                 src={complianceBadges} 
                 alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-                className="max-w-sm h-auto"
+                className="max-w-lg w-full h-auto"
               />
             </div>
           </div>
