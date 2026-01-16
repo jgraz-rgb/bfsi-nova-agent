@@ -98,9 +98,8 @@ export default function HomePage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           {/* Welcome Text (no card) */}
           <div className="flex flex-col justify-center">
-            <h2 className="text-3xl font-bold text-foreground mb-1">Welcome to</h2>
-            <h2 className="text-3xl font-bold mb-3">
-              <span className="text-foreground">SearchUnify's Agentic AI Suite for </span>
+            <h2 className="text-xl font-bold mb-2">
+              <span className="text-foreground">Welcome to SearchUnify's Agentic AI Suite for </span>
               <span className="text-primary">BFSI</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
