@@ -3,31 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { CheckCircle, User, LogOut } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import logoImage from "@/assets/searchunify-logo.svg";
 import complianceBadges from "@/assets/compliance-badges.png";
-
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("home");
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const navigate = useNavigate();
-
   const handleTabClick = (tab: "home" | "solutions" | "analytics") => {
     if (tab === "analytics") {
       setShowAnalytics(true);
@@ -37,9 +21,7 @@ export default function HomePage() {
       setActiveTab(tab);
     }
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Top Header Bar */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-card shadow-sm">
         <div className="container flex h-16 items-center justify-between max-w-7xl mx-auto px-6">
@@ -66,26 +48,13 @@ export default function HomePage() {
       <nav className="border-b border-border bg-card">
         <div className="container max-w-7xl mx-auto px-6">
           <div className="flex gap-8">
-            <button
-              onClick={() => handleTabClick("home")}
-              className={`py-4 px-2 font-medium text-sm border-b-2 transition-colors ${
-                activeTab === "home"
-                  ? "border-primary text-primary"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              }`}
-            >
+            <button onClick={() => handleTabClick("home")} className={`py-4 px-2 font-medium text-sm border-b-2 transition-colors ${activeTab === "home" ? "border-primary text-primary" : "border-transparent text-muted-foreground hover:text-foreground"}`}>
               Home
             </button>
-            <button
-              onClick={() => handleTabClick("solutions")}
-              className="py-4 px-2 font-medium text-sm border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <button onClick={() => handleTabClick("solutions")} className="py-4 px-2 font-medium text-sm border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors">
               Agentic Solutions
             </button>
-            <button
-              onClick={() => handleTabClick("analytics")}
-              className="py-4 px-2 font-medium text-sm border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <button onClick={() => handleTabClick("analytics")} className="py-4 px-2 font-medium text-sm border-b-2 border-transparent text-muted-foreground hover:text-foreground transition-colors">
               Analytics
             </button>
           </div>
@@ -103,7 +72,7 @@ export default function HomePage() {
               <span className="text-primary">BFSI</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed">
-              Purpose-built enterprise-grade AI solutions built for <span className="font-bold text-foreground">Banking</span>, <span className="font-bold text-foreground">Financial Services</span> and <span className="font-bold text-foreground">Insurance</span>.
+              Enterprise-grade AI solutions built for <span className="font-bold text-foreground">Banking</span>, <span className="font-bold text-foreground">Financial Services</span> and <span className="font-bold text-foreground">Insurance</span>.
             </p>
           </div>
 
@@ -142,11 +111,7 @@ export default function HomePage() {
               <p className="text-sm text-muted-foreground mb-4 flex-1">
                 View and launch available chat and voice based Agentic AI workflows
               </p>
-              <Button
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit"
-                onClick={() => navigate("/solutions")}
-              >
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit" onClick={() => navigate("/solutions")}>
                 Go to Agentic Solutions
               </Button>
             </Card>
@@ -158,11 +123,7 @@ export default function HomePage() {
               <p className="text-sm text-muted-foreground mb-4 flex-1">
                 Track how agentic solutions are being used and monitor AI Agents performance
               </p>
-              <Button
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit"
-                onClick={() => setShowAnalytics(true)}
-              >
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit" onClick={() => setShowAnalytics(true)}>
                 Go to Analytics
               </Button>
             </Card>
@@ -174,10 +135,7 @@ export default function HomePage() {
               <p className="text-sm text-muted-foreground mb-4 flex-1">
                 Learn about different BFSI products and access reference guides
               </p>
-              <Button
-                size="sm"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit"
-              >
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit">
                 View Documentation
               </Button>
             </Card>
@@ -197,12 +155,9 @@ export default function HomePage() {
             </div>
             <div className="lg:w-2/3 flex justify-center lg:justify-end">
               <div className="relative overflow-hidden">
-                <img 
-                  src={complianceBadges} 
-                  alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-                  className="w-full max-w-2xl h-auto"
-                  style={{ marginBottom: '-20px' }}
-                />
+                <img src={complianceBadges} alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" className="w-full max-w-2xl h-auto" style={{
+                marginBottom: '-20px'
+              }} />
               </div>
             </div>
           </div>
@@ -220,15 +175,8 @@ export default function HomePage() {
       </main>
 
       {/* Analytics Coming Soon Overlay */}
-      {showAnalytics && (
-        <div
-          className="fixed inset-0 bg-foreground/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4"
-          onClick={() => setShowAnalytics(false)}
-        >
-          <div
-            className="bg-card rounded-2xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-border"
-            onClick={(e) => e.stopPropagation()}
-          >
+      {showAnalytics && <div className="fixed inset-0 bg-foreground/60 backdrop-blur-md z-50 flex items-center justify-center animate-fade-in px-4" onClick={() => setShowAnalytics(false)}>
+          <div className="bg-card rounded-2xl p-12 max-w-lg w-full shadow-2xl animate-scale-in border border-border" onClick={e => e.stopPropagation()}>
             <div className="text-center space-y-6">
               <div className="w-20 h-20 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center">
                 <span className="text-5xl">📊</span>
@@ -237,16 +185,12 @@ export default function HomePage() {
                 <h3 className="text-3xl font-bold tracking-tight text-foreground">Analytics</h3>
                 <p className="text-muted-foreground text-base">Coming Soon. Stay Tuned</p>
               </div>
-              <Button
-                onClick={() => setShowAnalytics(false)}
-                className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90"
-              >
+              <Button onClick={() => setShowAnalytics(false)} className="mt-6 bg-primary text-primary-foreground hover:bg-primary/90">
                 Close
               </Button>
             </div>
           </div>
-        </div>
-      )}
+        </div>}
 
       {/* Logout Confirmation Dialog */}
       <AlertDialog open={showLogoutConfirm} onOpenChange={setShowLogoutConfirm}>
@@ -265,6 +209,5 @@ export default function HomePage() {
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
-    </div>
-  );
+    </div>;
 }
