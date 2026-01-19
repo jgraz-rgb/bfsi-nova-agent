@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Eye, EyeOff } from "lucide-react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
+
+type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "register" | "register-verify";
 
 // Tree ring style concave line with inner shadow effect
 const TreeRing = ({ 
@@ -131,20 +134,58 @@ function polarToCartesian(centerX: number, centerY: number, radius: number, angl
 }
 
 export default function LoginPage() {
+  const [currentView, setCurrentView] = useState<AuthView>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [verificationMethod, setVerificationMethod] = useState<"email" | "sms">("email");
+  const [phone, setPhone] = useState("");
+  const [verificationCode, setVerificationCode] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Small delay to show the animation before navigating
     setTimeout(() => {
       navigate("/home");
     }, 800);
+  };
+
+  const handleForgotPassword = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCurrentView("forgot-password-sent");
+  };
+
+  const handleRegister = (e: React.FormEvent) => {
+    e.preventDefault();
+    setCurrentView("register-verify");
+  };
+
+  const handleVerifyCode = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      navigate("/home");
+    }, 800);
+  };
+
+  const resetForm = () => {
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setPhone("");
+    setVerificationCode("");
+    setShowPassword(false);
+    setShowConfirmPassword(false);
+  };
+
+  const goToLogin = () => {
+    resetForm();
+    setCurrentView("login");
   };
 
   // Generate tree ring configurations
@@ -171,6 +212,449 @@ export default function LoginPage() {
     { radius: 1300, rotation: 100, delay: 0.4, arcLength: 80 },
   ];
 
+  const renderLoginView = () => (
+    <motion.div
+      key="login"
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 20 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center w-full"
+    >
+      {/* Header */}
+      <div className="text-center mb-8">
+        <p className="text-lg md:text-xl text-muted-foreground mb-2">
+          Welcome to
+        </p>
+        <h1 className="text-2xl md:text-3xl font-semibold whitespace-nowrap">
+          <span className="text-foreground">SearchUnify's </span>
+          <span className="text-primary">AI Agent Suite</span>
+        </h1>
+        <p className="text-sm text-muted-foreground mt-4">
+          Please login to continue to your account.
+        </p>
+      </div>
+
+      {/* Login Form */}
+      <form onSubmit={handleLogin} className="w-full space-y-4">
+        {/* Email Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="email" className="text-xs text-muted-foreground font-normal">
+            Email
+          </Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="Enter your email ID"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="h-10 bg-background border-border/60 focus:border-primary text-sm"
+          />
+        </div>
+
+        {/* Password Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="password" className="text-xs text-muted-foreground font-normal">
+            Password
+          </Label>
+          <div className="relative">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder=""
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="h-10 bg-background border-border/60 focus:border-primary text-sm pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {showPassword ? (
+                <EyeOff className="h-4 w-4" />
+              ) : (
+                <Eye className="h-4 w-4" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Keep me logged in */}
+        <div className="flex items-center space-x-2 pt-1">
+          <Checkbox
+            id="keep-logged-in"
+            checked={keepLoggedIn}
+            onCheckedChange={(checked) => setKeepLoggedIn(checked === true)}
+            className="h-4 w-4 border-border/60 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+          />
+          <Label 
+            htmlFor="keep-logged-in" 
+            className="text-xs text-muted-foreground font-normal cursor-pointer"
+          >
+            Keep me logged in
+          </Label>
+        </div>
+
+        {/* Login Button */}
+        <Button
+          type="submit"
+          className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
+        >
+          Log In
+        </Button>
+
+        {/* Forgot Password & Create Account */}
+        <div className="flex items-center justify-between pt-2">
+          <button
+            type="button"
+            onClick={() => setCurrentView("forgot-password")}
+            className="text-xs text-primary hover:text-primary/80 transition-colors"
+          >
+            Forgot Password
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentView("register")}
+            className="text-xs text-primary hover:text-primary/80 transition-colors"
+          >
+            Create Account
+          </button>
+        </div>
+      </form>
+    </motion.div>
+  );
+
+  const renderForgotPasswordView = () => (
+    <motion.div
+      key="forgot-password"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center w-full"
+    >
+      {/* Back Button */}
+      <button
+        type="button"
+        onClick={goToLogin}
+        className="self-start flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-6"
+      >
+        <ArrowLeft className="h-3 w-3" />
+        Back to Login
+      </button>
+
+      {/* Header */}
+      <div className="text-center mb-8">
+        <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
+          Forgot Password
+        </h1>
+        <p className="text-sm text-muted-foreground mt-4">
+          Enter your email address and we'll send you a link to reset your password.
+        </p>
+      </div>
+
+      {/* Forgot Password Form */}
+      <form onSubmit={handleForgotPassword} className="w-full space-y-4">
+        <div className="space-y-1.5">
+          <Label htmlFor="reset-email" className="text-xs text-muted-foreground font-normal">
+            Email
+          </Label>
+          <Input
+            id="reset-email"
+            type="email"
+            placeholder="Enter your email ID"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="h-10 bg-background border-border/60 focus:border-primary text-sm"
+          />
+        </div>
+
+        <Button
+          type="submit"
+          className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
+        >
+          Send Reset Link
+        </Button>
+      </form>
+    </motion.div>
+  );
+
+  const renderForgotPasswordSentView = () => (
+    <motion.div
+      key="forgot-password-sent"
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center w-full text-center"
+    >
+      <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-6">
+        <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        </svg>
+      </div>
+
+      <h1 className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
+        Check Your Email
+      </h1>
+      <p className="text-sm text-muted-foreground mb-6">
+        We've sent a password reset link to<br />
+        <span className="text-foreground font-medium">{email}</span>
+      </p>
+
+      <Button
+        type="button"
+        onClick={goToLogin}
+        className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm"
+      >
+        Back to Login
+      </Button>
+
+      <p className="text-xs text-muted-foreground mt-4">
+        Didn't receive the email?{" "}
+        <button
+          type="button"
+          onClick={() => setCurrentView("forgot-password")}
+          className="text-primary hover:text-primary/80 transition-colors"
+        >
+          Resend
+        </button>
+      </p>
+    </motion.div>
+  );
+
+  const renderRegisterView = () => (
+    <motion.div
+      key="register"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center w-full"
+    >
+      {/* Back Button */}
+      <button
+        type="button"
+        onClick={goToLogin}
+        className="self-start flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-6"
+      >
+        <ArrowLeft className="h-3 w-3" />
+        Back to Login
+      </button>
+
+      {/* Header */}
+      <div className="text-center mb-6">
+        <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
+          Create Account
+        </h1>
+        <p className="text-sm text-muted-foreground mt-2">
+          Fill in your details to get started.
+        </p>
+      </div>
+
+      {/* Registration Form */}
+      <form onSubmit={handleRegister} className="w-full space-y-4">
+        {/* Email Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="reg-email" className="text-xs text-muted-foreground font-normal">
+            Email
+          </Label>
+          <Input
+            id="reg-email"
+            type="email"
+            placeholder="Enter your email ID"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="h-10 bg-background border-border/60 focus:border-primary text-sm"
+          />
+        </div>
+
+        {/* Password Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="reg-password" className="text-xs text-muted-foreground font-normal">
+            Password
+          </Label>
+          <div className="relative">
+            <Input
+              id="reg-password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Create a password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="h-10 bg-background border-border/60 focus:border-primary text-sm pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Confirm Password Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="reg-confirm-password" className="text-xs text-muted-foreground font-normal">
+            Confirm Password
+          </Label>
+          <div className="relative">
+            <Input
+              id="reg-confirm-password"
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Confirm your password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="h-10 bg-background border-border/60 focus:border-primary text-sm pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Verification Method */}
+        <div className="space-y-2 pt-2">
+          <Label className="text-xs text-muted-foreground font-normal">
+            Verification Method
+          </Label>
+          <RadioGroup
+            value={verificationMethod}
+            onValueChange={(value) => setVerificationMethod(value as "email" | "sms")}
+            className="flex gap-6"
+          >
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="email" id="verify-email" />
+              <Label htmlFor="verify-email" className="text-sm font-normal cursor-pointer">
+                Email
+              </Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <RadioGroupItem value="sms" id="verify-sms" />
+              <Label htmlFor="verify-sms" className="text-sm font-normal cursor-pointer">
+                SMS
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
+
+        {/* Phone Field (only if SMS selected) */}
+        {verificationMethod === "sms" && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="space-y-1.5"
+          >
+            <Label htmlFor="reg-phone" className="text-xs text-muted-foreground font-normal">
+              Phone Number
+            </Label>
+            <Input
+              id="reg-phone"
+              type="tel"
+              placeholder="+1-212-456-7890"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="h-10 bg-background border-border/60 focus:border-primary text-sm"
+            />
+          </motion.div>
+        )}
+
+        <Button
+          type="submit"
+          className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
+        >
+          Create Account
+        </Button>
+      </form>
+    </motion.div>
+  );
+
+  const renderVerifyView = () => (
+    <motion.div
+      key="register-verify"
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.3 }}
+      className="flex flex-col items-center w-full"
+    >
+      {/* Back Button */}
+      <button
+        type="button"
+        onClick={() => setCurrentView("register")}
+        className="self-start flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-6"
+      >
+        <ArrowLeft className="h-3 w-3" />
+        Back
+      </button>
+
+      {/* Header */}
+      <div className="text-center mb-6">
+        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+          {verificationMethod === "email" ? (
+            <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+          ) : (
+            <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          )}
+        </div>
+        <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
+          Verify Your {verificationMethod === "email" ? "Email" : "Phone"}
+        </h1>
+        <p className="text-sm text-muted-foreground mt-2">
+          We've sent a 6-digit code to<br />
+          <span className="text-foreground font-medium">
+            {verificationMethod === "email" ? email : phone}
+          </span>
+        </p>
+      </div>
+
+      {/* Verification Form */}
+      <form onSubmit={handleVerifyCode} className="w-full space-y-4">
+        <div className="space-y-1.5">
+          <Label htmlFor="verification-code" className="text-xs text-muted-foreground font-normal">
+            Verification Code
+          </Label>
+          <Input
+            id="verification-code"
+            type="text"
+            placeholder="Enter 6-digit code"
+            value={verificationCode}
+            onChange={(e) => setVerificationCode(e.target.value)}
+            className="h-10 bg-background border-border/60 focus:border-primary text-sm text-center tracking-widest"
+            maxLength={6}
+          />
+        </div>
+
+        <Button
+          type="submit"
+          className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
+        >
+          Verify & Continue
+        </Button>
+
+        <p className="text-xs text-muted-foreground text-center mt-4">
+          Didn't receive the code?{" "}
+          <button
+            type="button"
+            className="text-primary hover:text-primary/80 transition-colors"
+          >
+            Resend
+          </button>
+        </p>
+      </form>
+    </motion.div>
+  );
+
   return (
     <div className="min-h-screen bg-background overflow-hidden relative flex items-center justify-center">
       {/* Tree ring blossom effect - only appears after sign in */}
@@ -196,101 +680,14 @@ export default function LoginPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isSubmitting ? 0 : 1, y: isSubmitting ? -20 : 0 }}
           transition={{ duration: 0.4 }}
-          className="flex flex-col items-center"
         >
-          {/* Header */}
-          <div className="text-center mb-8">
-            <p className="text-lg md:text-xl text-muted-foreground mb-2">
-              Welcome to
-            </p>
-            <h1 className="text-2xl md:text-3xl font-semibold whitespace-nowrap">
-              <span className="text-foreground">SearchUnify's </span>
-              <span className="text-primary">AI Agent Suite</span>
-            </h1>
-            <p className="text-sm text-muted-foreground mt-4">
-              Please login to continue to your account.
-            </p>
-          </div>
-
-          {/* Login Form */}
-          <form onSubmit={handleLogin} className="w-full space-y-4">
-            {/* Email Field */}
-            <div className="space-y-1.5">
-              <Label htmlFor="email" className="text-xs text-muted-foreground font-normal">
-                Email
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="Enter your email ID"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-10 bg-background border-border/60 focus:border-primary text-sm"
-              />
-            </div>
-
-            {/* Password Field */}
-            <div className="space-y-1.5">
-              <Label htmlFor="password" className="text-xs text-muted-foreground font-normal">
-                Password
-              </Label>
-              <div className="relative">
-                <Input
-                  id="password"
-                  type={showPassword ? "text" : "password"}
-                  placeholder=""
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="h-10 bg-background border-border/60 focus:border-primary text-sm pr-10"
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {showPassword ? (
-                    <EyeOff className="h-4 w-4" />
-                  ) : (
-                    <Eye className="h-4 w-4" />
-                  )}
-                </button>
-              </div>
-            </div>
-
-            {/* Keep me logged in */}
-            <div className="flex items-center space-x-2 pt-1">
-              <Checkbox
-                id="keep-logged-in"
-                checked={keepLoggedIn}
-                onCheckedChange={(checked) => setKeepLoggedIn(checked === true)}
-                className="h-4 w-4 border-border/60 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-              />
-              <Label 
-                htmlFor="keep-logged-in" 
-                className="text-xs text-muted-foreground font-normal cursor-pointer"
-              >
-                Keep me logged in
-              </Label>
-            </div>
-
-            {/* Login Button */}
-            <Button
-              type="submit"
-              className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
-            >
-              Log In
-            </Button>
-
-            {/* Forgot Password */}
-            <div className="text-center pt-2">
-              <button
-                type="button"
-                className="text-xs text-primary hover:text-primary/80 transition-colors"
-              >
-                Forgot Password
-              </button>
-            </div>
-          </form>
+          <AnimatePresence mode="wait">
+            {currentView === "login" && renderLoginView()}
+            {currentView === "forgot-password" && renderForgotPasswordView()}
+            {currentView === "forgot-password-sent" && renderForgotPasswordSentView()}
+            {currentView === "register" && renderRegisterView()}
+            {currentView === "register-verify" && renderVerifyView()}
+          </AnimatePresence>
         </motion.div>
       </div>
     </div>
