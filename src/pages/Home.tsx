@@ -202,8 +202,8 @@ export default function HomePage() {
                   alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
                   className="w-full max-w-2xl h-auto"
                 />
-                {/* White mask to cover watermark */}
-                <div className="absolute bottom-0 left-0 w-48 h-8 bg-white"></div>
+                {/* White mask to cover watermark - positioned below badge text */}
+                <div className="absolute bottom-0 left-0 w-36 h-5 bg-white"></div>
               </div>
             </div>
           </div>
