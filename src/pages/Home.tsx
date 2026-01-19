@@ -196,11 +196,15 @@ export default function HomePage() {
               </p>
             </div>
             <div className="lg:w-2/3 flex justify-center lg:justify-end">
-              <img 
-                src={complianceBadges} 
-                alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
-                className="w-full max-w-2xl h-auto"
-              />
+              <div className="relative">
+                <img 
+                  src={complianceBadges} 
+                  alt="Compliance certifications including ISO 27001, SOC 2, HIPAA, GDPR, PIMS, and CCPA" 
+                  className="w-full max-w-2xl h-auto"
+                />
+                {/* White mask to cover watermark */}
+                <div className="absolute bottom-0 left-0 w-48 h-8 bg-white"></div>
+              </div>
             </div>
           </div>
         </Card>
