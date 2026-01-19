@@ -304,21 +304,21 @@ export default function LoginPage() {
           Log In
         </Button>
 
-        {/* Forgot Password & Create Account */}
-        <div className="flex items-center justify-between pt-2">
-          <button
-            type="button"
-            onClick={() => setCurrentView("forgot-password")}
-            className="text-xs text-primary hover:text-primary/80 transition-colors"
-          >
-            Forgot Password
-          </button>
+        {/* Create Account & Forgot Password */}
+        <div className="flex flex-col items-center gap-2 pt-3">
           <button
             type="button"
             onClick={() => setCurrentView("register")}
-            className="text-xs text-primary hover:text-primary/80 transition-colors"
+            className="text-xs text-primary hover:text-primary/80 transition-colors font-medium"
           >
             Create Account
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentView("forgot-password")}
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            Forgot Password
           </button>
         </div>
       </form>
