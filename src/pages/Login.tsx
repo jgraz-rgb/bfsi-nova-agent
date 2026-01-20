@@ -519,7 +519,7 @@ export default function LoginPage() {
           type="submit"
           className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
         >
-          Create Account
+          Verify to Proceed
         </Button>
       </form>
     </motion.div>
