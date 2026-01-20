@@ -224,8 +224,8 @@ export default function LoginPage() {
           Welcome to
         </p>
         <h1 className="text-2xl md:text-3xl font-semibold whitespace-nowrap">
-          <span className="text-foreground">SearchUnify's </span>
-          <span className="text-primary">AI Agent Suite</span>
+          <span className="text-foreground">SearchUnify's Agentic AI Suite for </span>
+          <span className="text-primary">BFSI</span>
         </h1>
         <p className="text-sm text-muted-foreground mt-4">
           Please login to continue to your account.
