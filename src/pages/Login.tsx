@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-
+import logoImage from "@/assets/searchunify-logo.svg";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 
-type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "register" | "register-verify";
+type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "register-transition" | "register" | "register-verify";
 
 // Tree ring style concave line with inner shadow effect
 const TreeRing = ({ 
@@ -316,7 +316,7 @@ export default function LoginPage() {
             </span>
             <button
               type="button"
-              onClick={() => setCurrentView("register")}
+              onClick={() => setCurrentView("register-transition")}
               className="relative overflow-hidden px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/30"
             >
               <span className="relative z-10">Create Account</span>
@@ -424,6 +424,44 @@ export default function LoginPage() {
           Resend
         </button>
       </p>
+    </motion.div>
+  );
+
+  // Auto-transition from register-transition to register
+  useEffect(() => {
+    if (currentView === "register-transition") {
+      const timer = setTimeout(() => {
+        setCurrentView("register");
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentView]);
+
+  const renderRegisterTransitionView = () => (
+    <motion.div
+      key="register-transition"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col items-center justify-center w-full py-20"
+    >
+      <motion.img
+        src={logoImage}
+        alt="SearchUnify"
+        className="h-12 w-auto"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      />
+      <motion.p
+        className="text-sm text-muted-foreground mt-6"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+      >
+        Setting up your account...
+      </motion.p>
     </motion.div>
   );
 
@@ -632,6 +670,7 @@ export default function LoginPage() {
             {currentView === "login" && renderLoginView()}
             {currentView === "forgot-password" && renderForgotPasswordView()}
             {currentView === "forgot-password-sent" && renderForgotPasswordSentView()}
+            {currentView === "register-transition" && renderRegisterTransitionView()}
             {currentView === "register" && renderRegisterView()}
             {currentView === "register-verify" && renderVerifyView()}
           </AnimatePresence>
