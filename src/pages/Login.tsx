@@ -460,7 +460,7 @@ export default function LoginPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
       >
-        Setting up your account...
+        Welcome to the Team
       </motion.p>
     </motion.div>
   );
