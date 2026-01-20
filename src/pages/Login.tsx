@@ -302,27 +302,24 @@ export default function LoginPage() {
         </Button>
 
         {/* Forgot Password & Not an existing user */}
-        <div className="flex flex-col items-center gap-2 pt-3">
+        <div className="flex flex-col items-center gap-3 pt-3">
           <button
             type="button"
             onClick={() => setCurrentView("forgot-password")}
-            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+            className="text-xs text-primary hover:text-primary/80 transition-colors"
           >
             Forgot Password
           </button>
-          <div className="group flex flex-col items-center gap-2">
-            <span className="text-xs text-muted-foreground">
-              Not an existing user?
-            </span>
+          <p className="text-xs text-muted-foreground">
+            Not an existing user?{" "}
             <button
               type="button"
               onClick={() => setCurrentView("register-transition")}
-              className="relative overflow-hidden px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/30"
+              className="text-primary font-semibold hover:text-primary/80 transition-colors"
             >
-              <span className="relative z-10">Create Account</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" />
+              Create Account.
             </button>
-          </div>
+          </p>
         </div>
       </form>
     </motion.div>
