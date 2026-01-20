@@ -310,13 +310,18 @@ export default function LoginPage() {
           >
             Forgot Password
           </button>
-          <button
-            type="button"
-            onClick={() => setCurrentView("register")}
-            className="text-xs text-muted-foreground hover:text-primary transition-colors"
-          >
-            Not an existing user?
-          </button>
+          <div className="group flex flex-col items-center gap-1">
+            <span className="text-xs text-muted-foreground">
+              Not an existing user?
+            </span>
+            <button
+              type="button"
+              onClick={() => setCurrentView("register")}
+              className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:text-primary/80"
+            >
+              Create Account
+            </button>
+          </div>
         </div>
       </form>
     </motion.div>
