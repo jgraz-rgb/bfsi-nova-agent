@@ -310,16 +310,17 @@ export default function LoginPage() {
           >
             Forgot Password
           </button>
-          <div className="group flex flex-col items-center gap-1">
+          <div className="group flex flex-col items-center gap-2">
             <span className="text-xs text-muted-foreground">
               Not an existing user?
             </span>
             <button
               type="button"
               onClick={() => setCurrentView("register")}
-              className="text-xs text-primary font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:text-primary/80"
+              className="relative overflow-hidden px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm opacity-0 group-hover:opacity-100 transform scale-95 group-hover:scale-100 transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/30"
             >
-              Create Account
+              <span className="relative z-10">Create Account</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-hover:animate-shimmer" />
             </button>
           </div>
         </div>
