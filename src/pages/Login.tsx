@@ -555,8 +555,7 @@ export default function LoginPage() {
           Verify Your Email
         </h1>
         <p className="text-sm text-muted-foreground mt-2">
-          We've sent a 6-digit code to<br />
-          <span className="text-foreground font-medium">{email}</span>
+          We've sent a 6-digit code to your email
         </p>
       </div>
 
