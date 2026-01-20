@@ -308,7 +308,7 @@ export default function LoginPage() {
             onClick={() => setCurrentView("register")}
             className="text-xs text-primary hover:text-primary/80 transition-colors font-medium"
           >
-            Create Account
+            Not an existing user?
           </button>
           <button
             type="button"
