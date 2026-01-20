@@ -301,21 +301,21 @@ export default function LoginPage() {
           Log In
         </Button>
 
-        {/* Create Account & Forgot Password */}
+        {/* Forgot Password & Not an existing user */}
         <div className="flex flex-col items-center gap-2 pt-3">
-          <button
-            type="button"
-            onClick={() => setCurrentView("register")}
-            className="text-xs text-primary hover:text-primary/80 transition-colors font-medium"
-          >
-            Not an existing user?
-          </button>
           <button
             type="button"
             onClick={() => setCurrentView("forgot-password")}
             className="text-xs text-muted-foreground hover:text-primary transition-colors"
           >
             Forgot Password
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentView("register")}
+            className="text-xs text-muted-foreground hover:text-primary transition-colors"
+          >
+            Not an existing user?
           </button>
         </div>
       </form>
