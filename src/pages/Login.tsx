@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 
 type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "register" | "register-verify";
@@ -142,8 +142,6 @@ export default function LoginPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [verificationMethod, setVerificationMethod] = useState<"email" | "sms">("email");
-  const [phone, setPhone] = useState("");
   const [verificationCode, setVerificationCode] = useState("");
   const navigate = useNavigate();
 
@@ -177,7 +175,6 @@ export default function LoginPage() {
     setEmail("");
     setPassword("");
     setConfirmPassword("");
-    setPhone("");
     setVerificationCode("");
     setShowPassword(false);
     setShowConfirmPassword(false);
@@ -518,53 +515,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        {/* Verification Method */}
-        <div className="space-y-2 pt-2">
-          <Label className="text-xs text-muted-foreground font-normal">
-            Verification Method
-          </Label>
-          <RadioGroup
-            value={verificationMethod}
-            onValueChange={(value) => setVerificationMethod(value as "email" | "sms")}
-            className="flex gap-6"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="email" id="verify-email" />
-              <Label htmlFor="verify-email" className="text-sm font-normal cursor-pointer">
-                Email
-              </Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="sms" id="verify-sms" />
-              <Label htmlFor="verify-sms" className="text-sm font-normal cursor-pointer">
-                SMS
-              </Label>
-            </div>
-          </RadioGroup>
-        </div>
-
-        {/* Phone Field (only if SMS selected) */}
-        {verificationMethod === "sms" && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="space-y-1.5"
-          >
-            <Label htmlFor="reg-phone" className="text-xs text-muted-foreground font-normal">
-              Phone Number
-            </Label>
-            <Input
-              id="reg-phone"
-              type="tel"
-              placeholder="+1-212-456-7890"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              className="h-10 bg-background border-border/60 focus:border-primary text-sm"
-            />
-          </motion.div>
-        )}
-
         <Button
           type="submit"
           className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4"
@@ -597,24 +547,16 @@ export default function LoginPage() {
       {/* Header */}
       <div className="text-center mb-6">
         <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
-          {verificationMethod === "email" ? (
-            <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-          ) : (
-            <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
-          )}
+          <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
         </div>
         <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
-          Verify Your {verificationMethod === "email" ? "Email" : "Phone"}
+          Verify Your Email
         </h1>
         <p className="text-sm text-muted-foreground mt-2">
           We've sent a 6-digit code to<br />
-          <span className="text-foreground font-medium">
-            {verificationMethod === "email" ? email : phone}
-          </span>
+          <span className="text-foreground font-medium">{email}</span>
         </p>
       </div>
 
