@@ -14,7 +14,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
       <BrowserRouter basename="/bfsi-agentic-suite/admin/dashboard">
         <Routes>
           <Route path="/" element={<Home />} />
