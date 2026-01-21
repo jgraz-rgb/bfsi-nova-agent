@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SolutionDetail from "./pages/SolutionDetail";
 import NotFound from "./pages/NotFound";
+import AgenticSolutions from "./pages/AgenticSolutions";
+import Login from "./pages/Login";
 
 const queryClient = new QueryClient();
 
@@ -16,8 +18,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter basename="/bfsi-agentic-suite/admin/dashboard">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/solutions" element={<Home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/solutions" element={<AgenticSolutions />} />
           <Route path="/solutions/:id" element={<SolutionDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
