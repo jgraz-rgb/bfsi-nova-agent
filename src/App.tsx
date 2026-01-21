@@ -17,7 +17,7 @@ const App = () => (
       <BrowserRouter basename="/bfsi-agentic-suite/admin/dashboard">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/solution/:id" element={<SolutionDetail />} />
+          <Route path="/solutions/:id" element={<SolutionDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
