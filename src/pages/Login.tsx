@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import logoImage from "@/assets/searchunify-logo.svg";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
-type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "forgot-password-email" | "reset-password" | "register-transition" | "register" | "register-verify";
+type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "forgot-password-email" | "reset-password" | "reset-password-success" | "register-transition" | "register" | "register-verify";
 
 // Tree ring style concave line with inner shadow effect
 const TreeRing = ({
@@ -158,12 +158,7 @@ export default function LoginPage() {
   };
   const handleResetPassword = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      resetForm();
-      setCurrentView("login");
-    }, 800);
+    setCurrentView("reset-password-success");
   };
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -608,6 +603,68 @@ export default function LoginPage() {
       </form>
     </motion.div>;
 
+  const renderResetPasswordSuccessView = () => <motion.div key="reset-password-success" initial={{
+    opacity: 0,
+    scale: 0.95
+  }} animate={{
+    opacity: 1,
+    scale: 1
+  }} exit={{
+    opacity: 0,
+    scale: 0.95
+  }} transition={{
+    duration: 0.3
+  }} className="flex flex-col items-center w-full text-center">
+      {/* Success Icon */}
+      <motion.div 
+        className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-6"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 0.4, delay: 0.1, type: "spring", stiffness: 200 }}
+      >
+        <motion.svg 
+          className="w-10 h-10 text-green-500" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+        </motion.svg>
+      </motion.div>
+
+      <motion.h1 
+        className="text-2xl md:text-3xl font-semibold text-foreground mb-2"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.4 }}
+      >
+        Password Reset Successfully
+      </motion.h1>
+      <motion.p 
+        className="text-sm text-muted-foreground mb-6"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.5 }}
+      >
+        Your password has been updated.<br />
+        Redirecting you to login...
+      </motion.p>
+    </motion.div>;
+
+  // Auto-transition from reset-password-success to login
+  useEffect(() => {
+    if (currentView === "reset-password-success") {
+      const timer = setTimeout(() => {
+        resetForm();
+        setCurrentView("login");
+      }, 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [currentView]);
+
   // Auto-transition from register-transition to register
   useEffect(() => {
     if (currentView === "register-transition") {
@@ -802,6 +859,7 @@ export default function LoginPage() {
             {currentView === "forgot-password-sent" && renderForgotPasswordSentView()}
             {currentView === "forgot-password-email" && renderForgotPasswordEmailView()}
             {currentView === "reset-password" && renderResetPasswordView()}
+            {currentView === "reset-password-success" && renderResetPasswordSuccessView()}
             {currentView === "register-transition" && renderRegisterTransitionView()}
             {currentView === "register" && renderRegisterView()}
             {currentView === "register-verify" && renderVerifyView()}
