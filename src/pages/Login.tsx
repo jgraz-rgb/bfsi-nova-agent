@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import logoImage from "@/assets/searchunify-logo.svg";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
-type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "register-transition" | "register" | "register-verify";
+type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "forgot-password-email" | "reset-password" | "register-transition" | "register" | "register-verify";
 
 // Tree ring style concave line with inner shadow effect
 const TreeRing = ({
@@ -140,6 +140,10 @@ export default function LoginPage() {
   const [keepLoggedIn, setKeepLoggedIn] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [verificationCode, setVerificationCode] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
   const navigate = useNavigate();
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -150,7 +154,16 @@ export default function LoginPage() {
   };
   const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault();
-    setCurrentView("forgot-password-sent");
+    setCurrentView("forgot-password-email");
+  };
+  const handleResetPassword = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      resetForm();
+      setCurrentView("login");
+    }, 800);
   };
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
@@ -168,8 +181,12 @@ export default function LoginPage() {
     setPassword("");
     setConfirmPassword("");
     setVerificationCode("");
+    setNewPassword("");
+    setConfirmNewPassword("");
     setShowPassword(false);
     setShowConfirmPassword(false);
+    setShowNewPassword(false);
+    setShowConfirmNewPassword(false);
   };
   const goToLogin = () => {
     resetForm();
@@ -417,6 +434,180 @@ export default function LoginPage() {
       </p>
     </motion.div>;
 
+  const renderForgotPasswordEmailView = () => <motion.div key="forgot-password-email" initial={{
+    opacity: 0,
+    scale: 0.95
+  }} animate={{
+    opacity: 1,
+    scale: 1
+  }} exit={{
+    opacity: 0,
+    scale: 0.95
+  }} transition={{
+    duration: 0.3
+  }} className="flex flex-col items-center w-full">
+      {/* Back Button */}
+      <button type="button" onClick={() => setCurrentView("forgot-password")} className="self-start flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground transition-colors mb-6">
+        <ArrowLeft className="h-3 w-3" />
+        Back
+      </button>
+
+      {/* Email Mockup Container */}
+      <div className="w-full bg-muted/30 rounded-xl border border-border/60 overflow-hidden">
+        {/* Email Header */}
+        <div className="bg-muted/50 px-4 py-3 border-b border-border/40">
+          <div className="flex items-center gap-2 mb-2">
+            <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+              <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+            </div>
+            <div>
+              <p className="text-xs font-medium text-foreground">SearchUnify</p>
+              <p className="text-[10px] text-muted-foreground">noreply@searchunify.com</p>
+            </div>
+          </div>
+          <p className="text-sm font-medium text-foreground">Reset Your Password</p>
+        </div>
+
+        {/* Email Body */}
+        <div className="px-4 py-6 text-center">
+          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+            <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+            </svg>
+          </div>
+          <h2 className="text-lg font-semibold text-foreground mb-2">Password Reset Request</h2>
+          <p className="text-sm text-muted-foreground mb-1">Hello,</p>
+          <p className="text-sm text-muted-foreground mb-4">
+            We received a request to reset the password for your account associated with <span className="text-foreground font-medium">{email}</span>.
+          </p>
+          <p className="text-sm text-muted-foreground mb-6">
+            Click the button below to create a new password:
+          </p>
+
+          <Button 
+            type="button" 
+            onClick={() => setCurrentView("reset-password")} 
+            className="w-full max-w-[200px] h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm"
+          >
+            Reset Password
+          </Button>
+
+          <p className="text-xs text-muted-foreground mt-6">
+            If you didn't request this, you can safely ignore this email.
+          </p>
+          <p className="text-xs text-muted-foreground mt-2">
+            This link will expire in 24 hours.
+          </p>
+        </div>
+
+        {/* Email Footer */}
+        <div className="bg-muted/30 px-4 py-3 border-t border-border/40">
+          <p className="text-[10px] text-muted-foreground text-center">
+            © 2024 SearchUnify. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </motion.div>;
+
+  const renderResetPasswordView = () => <motion.div key="reset-password" initial={{
+    opacity: 0,
+    x: 20
+  }} animate={{
+    opacity: 1,
+    x: 0
+  }} exit={{
+    opacity: 0,
+    x: -20
+  }} transition={{
+    duration: 0.3
+  }} className="flex flex-col items-center w-full">
+      {/* Header */}
+      <div className="text-center mb-8">
+        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+          <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
+          </svg>
+        </div>
+        <h1 className="text-2xl md:text-3xl font-semibold text-foreground">
+          Create New Password
+        </h1>
+        <p className="text-sm text-muted-foreground mt-2">
+          Enter your new password below.
+        </p>
+      </div>
+
+      {/* Reset Password Form */}
+      <form onSubmit={handleResetPassword} className="w-full space-y-4">
+        {/* Email Field - Read Only */}
+        <div className="space-y-1.5">
+          <Label htmlFor="reset-email-readonly" className="text-xs text-muted-foreground font-normal">
+            Email
+          </Label>
+          <Input 
+            id="reset-email-readonly" 
+            type="email" 
+            value={email} 
+            readOnly 
+            className="h-10 bg-muted/50 border-border/60 text-sm text-muted-foreground cursor-not-allowed" 
+          />
+        </div>
+
+        {/* New Password Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="new-password" className="text-xs text-muted-foreground font-normal">
+            New Password
+          </Label>
+          <div className="relative">
+            <Input 
+              id="new-password" 
+              type={showNewPassword ? "text" : "password"} 
+              placeholder="Enter new password" 
+              value={newPassword} 
+              onChange={e => setNewPassword(e.target.value)} 
+              className="h-10 bg-background border-border/60 focus:border-primary text-sm pr-10" 
+            />
+            <button 
+              type="button" 
+              onClick={() => setShowNewPassword(!showNewPassword)} 
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        {/* Confirm New Password Field */}
+        <div className="space-y-1.5">
+          <Label htmlFor="confirm-new-password" className="text-xs text-muted-foreground font-normal">
+            Confirm Password
+          </Label>
+          <div className="relative">
+            <Input 
+              id="confirm-new-password" 
+              type={showConfirmNewPassword ? "text" : "password"} 
+              placeholder="Confirm new password" 
+              value={confirmNewPassword} 
+              onChange={e => setConfirmNewPassword(e.target.value)} 
+              className="h-10 bg-background border-border/60 focus:border-primary text-sm pr-10" 
+            />
+            <button 
+              type="button" 
+              onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)} 
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {showConfirmNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+            </button>
+          </div>
+        </div>
+
+        <Button type="submit" className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4">
+          Change Password
+        </Button>
+      </form>
+    </motion.div>;
+
   // Auto-transition from register-transition to register
   useEffect(() => {
     if (currentView === "register-transition") {
@@ -609,6 +800,8 @@ export default function LoginPage() {
             {currentView === "login" && renderLoginView()}
             {currentView === "forgot-password" && renderForgotPasswordView()}
             {currentView === "forgot-password-sent" && renderForgotPasswordSentView()}
+            {currentView === "forgot-password-email" && renderForgotPasswordEmailView()}
+            {currentView === "reset-password" && renderResetPasswordView()}
             {currentView === "register-transition" && renderRegisterTransitionView()}
             {currentView === "register" && renderRegisterView()}
             {currentView === "register-verify" && renderVerifyView()}
