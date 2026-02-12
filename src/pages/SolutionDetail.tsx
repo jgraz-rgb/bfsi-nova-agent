@@ -12,6 +12,7 @@ import workflowDigitalLoanIndia from "@/assets/workflow-digital-loan-india.png";
 import workflowFinancialServicesIndia from "@/assets/workflow-financial-services-india.png";
 import workflowInsuranceIndia from "@/assets/workflow-insurance-india.png";
 import workflowHealthInsuranceUsa from "@/assets/workflow-health-insurance-usa.png";
+import workflowAutoInsuranceUsa from "@/assets/workflow-auto-insurance-usa.png";
 
 const solutionLinks: Record<string, string> = {
   "financial-services-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
@@ -69,7 +70,7 @@ const solutionData: Record<string, { title: string; description: string; workflo
   "auto-insurance-usa": {
     title: "Voice based Auto Insurance Origination (USA)",
     description: "The Voice-based Auto Insurance Agentic AI Solution guides customers through the complete quote-to-bind journey in a single natural conversation. Starting with identity verification and intelligent vehicle capture using VIN or conversational prompts, it collects driver history, evaluates current insurance status for competitive pricing, and explains coverage options in simple terms — while detecting discount eligibility and home-bundle opportunities. The agent transparently generates a personalized quote, handles payment options, and completes policy binding within minutes. At the end of the interaction, policy details and customer data are automatically logged into the CRM for follow-up and compliance.\n\n**Demo/Simulation Notes**:\n\n• **Pre-loaded sample VINs for vehicle lookup simulation**: 1HGBH41JXMN109186, 1FAFP404X1F192837, 2T1BURHE5JC045612, 5NPE24AF4FH123456, 1C4RJFBG8LC334455, 3VW2B7AJ5HM098765, 1G1BE5SM7H7154321, JN1EV7AR0JM654321, WAUENAF48KN112233\n\n• **OTP verification**: Accept any 6-digit code entered by the user",
-    workflow: workflowInsuranceIndia
+    workflow: workflowAutoInsuranceUsa
   }
 };
 
