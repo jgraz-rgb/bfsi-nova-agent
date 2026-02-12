@@ -29,6 +29,7 @@ import digitalPersonalIcon from "@/assets/icons/digital-personal-loan.png";
 import financialServicesIcon from "@/assets/icons/personal-finance-support.png";
 import insuranceIcon from "@/assets/icons/term-insurance-new.png";
 import healthInsuranceIcon from "@/assets/icons/health-insurance-new.png";
+import autoInsuranceIcon from "@/assets/icons/auto-insurance.png";
 
 export default function AgenticSolutionsPage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("solutions");
@@ -202,7 +203,7 @@ export default function AgenticSolutionsPage() {
                     <>
                       Voice based
                       <br />
-                      Term Insurance Application
+                      ULIP Origination
                     </>
                   }
                   region="India"
@@ -219,6 +220,18 @@ export default function AgenticSolutionsPage() {
                   }
                   region="USA"
                   link="/solution/health-insurance-usa"
+                />
+                <SolutionCard
+                  iconSvg={autoInsuranceIcon}
+                  title={
+                    <>
+                      Voice based
+                      <br />
+                      Auto Insurance Origination
+                    </>
+                  }
+                  region="USA"
+                  link="/solution/auto-insurance-usa"
                 />
               </div>
             </CollapsibleContent>

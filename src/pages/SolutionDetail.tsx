@@ -21,7 +21,8 @@ const solutionLinks: Record<string, string> = {
   "home-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/output/index.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "digital-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexbank.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "insurance": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/loan?agentConfig=kotakInsurance",
-  "health-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/health?agentConfig=usHealthInsurance"
+  "health-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/health?agentConfig=usHealthInsurance",
+  "auto-insurance-usa": ""
 };
 
 const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
@@ -56,14 +57,19 @@ const solutionData: Record<string, { title: string; description: string; workflo
     workflow: workflowFinancialServicesIndia
   },
   "insurance": {
-    title: "Voice based Term Insurance Application (India)",
-    description: "The Voice-based Term Insurance Application Agentic Solution guides the customer through the full insurance investment journey step-by-step, collecting personal, financial and health details through a natural conversational flow. The underlying agent also uses email as a medium to confirm policy details with the customer, assist in uploading required documents, assist in paying the first monthly premium and to finally share the policy document with the customer. At the end of the workflow, a ticket with transcripts and customer details gets created in a CRM.\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID",
+    title: "Voice based ULIP Origination (India)",
+    description: "The Voice-based ULIP Origination Agentic Solution guides the customer through the complete Unit Linked Insurance Plan (ULIP) investment journey step-by-step, collecting personal, financial and risk profile details through a natural conversational flow. The agent helps the customer understand investment-cum-insurance benefits, explains NAV-based fund options, assists with fund selection based on risk profiling, and walks through premium allocation and charges. The underlying agent also uses email as a medium to confirm ULIP policy details with the customer, assist in uploading required documents, assist in paying the first premium and to finally share the policy document with the customer. At the end of the workflow, a ticket with transcripts and customer details gets created in a CRM.\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID",
     workflow: workflowInsuranceIndia
   },
   "health-insurance-usa": {
     title: "Voice based Health Insurance Renewal",
     description: "The Voice-based Health Insurance Renewal Solution assists insurance brokers in USA by automating the renewal process. This solution operates entirely over voice calls, where the AI agent proactively calls clients, gathers information, answers questions, negotiates with carrier, creates a proposal and completes renewal steps conversationally. At the end, the AI agent sends the policy documents to the client over an email.",
     workflow: workflowHealthInsuranceUsa
+  },
+  "auto-insurance-usa": {
+    title: "Voice based Auto Insurance Origination (USA)",
+    description: "The Voice-based Auto Insurance Agentic AI Solution guides customers through the complete quote-to-bind journey in a single natural conversation. Starting with identity verification and intelligent vehicle capture using VIN or conversational prompts, it collects driver history, evaluates current insurance status for competitive pricing, and explains coverage options in simple terms — while detecting discount eligibility and home-bundle opportunities. The agent transparently generates a personalized quote, handles payment options, and completes policy binding within minutes. At the end of the interaction, policy details and customer data are automatically logged into the CRM for follow-up and compliance.\n\n**Demo/Simulation Notes**:\n\n• **Pre-loaded sample VINs for vehicle lookup simulation**: 1HGBH41JXMN109186, 1FAFP404X1F192837, 2T1BURHE5JC045612, 5NPE24AF4FH123456, 1C4RJFBG8LC334455, 3VW2B7AJ5HM098765, 1G1BE5SM7H7154321, JN1EV7AR0JM654321, WAUENAF48KN112233\n\n• **OTP verification**: Accept any 6-digit code entered by the user",
+    workflow: workflowInsuranceIndia
   }
 };
 
@@ -158,14 +164,24 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
   ],
   "insurance": [
     {
-      name: "AI Term Insurance Agent",
-      description: "Provides conversational guidance over voice to gather personal, financial and health details required for the term-insurance journey. The agent also uses email to confirm policy information, support document uploads and premium payment, share the final policy document. It automatically create a CRM ticket with transcripts and customer details."
+      name: "AI ULIP Origination Agent",
+      description: "Provides conversational guidance over voice to gather personal, financial and risk profile details required for the ULIP investment journey. The agent explains fund options, premium allocation, and investment-cum-insurance benefits. It also uses email to confirm ULIP policy information, support document uploads and premium payment, share the final policy document. It automatically creates a CRM ticket with transcripts and customer details."
     }
   ],
   "health-insurance-usa": [
     {
       name: "AI Health Insurance Renewal Agent",
       description: "Initiates client outreach over a phone call. Submits gathered data from client to the carrier and creates proposal for client. Assists clients in negotiating with carrier and then choosing the renewal plan. Conversationally completes the renewal flows as well as responds to customer queries."
+    }
+  ],
+  "auto-insurance-usa": [
+    {
+      name: "AI Auto Insurance Origination Agent",
+      description: "A voice-based agent that completes the end-to-end auto insurance quote-to-bind journey through a guided conversational flow while also answering customer questions in real time using the insurer's knowledge base. It seamlessly handles identity verification, data collection, coverage education, discount assessment, and policy binding — all within a single interaction."
+    },
+    {
+      name: "Bundle Detection & Upsell Agent",
+      description: "An intelligent agent that analyzes customer signals during the conversation — such as home ownership, existing policies, and profile data — to identify bundling opportunities and recommend relevant add-on or cross-sell products."
     }
   ],
   "default": [
