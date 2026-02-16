@@ -26,40 +26,47 @@ const solutionLinks: Record<string, string> = {
   "auto-insurance-usa": ""
 };
 
-const solutionData: Record<string, { title: string; description: string; workflow: string }> = {
+const solutionData: Record<string, { title: string; description: string; notes?: string; workflow: string }> = {
   "personal-loan-india": {
     title: "Personal Loan Origination (India)",
-    description: "The Personal Loan Origination Agentic Solution enables seamless personal loan origination by pre-qualifying the user based on key parameters, presenting personalized pre-approved offers and collecting necessary documents digitally. Once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement.\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
+    description: "The Personal Loan Origination Agentic Solution enables seamless personal loan origination by pre-qualifying the user based on key parameters, presenting personalized pre-approved offers and collecting necessary documents digitally. Once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement.",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
     workflow: workflowImage
   },
   "personal-loan-usa": {
     title: "Personal Loan Origination (USA)",
-    description: "Designed for the financial institutions in U.S., this agentic solution guides users through a simplified digital journey to check eligibility, verify identity and view personalized loan offers. It streamlines document collection and once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **SSN**: 900-15-6012 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **Date of Birth**: 9/10/1991 | **Permanent Address with Pincode**: 1203, Abbey Street, Detroit, 48226\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
+    description: "Designed for the financial institutions in U.S., this agentic solution guides users through a simplified digital journey to check eligibility, verify identity and view personalized loan offers. It streamlines document collection and once the application is complete, it securely hands over the details to the bank for final underwriting and disbursement",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **SSN**: 900-15-6012 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **Date of Birth**: 9/10/1991 | **Permanent Address with Pincode**: 1203, Abbey Street, Detroit, 48226\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
     workflow: workflowImage
   },
   "gold-loan-india": {
     title: "Gold Loan Origination (India)",
-    description: "The Gold Loan Origination Agentic Solution automates the gold loan journey by helping users schedule valuation appointments, verify their identity and upload preliminary KYC details. The flow starts with collecting basic information about the customer followed by a tentative gold loan offer and scheduling of physical appointment\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID",
+    description: "The Gold Loan Origination Agentic Solution automates the gold loan journey by helping users schedule valuation appointments, verify their identity and upload preliminary KYC details. The flow starts with collecting basic information about the customer followed by a tentative gold loan offer and scheduling of physical appointment",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID",
     workflow: workflowGoldLoanIndia
   },
   "home-loan-india": {
     title: "Home Loan Origination (India)",
-    description: "The Home Loan Origination Agentic Solution assists users through a structured, step-by-step process covering eligibility checks, KYC verification, income validation, and property inspection scheduling. It simplifies complex workflows, enabling banks to deliver a premium, transparent and time-efficient home financing experience\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
+    description: "The Home Loan Origination Agentic Solution assists users through a structured, step-by-step process covering eligibility checks, KYC verification, income validation, and property inspection scheduling. It simplifies complex workflows, enabling banks to deliver a premium, transparent and time-efficient home financing experience",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
     workflow: workflowHomeLoanIndia
   },
   "digital-loan-india": {
     title: "Digital Personal Loan Application (India)",
-    description: "The Digital Personal Loan Application Agentic Solution is a comprehensive end-to-end digital solution that manages the entire personal loan lifecycle from origination to pre-qualified offer generation to credit underwriting to final approval and communication of disbursement\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
+    description: "The Digital Personal Loan Application Agentic Solution is a comprehensive end-to-end digital solution that manages the entire personal loan lifecycle from origination to pre-qualified offer generation to credit underwriting to final approval and communication of disbursement",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Name**: Arkadeep Joardar | **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID\n\n• Choose **Type of Customer** as \"Salaried\"",
     workflow: workflowDigitalLoanIndia
   },
   "financial-services-india": {
     title: "Personal Finance Customer Support Agent (USA)",
-    description: "An Agentic AI Support Solution built for a US-based multinational personal finance company designed to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Full Name**: Brian Corcoran\n• **Registered Email ID**: brianc@grazitti.com\n• **Phone Number**: +1-212-456-7890\n• **Home Address**: 132 My Street, Kingston, New York 12401\n• **Birth Year**: 01/01/1990\n\nStart a conversation by asking any of the following:\n\n• I want to update my registered email address\n\n• I need help to reset my password\n\n• I want to open a CK Money Spend Account\n\n• I want to link my bank account to the Spend Account\n\n• I want to download my credit report\n\n• I am looking for a credit card\n\n• I want to see what I spent over the last 6 months",
+    description: "An Agentic AI Support Solution built for a US-based multinational personal finance company designed to assist customers get instant resolution to account management (e.g email address update, password reset, opening an account, linking an external bank account, etc.), credit (e.g retrieving credit report, suggesting a credit card, applying for a credit card, tracking spending habits, etc.) and service related queries",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Full Name**: Brian Corcoran\n• **Registered Email ID**: brianc@grazitti.com\n• **Phone Number**: +1-212-456-7890\n• **Home Address**: 132 My Street, Kingston, New York 12401\n• **Birth Year**: 01/01/1990\n\nStart a conversation by asking any of the following:\n\n• I want to update my registered email address\n\n• I need help to reset my password\n\n• I want to open a CK Money Spend Account\n\n• I want to link my bank account to the Spend Account\n\n• I want to download my credit report\n\n• I am looking for a credit card\n\n• I want to see what I spent over the last 6 months",
     workflow: workflowFinancialServicesIndia
   },
   "insurance": {
     title: "Voice based ULIP Origination (India)",
-    description: "The Voice-based ULIP Origination Agentic Solution guides the customer through the complete Unit Linked Insurance Plan (ULIP) investment journey step-by-step, collecting personal, financial and risk profile details through a natural conversational flow. The agent helps the customer understand investment-cum-insurance benefits, explains NAV-based fund options, assists with fund selection based on risk profiling, and walks through premium allocation and charges. The underlying agent also uses email as a medium to confirm ULIP policy details with the customer, assist in uploading required documents, assist in paying the first premium and to finally share the policy document with the customer. At the end of the workflow, a ticket with transcripts and customer details gets created in a CRM.\n\n**Note**: Use the following information while testing, as and when prompted\n\n• **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID",
+    description: "The Voice-based ULIP Origination Agentic Solution guides the customer through the complete Unit Linked Insurance Plan (ULIP) investment journey step-by-step, collecting personal, financial and risk profile details through a natural conversational flow. The agent helps the customer understand investment-cum-insurance benefits, explains NAV-based fund options, assists with fund selection based on risk profiling, and walks through premium allocation and charges. The underlying agent also uses email as a medium to confirm ULIP policy details with the customer, assist in uploading required documents, assist in paying the first premium and to finally share the policy document with the customer. At the end of the workflow, a ticket with transcripts and customer details gets created in a CRM.",
+    notes: "**Note**: Use the following information while testing, as and when prompted\n\n• **Aadhar Number**: 8060 1212 1818 | **Mobile Number**: 9593959473 | **OTP for mobile verification**: Enter any 6-digit OTP | **PAN**: AUFPJ1111A | **Date of Birth**: 18/05/1994 | **Permanent Address with Pincode**: 101/23, Street 1501, Park Street, Kolkata - 700016 | **Pincode**: 700016\n\n• **Email**: Enter your email ID",
     workflow: workflowInsuranceIndia
   },
   "health-insurance-usa": {
@@ -69,7 +76,8 @@ const solutionData: Record<string, { title: string; description: string; workflo
   },
   "auto-insurance-usa": {
     title: "Voice based Auto Insurance Origination (USA)",
-    description: "The Agentic Solution features an AI Auto Insurance Origination Agent that guides customers seamlessly through the complete quote-to-bind journey in a single, natural voice conversation.\n\n**Step 1**: Welcomes the customer, sets clear expectations and collects basic personal details while verifying identity through mobile OTP authentication\n\n**Step 2**: Captures the VIN and retrieves Year–Make–Model–Trim details via API integrations, along with vehicle usage and ownership information\n\n**Step 3**: Gathers driver details including license information and driving history, while proactively assessing eligibility for discounts\n\n**Step 4**: Identifies existing insurance coverage and captures prior policy details, if applicable\n\n**Step 5**: Educates the customer on coverage options, recommends optimal limits, explains deductibles and add-ons\n\n**Step 6**: Detects home ownership to trigger a bundle detection and upsell agent where relevant\n\n**Step 7**: Initiates backend quote generation to deliver a personalized premium, addressing discount-related queries and clarifying coverage questions in real time\n\n**Step 8**: Shares a secure payment link via email to bind coverage and automatically issues policy documents upon successful payment\n\n**Step 9**: Logs policy details and customer data into the CRM to ensure compliance, tracking and follow-up readiness.\n\n**Demo/Simulation Notes**:\n\n• **Pre-loaded sample VINs for vehicle lookup simulation**: 1HGBH41JXMN109186, 1FAFP404X1F192837, 2T1BURHE5JC045612, 5NPE24AF4FH123456, 1C4RJFBG8LC334455, 3VW2B7AJ5HM098765, 1G1BE5SM7H7154321, JN1EV7AR0JM654321, WAUENAF48KN112233\n\n• **OTP verification**: Accept any 6-digit code entered by the user",
+    description: "The Agentic Solution features an AI Auto Insurance Origination Agent that guides customers seamlessly through the complete quote-to-bind journey in a single, natural voice conversation.\n\n**Step 1**: Welcomes the customer, sets clear expectations and collects basic personal details while verifying identity through mobile OTP authentication\n\n**Step 2**: Captures the VIN and retrieves Year–Make–Model–Trim details via API integrations, along with vehicle usage and ownership information\n\n**Step 3**: Gathers driver details including license information and driving history, while proactively assessing eligibility for discounts\n\n**Step 4**: Identifies existing insurance coverage and captures prior policy details, if applicable\n\n**Step 5**: Educates the customer on coverage options, recommends optimal limits, explains deductibles and add-ons\n\n**Step 6**: Detects home ownership to trigger a bundle detection and upsell agent where relevant\n\n**Step 7**: Initiates backend quote generation to deliver a personalized premium, addressing discount-related queries and clarifying coverage questions in real time\n\n**Step 8**: Shares a secure payment link via email to bind coverage and automatically issues policy documents upon successful payment\n\n**Step 9**: Logs policy details and customer data into the CRM to ensure compliance, tracking and follow-up readiness.",
+    notes: "**Demo/Simulation Notes**:\n\n• **Pre-loaded sample VINs for vehicle lookup simulation**: 1HGBH41JXMN109186, 1FAFP404X1F192837, 2T1BURHE5JC045612, 5NPE24AF4FH123456, 1C4RJFBG8LC334455, 3VW2B7AJ5HM098765, 1G1BE5SM7H7154321, JN1EV7AR0JM654321, WAUENAF48KN112233\n\n• **OTP verification**: Accept any 6-digit code entered by the user",
     workflow: workflowAutoInsuranceUsa
   }
 };
@@ -299,14 +307,23 @@ export default function SolutionDetail() {
                 </div>
                 <div className="flex-1">
                   <h2 className="font-bold text-lg mb-3 text-foreground">Workflow Description</h2>
-                  <p className="text-foreground/90 leading-relaxed">
-                    {solution.description.split('\n\n')[0]}
-                  </p>
+                  <div className="text-foreground/90 leading-relaxed">
+                    {solution.description.split('\n\n').map((paragraph, index) => (
+                      <p key={index} className={index > 0 ? "mt-3" : ""}>
+                        {paragraph.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                          if (part.startsWith('**') && part.endsWith('**')) {
+                            return <strong key={i}>{part.slice(2, -2)}</strong>;
+                          }
+                          return part;
+                        })}
+                      </p>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
 
-            {solution.description.split('\n\n').length > 1 && (
+            {solution.notes && (
               <div className="bg-gradient-to-br from-orange-50/50 to-orange-100/30 border border-orange-200/50 rounded-2xl p-8 shadow-sm">
                 <div className="flex items-start gap-3">
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -315,9 +332,9 @@ export default function SolutionDetail() {
                   <div className="flex-1">
                     <h2 className="font-bold text-lg mb-3 text-foreground">Note</h2>
                     <div className="text-foreground/90 leading-relaxed">
-                      {solution.description.split('\n\n').slice(1).map((paragraph, index) => (
+                      {solution.notes.split('\n\n').map((paragraph, index) => (
                         <p key={index} className={index > 0 ? "mt-2" : ""}>
-                          {paragraph.replace(/^\*\*Note\*\*:\s*/, '').split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                          {paragraph.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
                             if (part.startsWith('**') && part.endsWith('**')) {
                               return <strong key={i}>{part.slice(2, -2)}</strong>;
                             }
