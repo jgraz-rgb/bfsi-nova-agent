@@ -23,7 +23,7 @@ const solutionLinks: Record<string, string> = {
   "digital-loan-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexbank.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "insurance": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/loan?agentConfig=kotakInsurance",
   "health-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/health?agentConfig=usHealthInsurance",
-  "auto-insurance-usa": ""
+  "auto-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/auto?agentConfig=aaaInsurance"
 };
 
 const solutionData: Record<string, { title: string; description: string; notes?: string; workflow: string }> = {
@@ -77,7 +77,7 @@ const solutionData: Record<string, { title: string; description: string; notes?:
   "auto-insurance-usa": {
     title: "Voice based Auto Insurance Origination (USA)",
     description: "The Agentic Solution features an AI Auto Insurance Origination Agent that guides customers seamlessly through the complete quote-to-bind journey in a single, natural voice conversation.\n\n**Step 1**: Welcomes the customer, sets clear expectations and collects basic personal details while verifying identity through mobile OTP authentication\n\n**Step 2**: Captures the VIN and retrieves Year–Make–Model–Trim details via API integrations, along with vehicle usage and ownership information\n\n**Step 3**: Gathers driver details including license information and driving history, while proactively assessing eligibility for discounts\n\n**Step 4**: Identifies existing insurance coverage and captures prior policy details, if applicable\n\n**Step 5**: Educates the customer on coverage options, recommends optimal limits, explains deductibles and add-ons\n\n**Step 6**: Detects home ownership to trigger a bundle detection and upsell agent where relevant\n\n**Step 7**: Initiates backend quote generation to deliver a personalized premium, addressing discount-related queries and clarifying coverage questions in real time\n\n**Step 8**: Shares a secure payment link via email to bind coverage and automatically issues policy documents upon successful payment\n\n**Step 9**: Logs policy details and customer data into the CRM to ensure compliance, tracking and follow-up readiness.",
-    notes: "**Demo/Simulation Notes**:\n\n• **Pre-loaded sample VINs for vehicle lookup simulation**: 1HGBH41JXMN109186, 1FAFP404X1F192837, 2T1BURHE5JC045612, 5NPE24AF4FH123456, 1C4RJFBG8LC334455, 3VW2B7AJ5HM098765, 1G1BE5SM7H7154321, JN1EV7AR0JM654321, WAUENAF48KN112233\n\n• **OTP verification**: Accept any 6-digit code entered by the user",
+    notes: "**Demo/Simulation Notes**:\n\n• **Pre-loaded sample VINs for vehicle lookup simulation**: 1HGBH41JXMN109186, 1FAFP404X1F192837, 2T1BURHE5JC045612, 5NPE24AF4FH123456, 1C4RJFBG8LC334455, 3VW2B7AJ5HM098765, 1G1BE5SM7H7154321, JN1EV7AR0JM654321, WAUENAF48KN112233\n\n• **OTP verification**: Accept any 6-digit code entered by the user\n\n• You can ask questions such as \"What deductible should I choose?\", \"What is rental car reimbursement?\", \"What does roadside assistance cover?\" or \"What safety features qualify for discounts?\"",
     workflow: workflowAutoInsuranceUsa
   }
 };
