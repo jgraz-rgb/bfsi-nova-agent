@@ -240,6 +240,18 @@ export default function AgenticSolutionsPage() {
                   region="USA"
                   link="/solution/auto-insurance-usa"
                 />
+                <SolutionCard
+                  iconSvg={healthInsuranceSalesIcon}
+                  title={
+                    <>
+                      AI Health Insurance
+                      <br />
+                      Sales Copilot
+                    </>
+                  }
+                  region="USA"
+                  link="/solution/health-insurance-sales-usa"
+                />
               </div>
             </CollapsibleContent>
           </Collapsible>
