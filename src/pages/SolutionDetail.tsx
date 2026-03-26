@@ -85,7 +85,7 @@ const solutionData: Record<string, { title: string; description: string; notes?:
     title: "AI Health Insurance Sales Copilot (USA)",
     description: "AI Health Insurance Sales Copilot is an Agentic AI-powered solution that acts as a real-time digital copilot for health insurance sellers, enabling them to confidently answer policy queries, summarize and compare policies, and deliver personalized, high-quality sales pitches. By instantly surfacing policy insights and automating structured comparisons, it enhances seller productivity, reduces manual effort and ensures consistent, effective customer interactions.",
     notes: "This demo environment is trained on select health insurance policies applicable in Florida and Texas. You can ask anything from the following policies:\n\n**Policies common to both Florida and Texas**:\n• Ambetter from Sunshine Health: Complete Gold\n• Ambetter from Sunshine Health: Everyday Silver\n\n**Policies applicable in Florida**:\n• Florida Health Care Plans: Gym Access IND Essential Plus Silver HMO 53\n• Florida Health Care Plans: Gym Access IND Platinum POS 4000\n\n**Policies applicable in Texas**:\n• Blue Cross Blue Shield of Texas: Blue Advantage Gold HMO 206\n• Blue Cross Blue Shield of Texas: Blue Advantage Silver HMO 205",
-    workflow: workflowAutoInsuranceUsa
+    workflow: ""
   }
 };
 
@@ -361,20 +361,26 @@ export default function SolutionDetail() {
               </div>
             )}
 
-            <div 
-              className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
-              onClick={() => setIsWorkflowOpen(true)}
-            >
-              <div className="absolute top-4 right-4 bg-primary/90 text-white rounded-lg px-4 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Maximize2 className="w-4 h-4" />
-                <span className="text-sm font-medium">View Full Screen</span>
+            {solution.workflow ? (
+              <div 
+                className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
+                onClick={() => setIsWorkflowOpen(true)}
+              >
+                <div className="absolute top-4 right-4 bg-primary/90 text-white rounded-lg px-4 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Maximize2 className="w-4 h-4" />
+                  <span className="text-sm font-medium">View Full Screen</span>
+                </div>
+                <img 
+                  src={solution.workflow} 
+                  alt="Workflow Diagram" 
+                  className="w-full h-auto rounded-xl shadow-sm"
+                />
               </div>
-              <img 
-                src={solution.workflow} 
-                alt="Workflow Diagram" 
-                className="w-full h-auto rounded-xl shadow-sm"
-              />
-            </div>
+            ) : (
+              <div className="bg-white border-2 border-dashed border-orange-200 rounded-2xl p-16 shadow-sm flex items-center justify-center">
+                <p className="text-muted-foreground text-lg font-medium italic">Workflow Diagram — Pending</p>
+              </div>
+            )}
 
             <Dialog open={isWorkflowOpen} onOpenChange={setIsWorkflowOpen}>
               <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
