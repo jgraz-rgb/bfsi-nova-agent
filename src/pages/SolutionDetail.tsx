@@ -23,7 +23,8 @@ const solutionLinks: Record<string, string> = {
   "digital-loan-india": "https://bfsi.searchunify.com/resources/search_clients_custom/394e3b27-29bf-11f1-8f52-0242ac120013/download/indexbank.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
   "insurance": "https://bfsi.searchunify.com/bfsi-agentic-suite/loan?agentConfig=kotakInsurance",
   "health-insurance-usa": "https://bfsi.searchunify.com/bfsi-agentic-suite/health?agentConfig=usHealthInsurance",
-  "auto-insurance-usa": "https://bfsi.searchunify.com/bfsi-agentic-suite/auto?agentConfig=AAAInsurance"
+  "auto-insurance-usa": "https://bfsi.searchunify.com/bfsi-agentic-suite/auto?agentConfig=AAAInsurance",
+  "health-insurance-sales-usa": ""
 };
 
 const solutionData: Record<string, { title: string; description: string; notes?: string; workflow: string }> = {
