@@ -13,6 +13,7 @@ import workflowFinancialServicesIndia from "@/assets/workflow-financial-services
 import workflowInsuranceIndia from "@/assets/workflow-insurance-india.png";
 import workflowHealthInsuranceUsa from "@/assets/workflow-health-insurance-usa.png";
 import workflowAutoInsuranceUsa from "@/assets/workflow-auto-insurance-usa.png";
+import workflowHealthInsuranceSalesUsa from "@/assets/workflow-health-insurance-sales-usa.png";
 
 const solutionLinks: Record<string, string> = {
   "financial-services-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
@@ -85,7 +86,7 @@ const solutionData: Record<string, { title: string; description: string; notes?:
     title: "AI Health Insurance Sales Copilot (USA)",
     description: "AI Health Insurance Sales Copilot is an Agentic AI-powered solution that acts as a real-time digital copilot for health insurance sellers, enabling them to confidently answer policy queries, summarize and compare policies, and deliver personalized, high-quality sales pitches. By instantly surfacing policy insights and automating structured comparisons, it enhances seller productivity, reduces manual effort and ensures consistent, effective customer interactions.",
     notes: "This demo environment is trained on select health insurance policies applicable in Florida and Texas. You can ask anything from the following policies:\n\n**Policies common to both Florida and Texas**:\n• Ambetter from Sunshine Health: Complete Gold\n• Ambetter from Sunshine Health: Everyday Silver\n\n**Policies applicable in Florida**:\n• Florida Health Care Plans: Gym Access IND Essential Plus Silver HMO 53\n• Florida Health Care Plans: Gym Access IND Platinum POS 4000\n\n**Policies applicable in Texas**:\n• Blue Cross Blue Shield of Texas: Blue Advantage Gold HMO 206\n• Blue Cross Blue Shield of Texas: Blue Advantage Silver HMO 205",
-    workflow: ""
+    workflow: workflowHealthInsuranceSalesUsa
   }
 };
 
