@@ -85,7 +85,7 @@ const solutionData: Record<string, { title: string; description: string; notes?:
   "health-insurance-sales-usa": {
     title: "AI Health Insurance Sales Copilot (USA)",
     description: "AI Health Insurance Sales Copilot is an Agentic AI-powered solution that acts as a real-time digital copilot for health insurance sellers, enabling them to confidently answer policy queries, summarize and compare policies, and deliver personalized, high-quality sales pitches. By instantly surfacing policy insights and automating structured comparisons, it enhances seller productivity, reduces manual effort and ensures consistent, effective customer interactions.",
-    notes: "This demo environment is trained on select health insurance policies applicable in Florida and Texas. You can ask anything from the following policies:\n\n**Policies common to both Florida and Texas**:\n• Ambetter from Sunshine Health: Complete Gold\n• Ambetter from Sunshine Health: Everyday Silver\n\n**Policies applicable in Florida**:\n• Florida Health Care Plans: Gym Access IND Essential Plus Silver HMO 53\n• Florida Health Care Plans: Gym Access IND Platinum POS 4000\n\n**Policies applicable in Texas**:\n• Blue Cross Blue Shield of Texas: Blue Advantage Gold HMO 206\n• Blue Cross Blue Shield of Texas: Blue Advantage Silver HMO 205",
+    notes: "This demo environment is trained on select health insurance policies applicable in Florida and Texas. You can ask anything from the following policies:\n\n**Policies common to both Florida and Texas**:\n• [Ambetter from Sunshine Health: Complete Gold](https://drive.google.com/file/d/1_GwoJDUxLCB1SSNfDgFi5x0Y1yKW0-Se/view)\n• [Ambetter from Sunshine Health: Everyday Silver](https://drive.google.com/file/d/1wtDPf4_lc9Z4mPHKkGWMec4L75mHtosL/view?usp=drive_link)\n\n**Policies applicable in Florida**:\n• [Florida Health Care Plans: Gym Access IND Essential Plus Silver HMO 53](https://drive.google.com/file/d/1uwSSev-rZCTq1thvCaDu_G1SoposTLI0/view)\n• [Florida Health Care Plans: Gym Access IND Platinum POS 4000](https://drive.google.com/file/d/1MqY-OyNYDmOFzdLD1k7fLon3-z1m0LfZ/view?usp=drive_link)\n\n**Policies applicable in Texas**:\n• [Blue Cross Blue Shield of Texas: Blue Advantage Gold HMO 206](https://drive.google.com/file/d/1uq_AEYbkNzmTzqqE-iAj3ZoHxtJJwGgi/view?usp=drive_link)\n• [Blue Cross Blue Shield of Texas: Blue Advantage Silver HMO 205](https://drive.google.com/file/d/1gaQ_TKTfycbYA-NdwiIO6_F2l6zDHeQl/view?usp=drive_link)",
     workflow: workflowHealthInsuranceSalesUsa
   }
 };
@@ -348,9 +348,13 @@ export default function SolutionDetail() {
                     <div className="text-foreground/90 leading-relaxed">
                       {solution.notes.split('\n\n').map((paragraph, index) => (
                         <p key={index} className={index > 0 ? "mt-2" : ""}>
-                          {paragraph.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                          {paragraph.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/).map((part, i) => {
                             if (part.startsWith('**') && part.endsWith('**')) {
                               return <strong key={i}>{part.slice(2, -2)}</strong>;
+                            }
+                            const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+                            if (linkMatch) {
+                              return <a key={i} href={linkMatch[2]} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">{linkMatch[1]}</a>;
                             }
                             return part;
                           })}
