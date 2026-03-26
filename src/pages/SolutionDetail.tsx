@@ -361,20 +361,26 @@ export default function SolutionDetail() {
               </div>
             )}
 
-            <div 
-              className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
-              onClick={() => setIsWorkflowOpen(true)}
-            >
-              <div className="absolute top-4 right-4 bg-primary/90 text-white rounded-lg px-4 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Maximize2 className="w-4 h-4" />
-                <span className="text-sm font-medium">View Full Screen</span>
+            {solution.workflow ? (
+              <div 
+                className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
+                onClick={() => setIsWorkflowOpen(true)}
+              >
+                <div className="absolute top-4 right-4 bg-primary/90 text-white rounded-lg px-4 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Maximize2 className="w-4 h-4" />
+                  <span className="text-sm font-medium">View Full Screen</span>
+                </div>
+                <img 
+                  src={solution.workflow} 
+                  alt="Workflow Diagram" 
+                  className="w-full h-auto rounded-xl shadow-sm"
+                />
               </div>
-              <img 
-                src={solution.workflow} 
-                alt="Workflow Diagram" 
-                className="w-full h-auto rounded-xl shadow-sm"
-              />
-            </div>
+            ) : (
+              <div className="bg-white border-2 border-dashed border-orange-200 rounded-2xl p-16 shadow-sm flex items-center justify-center">
+                <p className="text-muted-foreground text-lg font-medium italic">Workflow Diagram — Pending</p>
+              </div>
+            )}
 
             <Dialog open={isWorkflowOpen} onOpenChange={setIsWorkflowOpen}>
               <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
