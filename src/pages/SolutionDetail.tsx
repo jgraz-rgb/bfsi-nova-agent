@@ -200,6 +200,12 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
       description: "An intelligent agent that analyzes customer signals during the conversation — such as home ownership, existing policies, and profile data — to identify bundling opportunities and recommend relevant add-on or cross-sell products."
     }
   ],
+  "health-insurance-sales-usa": [
+    {
+      name: "AI Sales Copilot Agent",
+      description: "The AI Sales Copilot Agent is an intelligent, real-time assistant that supports insurance sellers by answering policy queries, summarizing policies, comparing between policies and generating personalized sales pitches during customer interactions."
+    }
+  ],
   "default": [
     {
       name: "AI Pre-Qualification Agent",
