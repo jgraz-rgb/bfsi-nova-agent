@@ -31,6 +31,7 @@ import financialServicesIcon from "@/assets/icons/personal-finance-support.png";
 import insuranceIcon from "@/assets/icons/term-insurance-new.png";
 import healthInsuranceIcon from "@/assets/icons/health-insurance-new.png";
 import autoInsuranceIcon from "@/assets/icons/auto-insurance.png";
+import healthInsuranceSalesIcon from "@/assets/icons/health-insurance-sales.png";
 
 export default function AgenticSolutionsPage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("solutions");
