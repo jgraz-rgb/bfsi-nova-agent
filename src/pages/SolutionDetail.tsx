@@ -13,6 +13,7 @@ import workflowFinancialServicesIndia from "@/assets/workflow-financial-services
 import workflowInsuranceIndia from "@/assets/workflow-insurance-india.png";
 import workflowHealthInsuranceUsa from "@/assets/workflow-health-insurance-usa.png";
 import workflowAutoInsuranceUsa from "@/assets/workflow-auto-insurance-usa.png";
+import workflowHealthInsuranceSalesUsa from "@/assets/workflow-health-insurance-sales-usa.png";
 
 const solutionLinks: Record<string, string> = {
   "financial-services-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
