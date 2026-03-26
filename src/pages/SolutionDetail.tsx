@@ -348,9 +348,13 @@ export default function SolutionDetail() {
                     <div className="text-foreground/90 leading-relaxed">
                       {solution.notes.split('\n\n').map((paragraph, index) => (
                         <p key={index} className={index > 0 ? "mt-2" : ""}>
-                          {paragraph.split(/(\*\*[^*]+\*\*)/).map((part, i) => {
+                          {paragraph.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/).map((part, i) => {
                             if (part.startsWith('**') && part.endsWith('**')) {
                               return <strong key={i}>{part.slice(2, -2)}</strong>;
+                            }
+                            const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+                            if (linkMatch) {
+                              return <a key={i} href={linkMatch[2]} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">{linkMatch[1]}</a>;
                             }
                             return part;
                           })}
