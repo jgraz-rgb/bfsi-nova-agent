@@ -5,9 +5,22 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "@/components/ui/use-toast";
+import { saveAuthUser } from "@/lib/auth";
 import logoImage from "@/assets/searchunify-logo.svg";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
+
 type AuthView = "login" | "forgot-password" | "forgot-password-sent" | "forgot-password-email" | "reset-password" | "reset-password-success" | "register-transition" | "register" | "register-verify";
+type LoginApiResponse = {
+  flag: number;
+  message?: string;
+  user?: {
+    id: number;
+    userid: string;
+  };
+};
+
+const LOGIN_API_URL = "https://bfsi.searchunify.com/admin/userManagement/check";
 
 // Tree ring style concave line with inner shadow effect
 const TreeRing = ({
@@ -130,7 +143,8 @@ function polarToCartesian(centerX: number, centerY: number, radius: number, angl
     y: centerY + radius * Math.sin(angleInRadians)
   };
 }
-export default function LoginPage() {
+export default function LoginPage({ onAuthChange }: { onAuthChange?: () => void }) {
+  const navigate = useNavigate();
   const [currentView, setCurrentView] = useState<AuthView>("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -144,12 +158,22 @@ export default function LoginPage() {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
-  const navigate = useNavigate();
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email.trim() || !password) {
+      toast({
+        title: "Missing credentials",
+        description: "Enter both email and password to continue.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
+    saveAuthUser({ id: 1, userid: email.trim() }, keepLoggedIn);
     setTimeout(() => {
-      navigate("/home");
+      onAuthChange?.();
+      navigate("/", { replace: true });
     }, 800);
   };
   const handleForgotPassword = (e: React.FormEvent) => {
@@ -168,7 +192,7 @@ export default function LoginPage() {
     e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
-      navigate("/home");
+      navigate("/", { replace: true });
     }, 800);
   };
   const resetForm = () => {
@@ -331,8 +355,12 @@ export default function LoginPage() {
         </div>
 
         {/* Login Button */}
-        <Button type="submit" className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4">
-          Log In
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="w-full h-10 bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm mt-4 disabled:opacity-70"
+        >
+          {isSubmitting ? "Logging In..." : "Log In"}
         </Button>
 
         {/* Forgot Password & Not an existing user */}

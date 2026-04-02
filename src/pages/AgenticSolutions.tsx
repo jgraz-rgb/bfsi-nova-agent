@@ -19,6 +19,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { clearStoredAuth } from "@/lib/auth";
 import logoImage from "@/assets/searchunify-logo.svg";
 
 // Import icons
@@ -48,6 +49,11 @@ export default function AgenticSolutionsPage() {
     } else {
       setActiveTab(tab);
     }
+  };
+
+  const handleLogout = () => {
+    clearStoredAuth();
+    navigate("/", { replace: true });
   };
 
   return (
@@ -279,7 +285,7 @@ export default function AgenticSolutionsPage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => navigate("/")}>
+            <AlertDialogAction onClick={handleLogout}>
               Confirm
             </AlertDialogAction>
           </AlertDialogFooter>

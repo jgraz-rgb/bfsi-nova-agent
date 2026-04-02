@@ -7,7 +7,9 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import logoImage from "@/assets/searchunify-logo.svg";
 import complianceBadges from "@/assets/compliance-badges.png";
-export default function HomePage() {
+import { clearStoredAuth } from "@/lib/auth";
+
+export default function HomePage({ onAuthChange }: { onAuthChange?: () => void }) {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("home");
   const [showAnalytics, setShowAnalytics] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
@@ -21,6 +23,13 @@ export default function HomePage() {
       setActiveTab(tab);
     }
   };
+
+  const handleLogout = () => {
+    clearStoredAuth();
+    onAuthChange?.();
+    navigate("/", { replace: true });
+  };
+
   return <div className="min-h-screen bg-background">
       {/* Top Header Bar */}
       <header className="sticky top-0 z-50 w-full border-b border-border bg-card shadow-sm">
@@ -203,7 +212,7 @@ export default function HomePage() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction onClick={() => navigate("/")}>
+            <AlertDialogAction onClick={handleLogout}>
               Confirm
             </AlertDialogAction>
           </AlertDialogFooter>
