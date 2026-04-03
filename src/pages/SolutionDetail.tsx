@@ -25,7 +25,7 @@ const solutionLinks: Record<string, string> = {
   "insurance": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/loan?agentConfig=kotakInsurance",
   "health-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/health?agentConfig=usHealthInsurance",
   "auto-insurance-usa": "https://feature-mltools.searchunify.com/bfsi-agentic-suite/auto?agentConfig=aaaInsurance",
-  "health-insurance-sales-usa": ""
+  "health-insurance-sales-usa": "https://www.searchunify.com/"
 };
 
 const solutionData: Record<string, { title: string; description: string; notes?: string; workflow: string }> = {
