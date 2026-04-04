@@ -92,7 +92,7 @@ export default function HomePage({ onAuthChange }: { onAuthChange?: () => void }
             </p>
             <div className="grid grid-cols-3 gap-4">
               <Card className="p-6 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300 min-h-[120px] flex flex-col justify-center">
-                <p className="text-5xl font-bold text-foreground mb-2">9</p>
+                <p className="text-5xl font-bold text-foreground mb-2">10</p>
                 <p className="text-sm text-muted-foreground">Agentic AI Solutions Available</p>
               </Card>
               <Card className="p-6 bg-card border-border text-center hover:shadow-[0_0_20px_rgba(234,88,12,0.3)] transition-shadow duration-300 min-h-[120px] flex flex-col justify-center">
