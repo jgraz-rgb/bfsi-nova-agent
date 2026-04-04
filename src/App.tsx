@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AgenticSolutions from "./pages/AgenticSolutions";
 import SolutionDetail from "./pages/SolutionDetail";
+import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import { useState, useCallback } from "react";
 
@@ -48,6 +49,7 @@ const AppRoutes = () => {
             </ProtectedRoute>
           }
         />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
