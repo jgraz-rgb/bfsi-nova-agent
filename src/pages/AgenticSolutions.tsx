@@ -31,6 +31,7 @@ import insuranceIcon from "@/assets/icons/term-insurance-new.png";
 import healthInsuranceIcon from "@/assets/icons/health-insurance-new.png";
 import autoInsuranceIcon from "@/assets/icons/auto-insurance.png";
 import healthInsuranceSalesIcon from "@/assets/icons/health-insurance-sales.png";
+import leadQualificationIcon from "@/assets/icons/lead-qualification.png";
 
 export default function AgenticSolutionsPage() {
   const [activeTab, setActiveTab] = useState<"home" | "solutions" | "analytics">("solutions");
@@ -178,6 +179,12 @@ export default function AgenticSolutionsPage() {
                   title="Personal Finance Customer Support Agent"
                   region="USA"
                   link="/solution/financial-services-india"
+                />
+                <SolutionCard
+                  iconSvg={leadQualificationIcon}
+                  title="AI Lead Qualification Agentic Solution"
+                  region="India"
+                  link="/solution/lead-qualification-india"
                 />
               </div>
             </CollapsibleContent>
