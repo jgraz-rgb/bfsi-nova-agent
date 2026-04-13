@@ -14,6 +14,7 @@ import workflowInsuranceIndia from "@/assets/workflow-insurance-india.png";
 import workflowHealthInsuranceUsa from "@/assets/workflow-health-insurance-usa.png";
 import workflowAutoInsuranceUsa from "@/assets/workflow-auto-insurance-usa.png";
 import workflowHealthInsuranceSalesUsa from "@/assets/workflow-health-insurance-sales-usa.png";
+import workflowLeadQualificationIndia from "@/assets/workflow-lead-qualification-india.png";
 
 const solutionLinks: Record<string, string> = {
  "financial-services-india": "https://bfsi.searchunify.com/resources/search_clients_custom/394e3b27-29bf-11f1-8f52-0242ac120013/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
@@ -87,6 +88,12 @@ const solutionData: Record<string, { title: string; description: string; notes?:
     description: "AI Health Insurance Sales Copilot is an Agentic AI-powered solution that acts as a real-time digital copilot for health insurance sellers, enabling them to confidently answer policy queries, summarize and compare policies, and deliver personalized, high-quality sales pitches. By instantly surfacing policy insights and automating structured comparisons, it enhances seller productivity, reduces manual effort and ensures consistent, effective customer interactions.",
     notes: "This demo environment is trained on select health insurance policies applicable in Florida and Texas. You can ask anything from the following policies:\n\n**Policies common to both Florida and Texas**:\n• [Ambetter from Sunshine Health: Complete Gold](https://drive.google.com/file/d/1_GwoJDUxLCB1SSNfDgFi5x0Y1yKW0-Se/view)\n• [Ambetter from Sunshine Health: Everyday Silver](https://drive.google.com/file/d/1wtDPf4_lc9Z4mPHKkGWMec4L75mHtosL/view?usp=drive_link)\n\n**Policies applicable in Florida**:\n• [Florida Health Care Plans: Gym Access IND Essential Plus Silver HMO 53](https://drive.google.com/file/d/1uwSSev-rZCTq1thvCaDu_G1SoposTLI0/view)\n• [Florida Health Care Plans: Gym Access IND Platinum POS 4000](https://drive.google.com/file/d/1MqY-OyNYDmOFzdLD1k7fLon3-z1m0LfZ/view?usp=drive_link)\n\n**Policies applicable in Texas**:\n• [Blue Cross Blue Shield of Texas: Blue Advantage Gold HMO 206](https://drive.google.com/file/d/1uq_AEYbkNzmTzqqE-iAj3ZoHxtJJwGgi/view?usp=drive_link)\n• [Blue Cross Blue Shield of Texas: Blue Advantage Silver HMO 205](https://drive.google.com/file/d/1gaQ_TKTfycbYA-NdwiIO6_F2l6zDHeQl/view?usp=drive_link)",
     workflow: workflowHealthInsuranceSalesUsa
+  },
+  "lead-qualification-india": {
+    title: "AI Lead Qualification Agentic Solution (India)",
+    description: "An AI voice agent that instantly calls new leads the moment they are assigned. It conducts structured, multilingual conversations in each lead's preferred language using a natural, regionally familiar voice. The agent evaluates every lead against predefined qualification criteria and classifies them as Hot, Warm, Cold, Pending, or Urgent based on the conversation. It automatically updates the CRM in real time with call transcripts, qualification scores, and lead categories — enabling intelligent routing to the appropriate human teams for faster conversion.",
+    notes: "**Note**: This solution is purpose-built for the home/housing loan lead qualification and conversion journey.\n\n**Key Highlights**:\n• Instant lead outreach\n• Multilingual & regional voice\n• 3–5 min structured qualification\n• Real-time CRM sync\n• Intelligent lead routing\n• Built for Home Loans\n\n**Workflow**: New Lead Assigned → AI Voice Agent Calls Lead → Multilingual Qualification Conversation (3–5 min) → Knowledge Base Q&A → Lead Scoring & Categorization (Hot / Warm / Cold / Pending / Urgent) → Real-time CRM Update (transcript + score + category) → Smart Routing to Human Team",
+    workflow: workflowLeadQualificationIndia
   }
 };
 
@@ -205,6 +212,12 @@ const agentsData: Record<string, Array<{ name: string; description: string }>> =
     {
       name: "AI Sales Copilot Agent",
       description: "The AI Sales Copilot Agent is an intelligent, real-time assistant that supports insurance sellers by answering policy queries, summarizing policies, comparing between policies and generating personalized sales pitches during customer interactions."
+    }
+  ],
+  "lead-qualification-india": [
+    {
+      name: "AI Lead Qualification Agent",
+      description: "A multilingual voice AI agent that instantly calls newly assigned leads, conducts a structured 3–5 minute qualification conversation, answers lead queries from a connected knowledge base, and scores and categorizes each lead for intelligent routing to the right human team."
     }
   ],
   "default": [
