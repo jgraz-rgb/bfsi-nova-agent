@@ -182,13 +182,13 @@ export default function AgenticSolutionsPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
                 <SolutionCard
                   iconSvg={financialServicesIcon}
-                  title="Personal Finance Customer Support Agent"
+                  title="Personal Finance Customer Support Assistant"
                   region="USA"
                   link="/solution/financial-services-india"
                 />
                 <SolutionCard
                   iconSvg={leadQualificationIcon}
-                  title="AI Lead Qualification Agentic Solution"
+                  title="Lead Qualification Assistant"
                   region="India"
                   link="/solution/lead-qualification-india"
                 />
