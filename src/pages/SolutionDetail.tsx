@@ -328,6 +328,14 @@ export default function SolutionDetail() {
             >
               Agents
             </TabsTrigger>
+            {showScoringTab && (
+              <TabsTrigger 
+                value="scoring"
+                className="relative data-[state=active]:bg-transparent data-[state=active]:text-primary rounded-md px-8 py-2.5 font-medium transition-all data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-0.5 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-full"
+              >
+                Scoring Framework
+              </TabsTrigger>
+            )}
           </TabsList>
 
           <TabsContent value="workflow" className="space-y-8 animate-fade-in">
