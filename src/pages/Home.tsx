@@ -144,8 +144,10 @@ export default function HomePage({ onAuthChange }: { onAuthChange?: () => void }
               <p className="text-sm text-muted-foreground mb-4 flex-1">
                 Learn about different BFSI products and access reference guides
               </p>
-              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit">
-                View Documentation
+              <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 w-fit" asChild>
+                <a href="https://docs.searchunify.com/Content/Agentic-Suite/Agentic-AI-for-BFSI.htm" target="_blank" rel="noopener noreferrer">
+                  View Documentation
+                </a>
               </Button>
             </Card>
           </div>
