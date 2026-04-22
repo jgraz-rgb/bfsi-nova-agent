@@ -15,6 +15,7 @@ import workflowHealthInsuranceUsa from "@/assets/workflow-health-insurance-usa.p
 import workflowAutoInsuranceUsa from "@/assets/workflow-auto-insurance-usa.png";
 import workflowHealthInsuranceSalesUsa from "@/assets/workflow-health-insurance-sales-usa.png";
 import workflowLeadQualificationIndia from "@/assets/workflow-lead-qualification-india.png";
+import scoringLeadQualificationIndia from "@/assets/scoring-lead-qualification-india.png";
 
 const solutionLinks: Record<string, string> = {
   "financial-services-india": "https://feature-mltools.searchunify.com/resources/search_clients_custom/bc8b786e-6def-11f0-bf8d-0242ac120023/download/indexw.html?searchString=&activeType=all&from=0&sortby=_score&orderBy=desc&pageNo=1&aggregations=%5B%5D&uid=4d747e3d-690e-11ef-937c-0242ac120014&resultsPerPage=10&exactPhrase=&withOneOrMore=&withoutTheWords=&pageSize=10&language=en&suCaseCreate=false",
@@ -251,6 +252,8 @@ export default function SolutionDetail() {
   const agents = id && agentsData[id] ? agentsData[id] : agentsData["default"];
   const solutionUrl = id ? solutionLinks[id] : null;
   const [isWorkflowOpen, setIsWorkflowOpen] = useState(false);
+  const [isScoringOpen, setIsScoringOpen] = useState(false);
+  const showScoringTab = id === "lead-qualification-india";
 
   // Scroll to top when component mounts or id changes
   useEffect(() => {
@@ -325,6 +328,14 @@ export default function SolutionDetail() {
             >
               Agents
             </TabsTrigger>
+            {showScoringTab && (
+              <TabsTrigger 
+                value="scoring"
+                className="relative data-[state=active]:bg-transparent data-[state=active]:text-primary rounded-md px-8 py-2.5 font-medium transition-all data-[state=active]:after:absolute data-[state=active]:after:bottom-0 data-[state=active]:after:left-0 data-[state=active]:after:right-0 data-[state=active]:after:h-0.5 data-[state=active]:after:bg-primary data-[state=active]:after:rounded-full"
+              >
+                Scoring Framework
+              </TabsTrigger>
+            )}
           </TabsList>
 
           <TabsContent value="workflow" className="space-y-8 animate-fade-in">
@@ -434,6 +445,64 @@ export default function SolutionDetail() {
               ))}
             </div>
           </TabsContent>
+
+          {showScoringTab && (
+            <TabsContent value="scoring" className="space-y-8 animate-fade-in">
+              <div className="bg-gradient-to-br from-orange-50/50 to-orange-100/30 border border-orange-200/50 rounded-2xl p-8 shadow-sm">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <span className="text-primary font-bold text-sm">ℹ</span>
+                  </div>
+                  <div className="flex-1">
+                    <h2 className="font-bold text-lg mb-3 text-foreground">Scoring Framework</h2>
+                    <p className="text-foreground/90 leading-relaxed">
+                      Once the voice-based AI Lead Qualification Agent completes the interaction with the customer, a ticket (or case) is automatically created in the CRM. Based on the lead classification, Hot/Warm/Urgent leads are routed to the Field Sales (FOS) agent for immediate follow-up, while Cold leads or cases with incomplete details are assigned to a Quality Auditor for further review. A sample illustration of the CRM ticket is shown below.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div 
+                className="bg-white border border-gray-200 rounded-2xl p-10 shadow-md cursor-pointer hover:shadow-xl transition-all duration-300 group relative"
+                onClick={() => setIsScoringOpen(true)}
+              >
+                <div className="absolute top-4 right-4 bg-primary/90 text-white rounded-lg px-4 py-2 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <Maximize2 className="w-4 h-4" />
+                  <span className="text-sm font-medium">View Full Screen</span>
+                </div>
+                <img 
+                  src={scoringLeadQualificationIndia} 
+                  alt="Scoring Framework Diagram" 
+                  className="w-full h-auto rounded-xl shadow-sm"
+                />
+              </div>
+
+              <Dialog open={isScoringOpen} onOpenChange={setIsScoringOpen}>
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 overflow-hidden bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100">
+                  <div className="relative w-full h-full">
+                    <DialogHeader className="px-6 pt-6 pb-4 bg-white/80 backdrop-blur-sm border-b sticky top-0 z-10">
+                      <DialogTitle className="text-2xl font-bold text-foreground flex items-center justify-between">
+                        <span>Scoring Framework - {solution.title}</span>
+                        <button
+                          onClick={() => setIsScoringOpen(false)}
+                          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                        >
+                          <X className="w-5 h-5" />
+                        </button>
+                      </DialogTitle>
+                    </DialogHeader>
+                    <div className="overflow-auto max-h-[calc(95vh-100px)] p-8">
+                      <img 
+                        src={scoringLeadQualificationIndia} 
+                        alt="Scoring Framework Full View" 
+                        className="w-full h-auto rounded-xl shadow-2xl bg-white"
+                      />
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
+            </TabsContent>
+          )}
         </Tabs>
 
       </main>
