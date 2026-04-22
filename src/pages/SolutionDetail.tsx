@@ -252,6 +252,8 @@ export default function SolutionDetail() {
   const agents = id && agentsData[id] ? agentsData[id] : agentsData["default"];
   const solutionUrl = id ? solutionLinks[id] : null;
   const [isWorkflowOpen, setIsWorkflowOpen] = useState(false);
+  const [isScoringOpen, setIsScoringOpen] = useState(false);
+  const showScoringTab = id === "lead-qualification-india";
 
   // Scroll to top when component mounts or id changes
   useEffect(() => {
