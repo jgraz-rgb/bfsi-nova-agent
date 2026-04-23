@@ -190,7 +190,7 @@ export default function AgenticSolutionsPage() {
                   iconSvg={leadQualificationIcon}
                   title="Lead Qualification Assistant"
                   region="India"
-                  link="/solution/lead-qualification-india"
+                  link="/solution/lead-qualification-indi"
                 />
               </div>
             </CollapsibleContent>
