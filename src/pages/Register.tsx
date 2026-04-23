@@ -7,14 +7,11 @@ import { toast } from "@/components/ui/use-toast";
 import logoImage from "@/assets/searchunify-logo.svg";
 import { Eye, EyeOff } from "lucide-react";
 
-const LOGIN_API_URL = "/admin/userManagement/check";
-const REGISTER_API_URL = "/admin/userManagement/registerUser";
+const REGISTER_API_URL = "/agenticUser/signup";
 
 type AdminConfig = {
   adminId: string;
   adminPassword: string;
-  backendSessionId: string;
-  backendSessionPassword: string;
 };
 
 const loadAdminConfig = async (): Promise<AdminConfig> => {
@@ -25,7 +22,7 @@ const loadAdminConfig = async (): Promise<AdminConfig> => {
 };
 
 type RegisterApiResponse = {
-  flag: number;
+  status: string;
   message?: string;
 };
 
@@ -98,55 +95,19 @@ export default function Register() {
 
     setIsSubmitting(true);
 
-    let config: AdminConfig;
     try {
-      config = await loadAdminConfig();
-    } catch {
-      toast({
-        title: "Configuration error",
-        description: "Could not load admin config. Ensure admin-config.json is present.",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
-
-    try {
-      // Establish backend session to obtain cookies required for registration
-      const sessionResponse = await fetch(LOGIN_API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json, text/plain, */*",
-        },
-        credentials: "include",
-        body: JSON.stringify({ userid: config.backendSessionId, password: config.backendSessionPassword }),
-      });
-
-      const sessionData = await sessionResponse.json();
-      if (sessionData.flag !== 1) {
-        toast({
-          title: "Session error",
-          description: "Could not establish backend session. Please try again.",
-          variant: "destructive",
-        });
-        setIsSubmitting(false);
-        return;
-      }
-
       const response = await fetch(REGISTER_API_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           accept: "application/json, text/plain, */*",
         },
-        credentials: "include",
         body: JSON.stringify({ userid: newUserId.trim(), password: newPassword }),
       });
 
       const data: RegisterApiResponse = await response.json();
 
-      if (data.flag === 1) {
+      if (data.status === "success" || data.message?.toLowerCase().includes("success")) {
         setView("success");
       } else {
         toast({

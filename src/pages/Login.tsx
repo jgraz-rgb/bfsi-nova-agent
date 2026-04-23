@@ -10,15 +10,13 @@ import { saveAuthUser } from "@/lib/auth";
 import { Eye, EyeOff } from "lucide-react";
 
 type LoginApiResponse = {
-  flag: number;
+  status: string;
   message?: string;
-  user?: {
-    id: number;
-    userid: string;
-  };
+  id?: number;
+  userid?: string;
 };
 
-const LOGIN_API_URL = "/admin/userManagement/check";
+const LOGIN_API_URL = "/agenticUser/login";
 
 // Tree ring style concave line with inner shadow effect
 const TreeRing = ({
@@ -174,8 +172,8 @@ export default function LoginPage({ onAuthChange }: { onAuthChange?: () => void 
 
       const data: LoginApiResponse = await response.json();
 
-      if (data.flag === 1 && data.user) {
-        saveAuthUser({ id: data.user.id, userid: data.user.userid }, keepLoggedIn);
+      if ((data.status === "success" || data.message?.toLowerCase().includes("success")) && data.id && data.userid) {
+        saveAuthUser({ id: data.id, userid: data.userid }, keepLoggedIn);
         onAuthChange?.();
         navigate("/", { replace: true });
       } else {
